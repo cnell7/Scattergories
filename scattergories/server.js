@@ -6,9 +6,9 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const mongoDB_URI = 'mongodb+srv://cnell:r[~7vn&seP_DV&=t@cluster0.tak5v.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const mongoDB_URI = 'mongodb+srv://cnell:r[~7vn&seP_DV&=t@cluster0.tak5v.mongodb.net/scattergories?retryWrites=true&w=majority';
 
-mongoose.connect('mongodb://localhost/full/scattergories', {
+mongoose.connect(mongoDB_URI || 'mongodb://localhost/scattergories', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
