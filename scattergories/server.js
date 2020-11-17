@@ -1,23 +1,19 @@
-const express =  require('express');
-const morgan = require('morgan');
-const path = require('path');
-var bodyParser = require('body-parser')
-var app = express()
-var router = express.Router();
-const PORT = process.env.PORT || 8080;
+  
+const express = require('express');
 
+const app = express();
 
+const Book = require('./Example.js');
 
-//HTTP request logger
-app.use(morgan('tiny'));
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
-const example = require('./routes/example');
+app.get('/example', (req, res) => {
+    res.json(Book.getAllIDs());
+    return;
+});
 
-//Body Parser MW
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extende: false}))
-
-//Routes
-app.use('/api', example);
-
-app.listen(PORT, console.log(`Server is starting at ${PORT}`));
+const port = 3030;
+app.listen(port, () => {
+    console.log("Scattergories up at " + port);
+});
