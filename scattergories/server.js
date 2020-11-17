@@ -6,18 +6,20 @@ const path = require('path');
 const Example = require('./Example.js');
 const Secret = require("./Secret.js");
 const app = express();
-const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
+const port = 3030;
 
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, './client/build')));
 
 app.use(expressSession({
-    name: "kmpSessionCookie",
-    secret: "express session secret",
+    name: "cnellSessionCookie",
+    secret: "i am the best valorant player",
     resave: false,
     saveUninitialized: false
 }));
+
+const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
 
 app.get('/example', (req, res) => {
     res.json(Example.getAllIDs());
@@ -133,7 +135,6 @@ app.delete('/secret/:id', (req, res) => {
     res.json(true);
 })
 
-const port = 3030;
 app.listen(port, () => {
     console.log("Scattergories up at " + port);
 });
