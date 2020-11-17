@@ -4,7 +4,7 @@
 ```bash   
 npm run watch   
 ```   
-Will re-build everytime you make a change in the src folder so that the back end may use your changes.   
+Will re-build everytime you make a change in the src folder so that the back end may use your changes to the front end.   
 
 ## Back End   
 ```bash   
