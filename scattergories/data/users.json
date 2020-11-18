@@ -3,15 +3,5 @@
     "id": 0,
     "user": "cnell",
     "password": "test"
-  },
-  "1": {
-    "id": 1,
-    "user": "d",
-    "password": "d"
-  },
-  "2": {
-    "id": 2,
-    "user": "dd",
-    "password": "d"
   }
 }
