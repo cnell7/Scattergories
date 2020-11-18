@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const Example = require('./Example.js');
 const Secret = require("./Secret.js");
+const User = require("./User.js")
 const app = express();
 const port = 3030;
 
@@ -21,17 +22,38 @@ app.use(expressSession({
 
 const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
 
-app.get('/example', (req, res) => {
+app.post('/example', (req, res) => {
     res.json(Example.getAllIDs());
     return;
 });
+
+app.post('/signup', (req,res) => {
+
+    let user = req.body.user;
+    let password = req.body.password;
+
+    if(User.getAllIDsForOwner(user).length != 0){
+        res.status(403).send("User taken");
+        return;
+    }
+
+    let u = User.create(user, password);
+
+    if(u != null){
+        res.json(true)
+        req.session.user = user;
+        return true;
+    }
+})
 
 app.post('/login', (req,res) => {
 
     let user = req.body.user;
     let password = req.body.password;
 
-    let user_data = login_data.get(user);
+    let id = User.getAllIDsForOwner(user);
+    let user_data = login_data.get(id[0].toString());
+
     if (user_data == null) {
         res.status(404).send("Not found");
         return;

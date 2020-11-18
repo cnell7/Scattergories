@@ -1,10 +1,7 @@
 {
-    "cnell": {
-        "password": "password",
-        "name": "Christian"
-    },
-    "chetanrs": {
-        "password": "123",
-        "name": "Chetan"
-    }
+  "0": {
+    "id": 0,
+    "user": "cnell",
+    "password": "test"
+  }
 }
