@@ -8,8 +8,8 @@ export async function requestSignup(u, p) {
             user: u,
             password: p
         }
-    }).catch(err =>{
-        return false
+    }).catch(err => {
+        return false;
     })
     return result;
 };

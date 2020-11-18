@@ -4,26 +4,39 @@ import { Link } from 'react-router-dom';
 import { requestSignup } from '../Services/SignupService.js'
 
 function ActionLink() {
-    function handleClick(e) {
+    async function handleClick(e) {
         e.preventDefault();
         console.log('Sending signup request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
-        let response = requestSignup(u, p);
-        console.log(response);
+        let response = await requestSignup(u, p);
         if(!response){
-            console.log('username taken')
-            return
+            if(!document.getElementById('takenDiv')){
+                let takenDiv = document.createElement('div');
+                let takenB = document.createElement('button');
+                let takenP = document.createElement('p');
+                takenDiv.setAttribute("class", "notification is-danger");
+                takenDiv.setAttribute("id", "takenDiv")
+                takenB.setAttribute("class", "delete");
+                takenB.setAttribute("id", "takenUserButton")
+                takenB.onclick = () => {
+                    document.getElementById('takenDiv').remove();
+                }
+                takenP.setAttribute("id", "takenUser");
+                takenP.appendChild(document.createTextNode("Username taken"));
+                takenDiv.append(takenB, takenP)
+                document.getElementById('signupForm').append(takenDiv);
+            }
         }
         return response
     }
   
-    return (<a href="#" onClick={handleClick}>Submit</a>);
+    return (<a id="signupSubmitLink" href="#" onClick={handleClick}>Submit</a>);
 }
 
 export default function Signup() {
     return(
-        <div>
+        <div id="signupForm">
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
                     <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
