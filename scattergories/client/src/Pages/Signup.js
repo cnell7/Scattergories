@@ -9,6 +9,25 @@ function ActionLink() {
         console.log('Sending signup request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
+        if(u.length == 0 || p.length ==0){
+            if(!document.getElementById('emptyUserDiv')){
+                let takenDiv = document.createElement('div');
+                let takenB = document.createElement('button');
+                let takenP = document.createElement('p');
+                takenDiv.setAttribute("class", "notification is-danger");
+                takenDiv.setAttribute("id", "emptyUserDiv")
+                takenB.setAttribute("class", "delete");
+                takenB.setAttribute("id", "emptyUserButton")
+                takenB.onclick = () => {
+                    document.getElementById('emptyUserDiv').remove();
+                }
+                takenP.setAttribute("id", "emptyUser");
+                takenP.appendChild(document.createTextNode("Empty username or password"));
+                takenDiv.append(takenB, takenP)
+                document.getElementById('signupForm').append(takenDiv);
+            }
+            return false
+        }
         let response = await requestSignup(u, p);
         if(!response){
             if(!document.getElementById('takenDiv')){
@@ -26,6 +45,7 @@ function ActionLink() {
                 takenP.appendChild(document.createTextNode("Username taken"));
                 takenDiv.append(takenB, takenP)
                 document.getElementById('signupForm').append(takenDiv);
+                return false
             }
         }
         return response
