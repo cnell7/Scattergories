@@ -9,6 +9,8 @@ import {
   Link
 } from "react-router-dom";
 
+export let User = { "user": false, "pass": false}
+
 export default function App() {
   return (
     <Router>
@@ -25,7 +27,6 @@ export default function App() {
               <span aria-hidden="true"></span>
             </a>
           </div>
-
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
               <a class="navbar-item">
