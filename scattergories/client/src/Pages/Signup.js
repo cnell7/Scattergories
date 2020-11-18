@@ -6,7 +6,8 @@ import { requestSignup } from '../Services/SignupService.js'
 function ActionLink() {
     function handleClick(e) {
       e.preventDefault();
-      console.log('The link was clicked.');
+      console.log('Sending signup request...');
+      return requestSignup("test", "123");
     }
   
     return (
