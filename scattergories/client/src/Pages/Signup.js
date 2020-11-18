@@ -22,7 +22,7 @@ export default function Signup() {
         <div>
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="emailInput" type="email" placeholder="Email"></input>
+                    <input id="emailInput" class="input" type="email" placeholder="Email"></input>
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
