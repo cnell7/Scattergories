@@ -4,7 +4,7 @@
 ```bash   
 npm run watch   
 ```   
-Run in client folder. Builds front end and watches for changes.Automatically re-builds upon saving.  
+Run in client folder. Builds front end and watches for changes. Automatically re-builds upon saving.  
 
 ## Back End   
 ```bash   
