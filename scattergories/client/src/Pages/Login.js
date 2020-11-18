@@ -6,29 +6,48 @@ import { requestLogin } from '../Services/LoginService.js'
 function ActionLink() {
     async function handleClick(e) {
         e.preventDefault();
-        console.log('Sending signup request...');
+        console.log('Sending login request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
-        if(u.length == 0 || p.length ==0){
+        if(u.length == 0 || p.length == 0){
             if(!document.getElementById('emptyUserDiv')){
-                let takenDiv = document.createElement('div');
-                let takenB = document.createElement('button');
-                let takenP = document.createElement('p');
-                takenDiv.setAttribute("class", "notification is-danger");
-                takenDiv.setAttribute("id", "emptyUserDiv")
-                takenB.setAttribute("class", "delete");
-                takenB.setAttribute("id", "emptyUserButton")
-                takenB.onclick = () => {
+                let emptyDiv = document.createElement('div');
+                let emptyB = document.createElement('button');
+                let emptyP = document.createElement('p');
+                emptyDiv.setAttribute("class", "notification is-danger");
+                emptyDiv.setAttribute("id", "emptyUserDiv")
+                emptyB.setAttribute("class", "delete");
+                emptyB.setAttribute("id", "emptyUserButton")
+                emptyB.onclick = () => {
                     document.getElementById('emptyUserDiv').remove();
                 }
-                takenP.setAttribute("id", "emptyUser");
-                takenP.appendChild(document.createTextNode("Empty username or password"));
-                takenDiv.append(takenB, takenP)
-                document.getElementById('signupForm').append(takenDiv);
+                emptyP.setAttribute("id", "emptyUser");
+                emptyP.appendChild(document.createTextNode("Empty username or password"));
+                emptyDiv.append(emptyB, emptyP)
+                document.getElementById('signupForm').append(emptyDiv);
             }
             return false
         }
         let response = await requestLogin(u, p);
+        if(!response){
+            if(!document.getElementById('unauthorizedDiv')){
+                let unauthDiv = document.createElement('div');
+                let unauthB = document.createElement('button');
+                let unauthP = document.createElement('p');
+                unauthDiv.setAttribute("class", "notification is-danger");
+                unauthDiv.setAttribute("id", "unauthorizedDiv")
+                unauthB.setAttribute("class", "delete");
+                unauthB.setAttribute("id", "unauthorizedButton")
+                unauthB.onclick = () => {
+                    unauthDiv.remove();
+                }
+                unauthP.setAttribute("id", "unauthorized");
+                unauthP.appendChild(document.createTextNode("Incorrect username or password"));
+                unauthDiv.append(unauthB, unauthP)
+                document.getElementById('loginForm').append(unauthDiv);
+            }
+            return false
+        }
         return response
     }
   

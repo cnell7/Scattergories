@@ -11,20 +11,20 @@ function ActionLink() {
         let p = document.getElementById('passwordInput').value;
         if(u.length == 0 || p.length ==0){
             if(!document.getElementById('emptyUserDiv')){
-                let takenDiv = document.createElement('div');
-                let takenB = document.createElement('button');
-                let takenP = document.createElement('p');
-                takenDiv.setAttribute("class", "notification is-danger");
-                takenDiv.setAttribute("id", "emptyUserDiv")
-                takenB.setAttribute("class", "delete");
-                takenB.setAttribute("id", "emptyUserButton")
-                takenB.onclick = () => {
+                let emptyDiv = document.createElement('div');
+                let emptyB = document.createElement('button');
+                let emptyP = document.createElement('p');
+                emptyDiv.setAttribute("class", "notification is-danger");
+                emptyDiv.setAttribute("id", "emptyUserDiv")
+                emptyB.setAttribute("class", "delete");
+                emptyB.setAttribute("id", "emptyUserButton")
+                emptyB.onclick = () => {
                     document.getElementById('emptyUserDiv').remove();
                 }
-                takenP.setAttribute("id", "emptyUser");
-                takenP.appendChild(document.createTextNode("Empty username or password"));
-                takenDiv.append(takenB, takenP)
-                document.getElementById('signupForm').append(takenDiv);
+                emptyP.setAttribute("id", "emptyUser");
+                emptyP.appendChild(document.createTextNode("Empty username or password"));
+                emptyDiv.append(emptyB, emptyP)
+                document.getElementById('signupForm').append(emptyDiv);
             }
             return false
         }
