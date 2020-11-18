@@ -16,7 +16,7 @@ export default function App() {
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
-              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"></img>
+              <img src="https://i0.wp.com/blog.townscript.com/wp-content/uploads/2020/04/scattergories.jpg?ssl=1" width="112" height="28"></img>
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -29,34 +29,8 @@ export default function App() {
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
               <a class="navbar-item">
-                Home
+                <Link to="/home"><strong>Home</strong></Link>
               </a>
-
-              <a class="navbar-item">
-                Documentation
-              </a>
-
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                  More
-                </a>
-
-                <div class="navbar-dropdown">
-                  <a class="navbar-item">
-                    About
-                  </a>
-                  <a class="navbar-item">
-                    Jobs
-                  </a>
-                  <a class="navbar-item">
-                    Contact
-                  </a>
-                  <hr class="navbar-divider"></hr>
-                  <a class="navbar-item">
-                    Report an issue
-                  </a>
-                </div>
-              </div>
             </div>
 
             <div class="navbar-end">
