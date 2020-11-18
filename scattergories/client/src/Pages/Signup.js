@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
-import { SingupService } from '../Services/SignupService.js'
+import { requestSignup } from '../Services/SignupService.js'
 
 export default function Signup() {
     return(
@@ -27,7 +27,7 @@ export default function Signup() {
                 </div>
                 <div class="field">
                 <p class="control">
-                    <button class="button is-success" onClick="console.log('hi);">Login</button>
+                    <button class="button is-success" onClick={console.log('test');}>Login</button>
                 </p>
             </div>
         </div>
