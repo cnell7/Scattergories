@@ -1,5 +1,7 @@
 import React from "react";
-import Signup from "./Signup.js"
+import Signup from "./Pages/Signup.js"
+import Login from "./Pages/Login.js"
+import Home from "./Pages/Home.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,12 +43,4 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Login() {
-  return <h2>Login</h2>;
 }
