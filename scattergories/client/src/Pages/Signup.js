@@ -27,7 +27,7 @@ export default function Signup() {
                 </div>
                 <div class="field">
                 <p class="control">
-                    <button class="button is-success" onClick={console.log('test');}>Login</button>
+                    <button class="button is-success" onClick={console.log('test')}>Login</button>
                 </p>
             </div>
         </div>
