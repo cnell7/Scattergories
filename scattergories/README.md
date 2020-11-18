@@ -4,10 +4,10 @@
 ```bash   
 npm run watch   
 ```   
-Will re-build everytime you make a change in the src folder so that the back end may use your changes to the front end.   
+Run in client folder. Builds front end and watches for changes.Automatically re-builds upon saving.  
 
 ## Back End   
 ```bash   
 nodemon server   
 ```   
-This will start the server and watch for any changes on the backend so you won't have to restart.
+This will start the back end and watch for any changes so you won't have to restart it.
