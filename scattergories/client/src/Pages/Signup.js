@@ -30,10 +30,10 @@ export default function Signup() {
                         <i class="fas fa-check"></i>
                     </span>
                 </p>
-            </div>
+                </div>
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="passwordInput" type="password" placeholder="Password"></input>
+                    <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
