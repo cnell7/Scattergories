@@ -3,6 +3,19 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import { requestSignup } from '../Services/SignupService.js'
 
+function ActionLink() {
+    function handleClick(e) {
+      e.preventDefault();
+      console.log('The link was clicked.');
+    }
+  
+    return (
+      <a href="#" onClick={handleClick}>
+        Click me
+      </a>
+    );
+}
+
 export default function Signup() {
     return(
         <div>
@@ -27,10 +40,9 @@ export default function Signup() {
                 </div>
                 <div class="field">
                 <p class="control">
-                    <button class="button is-success" onClick={console.log('test')}>Login</button>
+                    <ActionLink />
                 </p>
             </div>
         </div>
     );
 };
-
