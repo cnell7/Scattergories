@@ -27,7 +27,7 @@ app.post('/example', (req, res) => {
     return;
 });
 
-app.post('/test', (req,res) => {
+app.post('/signup', (req,res) => {
 
     let user = req.body.user;
     let password = req.body.password;

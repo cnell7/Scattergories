@@ -5,16 +5,20 @@ import { requestSignup } from '../Services/SignupService.js'
 
 function ActionLink() {
     function handleClick(e) {
-      e.preventDefault();
-      console.log('Sending signup request...');
-      return requestSignup("test", "123");
+        e.preventDefault();
+        console.log('Sending signup request...');
+        let u = document.getElementById('usernameInput').value;
+        let p = document.getElementById('passwordInput').value;
+        let response = requestSignup(u, p);
+        console.log(response);
+        if(!response){
+            console.log('username taken')
+            return
+        }
+        return response
     }
   
-    return (
-      <a href="#" onClick={handleClick}>
-        Click me
-      </a>
-    );
+    return (<a href="#" onClick={handleClick}>Submit</a>);
 }
 
 export default function Signup() {
@@ -22,7 +26,7 @@ export default function Signup() {
         <div>
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input id="emailInput" class="input" type="email" placeholder="Email"></input>
+                    <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
