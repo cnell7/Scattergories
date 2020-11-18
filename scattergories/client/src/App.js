@@ -1,7 +1,6 @@
 import React from "react";
 import Signup from "./Pages/Signup.js"
 import Login from "./Pages/Login.js"
-import Home from "./Pages/Home.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,9 +14,6 @@ export default function App() {
       <div>
         <nav>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
             <li>
               <Link to="/signup">Signup</Link>
             </li>
