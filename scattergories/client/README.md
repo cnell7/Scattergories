@@ -1,1 +1,3 @@
-# Scattergories React
+# Scattergories React  
+## Pages  
+## Services  
