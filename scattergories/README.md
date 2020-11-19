@@ -10,4 +10,4 @@ Run in client folder. Builds front end and watches for changes. Automatically re
 ```bash   
 nodemon server   
 ```   
-This will start the back end and watch for any changes so you won't have to restart it.
+Run in the second scattergories directory. This will start the back end and watch for any changes so you won't have to restart it.
