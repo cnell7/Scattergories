@@ -3,7 +3,6 @@ const express = require('express');
 const expressSession = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
-const Example = require('./Example.js');
 const Secret = require("./Secret.js");
 const User = require("./User.js")
 const app = express();
@@ -21,11 +20,6 @@ app.use(expressSession({
 }));
 
 const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
-
-app.post('/example', (req, res) => {
-    res.json(Example.getAllIDs());
-    return;
-});
 
 app.post('/signup', (req,res) => {
 

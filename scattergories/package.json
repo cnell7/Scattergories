@@ -1,7 +1,7 @@
 {
   "name": "scattergories",
   "version": "1.0.0",
-  "description": "",
+  "description": "```bash   \r npm run watch   \r ```   \r Run in client folder. Builds front end and watches for changes. Automatically re-builds upon saving.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,8 @@
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
+    "react": "^17.0.1",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "devDependencies": {}
 }
