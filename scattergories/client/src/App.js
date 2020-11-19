@@ -9,8 +9,6 @@ import {
   Link
 } from "react-router-dom";
 
-export let User = { "user": false, "pass": false}
-
 export default function App() {
   return (
     <Router>
@@ -33,7 +31,6 @@ export default function App() {
                 <Link to="/home"><strong>Home</strong></Link>
               </a>
             </div>
-
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">

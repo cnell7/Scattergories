@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import { requestLogin } from '../Services/LoginService.js'
-import { User } from '../App.js'
 
 function ActionLink() {
     async function handleClick(e) {
@@ -49,8 +48,6 @@ function ActionLink() {
             }
             return false
         }
-        User.user = u;
-        User.pass = p;
         return response
     }
   
