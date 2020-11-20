@@ -15,6 +15,7 @@
     "data-store": "^4.0.3",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "express.io": "^1.1.13",
     "mongojs": "^3.1.0",
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
