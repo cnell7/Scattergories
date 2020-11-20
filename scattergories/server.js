@@ -19,7 +19,7 @@ app.use(expressSession({
     saveUninitialized: false
 }));
 
-let login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
+const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
 
 app.post('/signup', (req,res) => {
 
