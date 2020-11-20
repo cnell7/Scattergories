@@ -6,8 +6,31 @@ import history from '../history.js'
 export default class Game extends React.Component {
     constructor(props){
         super(props);
+        this.players = ["Bob", "Joe", "Kate", "Sarah", "Cade", "Sam"]
+        this.categories = ["Something you would eat","A game you play","Is in this room"]
+        this.letter = "A";
     }
     render(){
-        return(<p>Game</p>);
+        return(
+        <div class="columns">
+            <div class="column is-two-fifths">
+                <div>
+                    <h1>Letter</h1>
+                    <h2 class='title is-1'>{this.letter}</h2>
+                </div>
+              <ul>
+                  {this.players.map(player => {
+                      return <li>{player}</li>
+                  })}
+              </ul>
+            </div>
+            <div class="column is-two-fifths">
+              <button class="button">Play</button>
+            </div>
+            <div class="column is-one-fifth">
+              Third column
+            </div>
+          </div>
+        );
     }
 }
