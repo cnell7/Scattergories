@@ -1,7 +1,6 @@
 import React from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
-import { io } from 'socket.io-client';
 
 export class GameForm extends React.Component {
   constructor(props){
@@ -11,7 +10,7 @@ export class GameForm extends React.Component {
     if(this.props.state.renderedForm == 'null'){
       return(<p></p>);
     }else if(this.props.state.renderedForm == 'create'){
-      return(<button class='button'>Create</button>);
+      return(<button class='button' onClick={this.createRoom()}>Create</button>);
     } else {
       return(<button class='button'>Join</button>);
     }

@@ -162,9 +162,12 @@ server.listen(port, () => {
 });
 
 io.on('connection', socket => {
-  console.log("A user connected");
-  socket.on('create room', ()=>{
-      console.log('hi');
-      socket.join('some room');
-  })
+    console.log("A user connected");
+    socket.on('create room', (room)=>{
+        console.log('hi');
+        socket.join(room);
+    });
+    socket.on('disconnect', () => {
+        console.log('A user has disconnected.');
+    })
 })
