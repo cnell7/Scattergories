@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { io } from 'socket.io-client';
 
 export class GameForm extends React.Component {
   constructor(props){
@@ -10,9 +11,9 @@ export class GameForm extends React.Component {
     if(this.props.state.renderedForm == 'null'){
       return(<p></p>);
     }else if(this.props.state.renderedForm == 'create'){
-      return(<p>create</p>);
+      return(<button class='button'>Create</button>);
     } else {
-      return(<p>join</p>);
+      return(<button class='button'>Join</button>);
     }
   }
   render(){

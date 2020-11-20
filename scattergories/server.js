@@ -163,7 +163,8 @@ server.listen(port, () => {
 
 io.on('connection', socket => {
   console.log("A user connected");
-  socket.on('hi', ()=>{
-      console.log('hello');
+  socket.on('create room', ()=>{
+      console.log('hi');
+      socket.join('some room');
   })
 })

@@ -48,6 +48,22 @@ function ActionLink() {
                 return false
             }
         }
+        if(!document.getElementById('takenDiv')){
+            let goodDiv = document.createElement('div');
+            let goodB = document.createElement('button');
+            let goodP = document.createElement('p');
+            goodDiv.setAttribute("class", "notification is-primary");
+            goodDiv.setAttribute("id", "goodDiv")
+            goodB.setAttribute("class", "delete");
+            goodB.setAttribute("id", "goodUserButton")
+            goodB.onclick = () => {
+                document.getElementById('goodDiv').remove();
+            }
+            goodP.setAttribute("id", "goodUser");
+            goodP.appendChild(document.createTextNode("Success! You've created an account. Login to play."));
+            goodDiv.append(goodB, goodP)
+            document.getElementById('signupForm').append(goodDiv);
+        }
         return response
     }
   
