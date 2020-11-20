@@ -1,11 +1,7 @@
-const Game = require('./game.js')
+const GameManager = require('./GameManager.js')
 
-let mygame = new Game(6);
+let manager = new GameManager()
 
-let players = ["Chetan", "Nate", "Christian", "Mary"]
+manager.createNewGame()
 
-players.map(player => {
-    mygame.addPlayer(player)
-})
-
-console.log(mygame.getState());
+console.log(manager.games);

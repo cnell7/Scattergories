@@ -4,7 +4,7 @@ class Game {
     static possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
     static possibleCategories = data
     
-    constructor(gameID){
+    constructor(){
         this.gameID = ""
         this.players = {}
         this.lastCategoriesPlayed = []
