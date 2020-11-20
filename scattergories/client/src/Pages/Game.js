@@ -25,10 +25,15 @@ export default class Game extends React.Component {
               </ul>
             </div>
             <div class="column is-two-fifths">
-              <button class="button">Play</button>
+                {this.categories.map(cat => {
+                    return <h1 class='title is-3'>{cat}</h1>
+                })}
+                <div>
+                    <input class='input' placeholder='Type your answer here.'></input>
+                </div>
             </div>
             <div class="column is-one-fifth">
-              Third column
+                <button class="button">Play</button>
             </div>
           </div>
         );
