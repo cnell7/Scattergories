@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import '../client.js';
+import '../client.js';
 
 export class GameForm extends React.Component {
   constructor(props){
@@ -10,9 +12,9 @@ export class GameForm extends React.Component {
     if(this.props.state.renderedForm == 'null'){
       return(<p></p>);
     }else if(this.props.state.renderedForm == 'create'){
-      return(<p>create</p>);
+      return(<button class='button' onClick={socket.emit('create room')}>Create</button>);
     } else {
-      return(<p>join</p>);
+      return(<button class='button'>Join</button>);
     }
   }
   render(){
