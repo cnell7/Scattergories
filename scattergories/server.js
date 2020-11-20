@@ -163,5 +163,4 @@ server.listen(port, () => {
 
 io.on('connection', socket => {
   console.log("A user connected");
-  console.log(socket);
 })
