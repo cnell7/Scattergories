@@ -20,13 +20,17 @@ class LoginLogout extends React.Component {
     return(<a class="button is-light" onClick={this.switchState}><Link to="/login"><strong>Login</strong></Link></a>);
   }
   loggedIn(){
-    return(<a class="button is-light" onClick={this.switchState}><Link to="/logout"><strong>Logout</strong></Link></a>);
+    return(<a class="button is-light" onClick={this.switchState}><strong>Logout</strong></a>);
   }
   switchState(){
-    console.log('hi');
+    let temp = requestLogout();
+    if(this.state.signedIn){
+      document.getElementById('usernameDisplay').innerHTML = "";
+    }
     this.setState(state => ({
       signedIn: !state.signedIn
     }))
+    return;
   }
   getState(){
     if(this.state.signedIn){
