@@ -11,8 +11,10 @@ class Game {
         this.currentCategories = []
         this.lastLettersPlayed = []
         this.currentLetter = ""
+        this.state
         this.setCategories()
         this.setLetter()
+        this.setState()
     }
 
     getGameID() {
@@ -35,7 +37,7 @@ class Game {
         let index = Math.floor(Math.random() * Game.possibleCategories.length)
         let category = Game.possibleCategories[index]
 
-        while (category in this.lastCategoriesPlayed) {
+        while (this.lastCategoriesPlayed.includes(category)) {
             index = Math.floor(Math.random() * Game.possibleCategories.length)
             category = Game.possibleCategories[index]
         }
@@ -64,22 +66,31 @@ class Game {
         return this.currentCategories
     }
 
+    getLetter() {
+        return this.currentLetter
+    }
+
     setLetter() {
-        let index = Math.floor(Math.random() * Game.possibleCategories.length)
-        let category = Game.possibleCategories[index]
+        let index = Math.floor(Math.random() * Game.possibleLetters.length)
+        let letter = Game.possibleLetters[index]
 
-        while (category in this.lastCategoriesPlayed) {
-            index = Math.floor(Math.random() * Game.possibleCategories.length)
-            category = Game.possibleCategories[index]
+        while (this.lastLettersPlayed.includes(letter)) {
+            index = Math.floor(Math.random() * Game.possibleLetters.length)
+            letter = Game.possibleLetters[index]
         }
 
-        if (this.lastCategoriesPlayed.length >= 120) {
-            this.lastCategoriesPlayed.shift()
+        if (this.lastLettersPlayed.length >= 10) {
+            this.lastLettersPlayed.shift()
         }
 
-        this.lastCategoriesPlayed.push(category)
+        this.currentLetter = letter
+        this.lastLettersPlayed.push(letter)
 
-        return category
+        return letter
+    }
+
+    setState() {
+        this.state = [this.gameID, this.players, this.currentLetter, this.currentCategories]
     }
 }
 
