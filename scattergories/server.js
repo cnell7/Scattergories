@@ -34,9 +34,12 @@ app.post('/signup', (req,res) => {
     let u = User.create(user, password);
 
     if(u != null){
-        res.json(true)
         req.session.user = user;
-        return true;
+        res.json(true)
+        return;
+    } else {
+        res.status(404).send("Not found");
+        return;
     }
 })
 
