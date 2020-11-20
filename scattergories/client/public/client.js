@@ -1,1 +1,2 @@
-const socket = io.connect()
+const socket = io.connect();
+socket.emit('hi')
