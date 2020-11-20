@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./Pages/Home.js"
 import Signup from "./Pages/Signup.js"
 import Login from "./Pages/Login.js"
+import Game from "./Pages/Game.js"
 import { requestLogout } from "./Services/LogoutService"
 import {
   Router,
@@ -101,6 +102,12 @@ export default class App extends React.Component {
             </Route>
             <Route path="/login">
               <Login state = {{
+                      signedIn: this.state.signedIn,
+                      switchState: this.switchState
+                    }}/>
+            </Route>
+            <Route path="/game">
+              <Game state = {{
                       signedIn: this.state.signedIn,
                       switchState: this.switchState
                     }}/>
