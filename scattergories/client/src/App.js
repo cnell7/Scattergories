@@ -4,11 +4,12 @@ import Signup from "./Pages/Signup.js"
 import Login from "./Pages/Login.js"
 import { requestLogout } from "./Services/LogoutService"
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import history from './history.js';
 
 class LoginLogout extends React.Component {
   constructor(props){
@@ -52,7 +53,7 @@ export default class App extends React.Component {
   }
   render(){ 
     return(
-      <Router>
+      <Router history={history}>
         <div>
           <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
