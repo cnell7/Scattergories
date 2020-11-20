@@ -11,13 +11,32 @@ export default class Home extends React.Component {
         <div class='section'>
           <h1 class='title is-1 has-text-centered'><strong>Create an account or sign in to play.</strong></h1>
           <div id='homeContainer' class='container'>
-            <button class="button is-primary is-inverted">Inverted</button>
-            <button class="button is-link is-inverted">Inverted</button>
+            <div class='field is-grouped'>
+              <p class='control'>
+                <button class="button is-danger is-inverted" disabled>Create</button>
+              </p>
+              <p class='control'>
+                <button class="button is-danger is-inverted" disabled>Join</button>
+              </p>
+            </div>
           </div>
         </div>);
       }
       loggedIn(){
-        return(<div><button class='button'>Create</button><button class='button'>Join</button></div>);
+        return(
+          <div class='section'>
+          <h1 class='title is-1 has-text-centered'><strong>Click a button below to play.</strong></h1>
+          <div id='homeContainer' class='container'>
+            <div class='field is-grouped'>
+              <p class='control'>
+                <button class="button is-danger is-inverted">Create</button>
+              </p>
+              <p class='control'>
+                <button class="button is-danger is-inverted">Join</button>
+              </p>
+            </div>
+          </div>
+        </div>);
       }
       getState(){
         if(this.props.state.signedIn){
