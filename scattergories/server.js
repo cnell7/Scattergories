@@ -1,13 +1,19 @@
   
 const express = require('express');
+const http = require('http');
+const app = express();
+const server = http.createServer(app);
+const socket = require('socket.io');
+const io = new http.Server();
 const expressSession = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
 const Secret = require("./Secret.js");
 const User = require("./User.js")
-const app = express();
 const port = 3030;
-
+server.listen(port, () => {
+    console.log("Scattergories up at " + port);
+});
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, './client/build')));
@@ -154,8 +160,6 @@ app.delete('/secret/:id', (req, res) => {
     res.json(true);
 })
 
-var server = app.listen(port, () => {
+/*app.listen(port, () => {
     console.log("Scattergories up at " + port);
-});
-
-var io = require('socket.io').listen(server);
+});*/
