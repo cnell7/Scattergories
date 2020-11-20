@@ -5,20 +5,29 @@ class Game {
     static possibleCategories = data
     
     constructor(gameID){
-        this.gameID = gameID
+        this.gameID = ""
         this.players = {}
         this.lastCategoriesPlayed = []
         this.currentCategories = []
         this.lastLettersPlayed = []
         this.currentLetter = ""
-        this.state
+        this.generateGameID()
         this.setCategories()
         this.setLetter()
-        this.setState()
     }
 
     getGameID() {
         return this.gameID
+    }
+
+    generateGameID() {
+        let id = "";
+        const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+        for (let i = 0; i < 4; i++)
+            id += charset.charAt(Math.floor(Math.random() * charset.length));
+        
+        this.gameID = id
     }
     
     addPlayer(playerID) {
@@ -89,8 +98,8 @@ class Game {
         return letter
     }
 
-    setState() {
-        this.state = [this.gameID, this.players, this.currentLetter, this.currentCategories]
+    getState() {
+        return [this.gameID, this.players, this.currentLetter, this.currentCategories]
     }
 }
 
