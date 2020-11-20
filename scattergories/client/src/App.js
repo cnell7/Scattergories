@@ -25,6 +25,9 @@ export default function App() {
               <span aria-hidden="true"></span>
             </a>
           </div>
+          <div>
+            <p id="usernameDisplay"></p>
+          </div>
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
               <a class="navbar-item">
