@@ -3,8 +3,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
-const socket = require('socket.io');
-const io = new http.Server();
+const io = require('socket.io').listen(server);
 const expressSession = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -161,3 +160,8 @@ app.delete('/secret/:id', (req, res) => {
 server.listen(port, () => {
     console.log("Scattergories up at " + port);
 });
+
+io.on('connection', socket => {
+  console.log("A user connected");
+  console.log(socket);
+})
