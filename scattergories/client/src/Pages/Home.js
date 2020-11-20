@@ -7,7 +7,14 @@ export default class Home extends React.Component {
         super(props);
       }
       loggedOut(){
-        return(<p>Create an account or sign in to play.</p>);
+        return(
+        <div class='section'>
+          <h1 class='title is-1 has-text-centered'><strong>Create an account or sign in to play.</strong></h1>
+          <div id='homeContainer' class='container'>
+            <button class="button is-primary is-inverted">Inverted</button>
+            <button class="button is-link is-inverted">Inverted</button>
+          </div>
+        </div>);
       }
       loggedIn(){
         return(<div><button class='button'>Create</button><button class='button'>Join</button></div>);
