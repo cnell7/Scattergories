@@ -9,6 +9,9 @@ const path = require('path');
 const Secret = require("./Secret.js");
 const User = require("./User.js")
 const port = 3030;
+const GameManager = require('../scattergories/engine/GameManager')
+
+let manager = new GameManager()
 
 app.use(bodyParser.json());
 
@@ -163,11 +166,21 @@ server.listen(port, () => {
 io.on('connection', socket => {
     console.log("A user connected");
 
-    socket.on('create room', () => {
-        console.log('hi');
+    socket.on('create room', (user) => {
+        let newGame = manager.createNewGame()
+        let gameID = newGame.getGameID()
+        manager.addPlayerToGame(user, gameID)
+        socket.join(gameID)
+        socket.emit("game connection", gameID)
     });
 
     socket.on('disconnect', () => {
         console.log('A user has disconnected.');
     })
 })
+
+// setInterval(function() {
+
+//   console.log(manager.games);
+
+// }, 1000)
