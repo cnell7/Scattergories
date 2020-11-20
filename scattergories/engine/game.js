@@ -2,6 +2,7 @@ class Game {
     constructor(gameID){
         this.gameID = gameID
         this.players = {}
+        this.categoriesPlayed = []
     }
 
     getID() {
@@ -13,7 +14,15 @@ class Game {
     }
 
     getPlayer(playerID) {
-        return this.players[plyaerID]
+        return this.players[playerID]
+    }
+
+    setScore(playerID, score) {
+        this.players[playerID] = score
+    }
+
+    getCategories() {
+
     }
 }
 
