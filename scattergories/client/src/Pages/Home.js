@@ -9,7 +9,7 @@ export class GameForm extends React.Component {
   getState(){
     console.log(this.props.state.renderedForm);
     if(this.props.state.renderedForm == 'null'){
-      return(<p>null</p>);
+      return;
     }else if(this.props.state.renderedForm == 'create'){
       return(<p>create</p>);
     } else {
