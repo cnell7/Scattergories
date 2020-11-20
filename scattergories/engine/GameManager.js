@@ -13,6 +13,18 @@ class GameManager {
         }
 
         this.games[newGame.getGameID()] = newGame
+        return newGame
+    }
+
+    addPlayerToGame(player, gameID) {
+        if (gameID in this.games) {
+            let game = this.games[gameID]
+
+            game.addPlayer(player)
+            return player +" successfully added to game " + gameID
+        }
+
+        return "ERROR: game does not exist"
     }
 }
 

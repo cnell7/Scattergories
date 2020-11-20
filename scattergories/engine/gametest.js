@@ -2,6 +2,9 @@ const GameManager = require('./GameManager.js')
 
 let manager = new GameManager()
 
-manager.createNewGame()
+let game = manager.createNewGame()
 
-console.log(manager.games);
+console.log(manager.addPlayerToGame("Chetan", game.getGameID()))
+console.log(manager.addPlayerToGame("Christian", "FWTZ"))
+
+console.log(game.getState());
