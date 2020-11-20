@@ -3,8 +3,12 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import { requestLogin } from '../Services/LoginService.js'
 
-function ActionLink() {
-    async function handleClick(e) {
+export class ActionLink extends React.Component {
+    constructor(props){
+        super(props)
+        this.handleClick = this.handleClick.bind(this);
+    }
+    async handleClick(e) {
         e.preventDefault();
         console.log('Sending login request...');
         let u = document.getElementById('usernameInput').value;
@@ -50,13 +54,18 @@ function ActionLink() {
         }
         if(!(document.getElementById('usernameDisplay').innerHTML.length > 0))
             document.getElementById('usernameDisplay').innerHTML += 'Hello, ' + u + '.';
+        this.props.state.switchState();
         return response
     }
-  
-    return (<a id="signupSubmitLink" href="#" onClick={handleClick}>Submit</a>);
+    
+    render(){return (<a id="signupSubmitLink" href="#" onClick={this.handleClick}>Submit</a>);}
 }
 
-export default function Login() {
+export default class Login extends React.Component {
+    constructor(props){
+        super(props)
+    }
+    render(){
     return(
         <div id="loginForm">
             <div class="field">
@@ -80,9 +89,11 @@ export default function Login() {
             </div>
             <div class="field">
                 <p class="control">
-                    <ActionLink />
+                    <ActionLink state = {{
+                      switchState: this.props.state.switchState
+                    }}/>
                 </p>
             </div>
         </div>
-    );
+    );}
 };

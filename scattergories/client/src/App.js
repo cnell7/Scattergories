@@ -15,7 +15,7 @@ class LoginLogout extends React.Component {
     super(props);
   }
   loggedOut(){
-    return(<a class="button is-light" onClick={this.props.state.switchState}><Link to="/login"><strong>Login</strong></Link></a>);
+    return(<a class="button is-light"><Link to="/login"><strong>Login</strong></Link></a>);
   }
   loggedIn(){
     return(<a class="button is-light" onClick={this.props.state.switchState}><strong>Logout</strong></a>);
@@ -41,7 +41,6 @@ export default class App extends React.Component {
 
   }
   switchState(){
-    console.log('here');
     requestLogout();
     if(this.state.signedIn){
       document.getElementById('usernameDisplay').innerHTML = "";
@@ -99,7 +98,10 @@ export default class App extends React.Component {
               <Signup />
             </Route>
             <Route path="/login">
-              <Login />
+              <Login state = {{
+                      signedIn: this.state.signedIn,
+                      switchState: this.switchState
+                    }}/>
             </Route>
             <Route path="/">
               <Home state = {{
