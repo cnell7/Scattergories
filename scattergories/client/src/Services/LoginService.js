@@ -11,6 +11,5 @@ export async function requestLogin(u, p) {
     }).catch(err => {
         return false;
     })
-    document.getElementById('usernameDisplay').innerHTML += u;
     return result;
 };

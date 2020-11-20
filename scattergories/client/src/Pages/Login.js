@@ -48,6 +48,8 @@ function ActionLink() {
             }
             return false
         }
+        if(!(document.getElementById('usernameDisplay').innerHTML.length > 0))
+            document.getElementById('usernameDisplay').innerHTML += 'Hello, ' + u + '.';
         return response
     }
   
