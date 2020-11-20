@@ -42,10 +42,10 @@ export default class Home extends React.Component {
           </div>
         </div>);
       }
-      loggedIn(){
+      loggedIn(user){
         return(
           <div class='section'>
-          <h1 class='title is-1 has-text-centered'><strong>Click a button below to play.</strong></h1>
+          <h1 class='title is-1 has-text-centered'><strong>Hi {user}. Click a button below to play.</strong></h1>
           <div id='homeContainer' class='container'>
             <div class='buttons is-grouped has-background-danger is-centered'>
               <button class="button is-danger is-inverted" onClick={()=>{this.setForm('create')}}>Create</button>
@@ -56,8 +56,9 @@ export default class Home extends React.Component {
         </div>);
       }
       getState(){
-        if(this.props.state.signedIn){
-          return this.loggedIn();
+        let currentUser = sessionStorage.getItem('user')
+        if(currentUser){
+          return this.loggedIn(currentUser);
         }
         return this.loggedOut();
       }

@@ -55,6 +55,8 @@ export class ActionLink extends React.Component {
         if(!(document.getElementById('usernameDisplay').innerHTML.length > 0))
             document.getElementById('usernameDisplay').innerHTML += 'Hello, ' + u + '.';
         this.props.state.switchState();
+        window.location.replace("/");
+        sessionStorage.setItem('user', u);
         return response
     }
     
