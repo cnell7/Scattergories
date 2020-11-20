@@ -7,7 +7,6 @@ export class GameForm extends React.Component {
     super(props);
   }
   getState(){
-    console.log(this.props.state.renderedForm);
     if(this.props.state.renderedForm == 'null'){
       return(<p></p>);
     }else if(this.props.state.renderedForm == 'create'){
