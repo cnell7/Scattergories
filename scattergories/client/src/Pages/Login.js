@@ -1,6 +1,6 @@
 import React from 'react';
+import history from '../history.js'
 import '../App.css';
-import { Link } from 'react-router-dom';
 import { requestLogin } from '../Services/LoginService.js'
 
 export class ActionLink extends React.Component {
@@ -55,10 +55,10 @@ export class ActionLink extends React.Component {
         if(!(document.getElementById('usernameDisplay').innerHTML.length > 0))
             document.getElementById('usernameDisplay').innerHTML += 'Hello, ' + u + '.';
         this.props.state.switchState();
-        let home = document.querySelector('a[href="/home"]')
-        home.click()
-
+        //let home = document.querySelector('a[href="/home"]')
+        //home.click()
         sessionStorage.setItem('user', u);
+        history.push('/home');
         return response
     }
     
