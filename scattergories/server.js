@@ -164,7 +164,7 @@ io.on('connection', socket => {
     console.log("A user connected");
 
     socket.on('create room', () => {
-        console.log('hi');
+        console.log('Room has been created');
     });
 
     socket.on('disconnect', () => {
