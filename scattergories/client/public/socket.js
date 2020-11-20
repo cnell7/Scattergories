@@ -1,6 +1,8 @@
 const socket = io.connect();
-window.onload = (e) => {
-    document.getElementById('createRoomButton').onclick = ()=>{
-        console.log('hi');
+
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'createRoomButton') {
+        socket.emit('create room', )
     }
-}
+})
