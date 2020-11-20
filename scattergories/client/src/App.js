@@ -45,7 +45,7 @@ export default class App extends React.Component {
     if(this.state.signedIn){
       document.getElementById('usernameDisplay').innerHTML = "";
     }
-    this.setState(state => ({
+    this.setState(state => (      {
       signedIn: !state.signedIn
     }))
     return;
