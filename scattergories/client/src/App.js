@@ -102,7 +102,10 @@ export default class App extends React.Component {
               <Login />
             </Route>
             <Route path="/">
-              <Home logged={this.logged}/>
+              <Home state = {{
+                      signedIn: this.state.signedIn,
+                      switchState: this.switchState
+                    }}/>
             </Route>
           </Switch>
         </div>
