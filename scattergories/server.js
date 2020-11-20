@@ -19,7 +19,7 @@ app.use(expressSession({
     saveUninitialized: false
 }));
 
-const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
+let login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
 
 app.post('/signup', (req,res) => {
 
@@ -47,7 +47,7 @@ app.post('/login', (req,res) => {
 
     let user = req.body.user;
     let password = req.body.password;
-
+    
     let id = User.getAllIDsForOwner(user);
     let user_data = login_data.get(id[0].toString());
 
