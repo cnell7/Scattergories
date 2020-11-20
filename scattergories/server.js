@@ -157,3 +157,5 @@ app.delete('/secret/:id', (req, res) => {
 app.listen(port, () => {
     console.log("Scattergories up at " + port);
 });
+
+var io = require('socket.io').listen(server);
