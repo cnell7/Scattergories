@@ -13,7 +13,6 @@ socket.on('game update', (game) => {
     }
     counter = 0;
     let htmlCategories = document.getElementsByClassName('categories');
-    console.log(game.currentCategories);
     game.currentCategories.map((category, index) => {
         htmlCategories[counter].setAttribute('placeholder', category);
         counter++;
