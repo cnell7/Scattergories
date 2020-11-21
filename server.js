@@ -94,6 +94,7 @@ io.on('connection', socket => {
 
     socket.on('join room', (user, gameID)=>{
         manager.addPlayerToGame(user, gameID);
+        console.log(manager.games[gameID].players)
         try{
             socket.join(gameID);
         } catch(error){
@@ -101,9 +102,10 @@ io.on('connection', socket => {
         }
         socket.emit("game connection", gameID);
     })
+
     setInterval(function() {
         Object.keys(manager.games).map(gameID => {
-            socket.to(gameID).emit('game update', gameID)
+            socket.to(gameID).emit('game update', manager.games[gameID].getState())
         })
     }, 1000)
 })
