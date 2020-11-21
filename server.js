@@ -102,10 +102,8 @@ io.on('connection', socket => {
         socket.emit("game connection", gameID);
     })
     setInterval(function() {
-
-        Object.keys(manager.games).map(game => {
-          socket.to(game).emit('game update', "You are in room " + game)
+        Object.keys(manager.games).map(gameID => {
+            socket.to(gameID).emit('game update', gameID)
         })
-      
-      }, 1000)
+    }, 1000)
 })

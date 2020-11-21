@@ -4,8 +4,8 @@ socket.on('game connection', (gameID)=> {
     console.log("Connected to game: " + gameID);
 })
 
-socket.on('game update', (gameState) => {
-    console.log(gameState);
+socket.on('game update', (gameID) => {
+    document.getElementById('gameIDGame').innerHTML = gameID;
 })
 
 //Create game

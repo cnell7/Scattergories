@@ -9,7 +9,6 @@ export default class Game extends React.Component {
         this.players = ["Bob", "Joe", "Kate", "Sarah", "Cade", "Sam"]
         this.categories = ["", "","", "","", "","", "","", "","", ""]
         this.letter = "A";
-        this.gameID = "QPDIDJ"
     }
     render(){
         return(
@@ -32,7 +31,7 @@ export default class Game extends React.Component {
                         return <li>{player}</li>
                     })}
                 </ul>
-                <p>Game ID: {this.gameID}</p>
+                <p id='gameIDGame'></p>
             </div>
           </div>
         );
