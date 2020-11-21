@@ -159,6 +159,7 @@ app.delete('/secret/:id', (req, res) => {
     res.json(true);
 })
 
+
 server.listen(port, () => {
     console.log("Scattergories up at " + port);
 });
