@@ -5,6 +5,7 @@ const possibleCategories = data
 class Game {
     constructor(){
         this.gameID = ""
+        this.roundState = "PRE"
         this.players = {}
         this.lastCategoriesPlayed = []
         this.currentCategories = []
@@ -103,11 +104,14 @@ class Game {
     }
 
     startRound() {
+        this.roundState = "DURING"
+        
         let timer = setInterval(() => {
             this.timeRemainingInRound -= 1
 
             if (this.timeRemainingInRound == 0) {
                 clearInterval(timer)
+                this.roundState = "POST"
             }
 
             console.log(this.timeRemainingInRound + " secs remaining");
