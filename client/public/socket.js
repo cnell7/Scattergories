@@ -8,8 +8,15 @@ socket.on('game update', (gameState) => {
     console.log(gameState);
 })
 
+//Create game
 window.addEventListener('click', (e) => {
     if (e.target.id == 'createRoomButton') {
-        socket.emit('create room', sessionStorage.getItem('user'))
+        socket.emit('create room', sessionStorage.getItem('user'));
     }
 })
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'joinRoomButton') {
+        socket.emit('join room', sessionStorage.getItem('user'));
+    }
+  })

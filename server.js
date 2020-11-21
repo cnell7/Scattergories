@@ -91,6 +91,10 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         console.log('A user has disconnected.');
     })
+
+    socket.on('join room', (room)=>{
+        socket.join(room);
+    })
     setInterval(function() {
 
         Object.keys(manager.games).map(game => {

@@ -11,6 +11,26 @@ export default class Home extends React.Component {
         history.push('/game');
       }
     })
+    window.addEventListener('click', (e) => {
+      if (e.target.id == 'joinRoomButton') {
+        if(!document.getElementById('joinIDInput')){
+          let input = document.createElement('input');
+          let submit = document.createElement('button');
+          input.setAttribute('placeholder', 'Input game ID');
+          input.setAttribute('class', 'input is-centered');
+          input.setAttribute('id', 'joinIDInput');
+          submit.setAttribute('class', 'button');
+          submit.setAttribute('id', 'submitJoinGame');
+          submit.innerHTML += 'Submit';
+          document.getElementById('homeSection').append(input, submit);
+        }
+      }
+    });
+    window.addEventListener('click', (e) => {
+      if(e.target.id == 'submitJoinGame'){
+        history.push('/game');
+      }
+    })
   }
   loggedOut(){
     return(
@@ -31,7 +51,7 @@ export default class Home extends React.Component {
       <div id='homeContainer' class='container'>
         <div class='buttons is-grouped has-background-danger is-centered'>
           <button id='createRoomButton' class="button is-danger is-inverted">Create</button>
-          <button class="button is-danger is-inverted">Join</button>
+          <button id ='joinRoomButton' class="button is-danger is-inverted">Join</button>
         </div>
       </div>
     </div>);

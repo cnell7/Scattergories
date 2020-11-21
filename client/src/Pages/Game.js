@@ -7,8 +7,9 @@ export default class Game extends React.Component {
     constructor(props){
         super(props);
         this.players = ["Bob", "Joe", "Kate", "Sarah", "Cade", "Sam"]
-        this.categories = ["Something you would eat","A game you play","Is in this room"]
+        this.categories = ["", "","", "","", "","", "","", "","", ""]
         this.letter = "A";
+        this.gameID = "QPDIDJ"
     }
     render(){
         return(
@@ -31,6 +32,7 @@ export default class Game extends React.Component {
                         return <li>{player}</li>
                     })}
                 </ul>
+                <p>Game ID: {this.gameID}</p>
             </div>
           </div>
         );
