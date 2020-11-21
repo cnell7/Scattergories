@@ -3,7 +3,7 @@ import * as axios from "../../node_modules/axios"
 export async function requestLogin(u, p) {
     const result = await axios({
         method: 'post',
-        url: 'https://scattergories-app.herokuapp.com/login',
+        url: 'https://localhost:3030/login',
         data: {
             user: u,
             password: p
