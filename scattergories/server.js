@@ -179,8 +179,10 @@ io.on('connection', socket => {
     })
 })
 
-// setInterval(function() {
+setInterval(function() {
 
-//   console.log(manager.games);
+  Object.keys(manager.games).map(game => {
+    io.to(game).emit('game update', "You are in room " + game)
+  })
 
-// }, 1000)
+}, 1000)
