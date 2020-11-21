@@ -6,7 +6,7 @@ import history from '../history.js'
 export default class Game extends React.Component {
     constructor(props){
         super(props);
-        this.players = ["Bob", "Joe", "Kate", "Sarah", "Cade", "Sam"]
+        this.players = ["", "","", "","", ""]
         this.categories = ["", "","", "","", "","", "","", "","", ""]
         this.letter = "A";
     }
@@ -27,8 +27,8 @@ export default class Game extends React.Component {
             </div>
             <div class="column is-one-fifth">
                 <ul>
-                    {this.players.map(player => {
-                        return <li>{player}</li>
+                    {this.players.map((player, index) => {
+                        return <li id={index}>{player}</li>
                     })}
                 </ul>
                 <p id='gameIDGame'></p>

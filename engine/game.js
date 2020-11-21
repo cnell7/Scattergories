@@ -100,7 +100,7 @@ class Game {
     }
 
     getState() {
-        return [this.gameID, this.players, this.currentLetter, this.currentCategories]
+        return {gameID: this.gameID, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories}
     }
 
     startRound() {

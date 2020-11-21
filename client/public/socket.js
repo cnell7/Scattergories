@@ -4,8 +4,13 @@ socket.on('game connection', (gameID)=> {
     console.log("Connected to game: " + gameID);
 })
 
-socket.on('game update', (gameID) => {
-    document.getElementById('gameIDGame').innerHTML = gameID;
+socket.on('game update', (game) => {
+    let counter = 0;
+    for( let player in game.players){
+        document.getElementById(counter).innerHTML = player;
+        counter++;
+    }
+    document.getElementById('gameIDGame').innerHTML = game.gameID;
 })
 
 //Create game
