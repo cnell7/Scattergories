@@ -9,7 +9,7 @@ const path = require('path');
 const Secret = require("./Secret.js");
 const User = require("./User.js")
 const port = process.env.PORT || 3030
-const GameManager = require('../scattergories/engine/GameManager')
+const GameManager = require('./engine/GameManager')
 
 let manager = new GameManager()
 
