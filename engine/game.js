@@ -14,7 +14,7 @@ class Game {
         this.generateGameID()
         this.setCategories()
         this.setLetter()
-        this.timeRemainingInRound = 10
+        this.timeRemainingInRound = 90
     }
 
     getGameID() {
@@ -109,14 +109,22 @@ class Game {
         let timer = setInterval(() => {
             this.timeRemainingInRound -= 1
 
+            console.log(this.timeRemainingInRound + " secs remaining");
+
             if (this.timeRemainingInRound == 0) {
                 clearInterval(timer)
                 this.roundState = "POST"
+                console.log(this.roundState);
             }
-
-            console.log(this.timeRemainingInRound + " secs remaining");
         }, 1000)
 
+    }
+
+    resetRound() {
+        this.roundState = "PRE"
+        this.setCategories()
+        this.setLetter()
+        this.timeRemainingInRound = 90
     }
 }
 
