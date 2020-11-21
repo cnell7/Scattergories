@@ -81,19 +81,25 @@ io.on('connection', socket => {
     console.log("A user connected");
 
     socket.on('create room', (user) => {
-        let newGame = manager.createNewGame()
-        let gameID = newGame.getGameID()
-        manager.addPlayerToGame(user, gameID)
-        socket.join(gameID)
-        socket.emit("game connection", gameID)
+        let newGame = manager.createNewGame();
+        let gameID = newGame.getGameID();
+        manager.addPlayerToGame(user, gameID);
+        socket.join(gameID);
+        socket.emit("game connection", gameID);
     });
 
     socket.on('disconnect', () => {
         console.log('A user has disconnected.');
     })
 
-    socket.on('join room', (room)=>{
-        socket.join(room);
+    socket.on('join room', (user, gameID)=>{
+        manager.addPlayerToGame(user, gameID);
+        try{
+            socket.join(gameID);
+        } catch(error){
+            console.log(error);
+        }
+        socket.emit("game connection", gameID);
     })
     setInterval(function() {
 

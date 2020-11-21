@@ -16,7 +16,7 @@ window.addEventListener('click', (e) => {
 })
 
 window.addEventListener('click', (e) => {
-    if (e.target.id == 'joinRoomButton') {
-        socket.emit('join room', sessionStorage.getItem('user'));
+    if (e.target.id == 'submitJoinGame') {
+        socket.emit('join room', sessionStorage.getItem('user'), document.getElementById('joinIDInput').value);
     }
-  })
+})
