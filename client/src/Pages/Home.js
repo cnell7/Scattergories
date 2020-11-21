@@ -8,7 +8,7 @@ export default class Home extends React.Component {
     super(props);
     window.addEventListener('click', (e) => {
       if (e.target.id == 'createRoomButton') {
-          history.push('/game');
+        history.push('/game');
       }
     })
   }
