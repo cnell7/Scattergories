@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express.io": "^1.1.13",
+    "heroku": "^7.47.3",
     "mongojs": "^3.1.0",
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
