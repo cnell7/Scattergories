@@ -13,6 +13,7 @@ class Game {
         this.generateGameID()
         this.setCategories()
         this.setLetter()
+        this.timeRemainingInRound = 10
     }
 
     getGameID() {
@@ -99,6 +100,19 @@ class Game {
 
     getState() {
         return [this.gameID, this.players, this.currentLetter, this.currentCategories]
+    }
+
+    startRound() {
+        let timer = setInterval(() => {
+            this.timeRemainingInRound -= 1
+
+            if (this.timeRemainingInRound == 0) {
+                clearInterval(timer)
+            }
+
+            console.log(this.timeRemainingInRound + " secs remaining");
+        }, 1000)
+
     }
 }
 
