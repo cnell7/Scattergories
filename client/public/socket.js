@@ -6,11 +6,20 @@ socket.on('game connection', (gameID)=> {
 
 socket.on('game update', (game) => {
     let counter = 0;
+    let htmlPlayers = document.getElementsByClassName('players');
     for( let player in game.players){
-        document.getElementById(counter).innerHTML = player;
+        htmlPlayers[counter].innerHTML = player;
         counter++;
     }
-    document.getElementById('gameIDGame').innerHTML = game.gameID;
+    counter = 0;
+    let htmlCategories = document.getElementsByClassName('categories');
+    console.log(game.currentCategories);
+    game.currentCategories.map((category, index) => {
+        htmlCategories[counter].setAttribute('placeholder', category);
+        counter++;
+    })
+    document.getElementById('gameLetter').innerHTML = game.currentLetter;
+    document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
 
 //Create game

@@ -15,20 +15,22 @@ export default class Game extends React.Component {
         <div class="columns">
             <div class="column is-two-fifths">
                 <div>
-                    <h1>Letter</h1>
-                    <h2 class='title is-1'>{this.letter}</h2>
+                    <h1 class='title is-3'>Letter</h1>
+                    <h2 id='gameLetter' class='title is-1'></h2>
                 </div>
                 <button class="button">Play</button>
             </div>
             <div class="column is-two-fifths">
+                <h1 class='title is-3'>Categories</h1>
                 {this.categories.map(cat => {
-                    return <input class='input' placeholder={cat}></input>
+                    return <input class='input categories'></input>
                 })}
             </div>
             <div class="column is-one-fifth">
                 <ul>
+                    <h1 class='title is-3'>Players</h1>
                     {this.players.map((player, index) => {
-                        return <li id={index}>{player}</li>
+                        return <li class='players'>{player}</li>
                     })}
                 </ul>
                 <p id='gameIDGame'></p>
