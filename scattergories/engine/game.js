@@ -1,9 +1,8 @@
 const data = require('../data/categories.json')
+const possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
+const possibleCategories = data
 
 class Game {
-    static possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
-    static possibleCategories = data
-    
     constructor(){
         this.gameID = ""
         this.players = {}
@@ -43,12 +42,12 @@ class Game {
     }
 
     getCategory() {
-        let index = Math.floor(Math.random() * Game.possibleCategories.length)
-        let category = Game.possibleCategories[index]
+        let index = Math.floor(Math.random() * possibleCategories.length)
+        let category = possibleCategories[index]
 
         while (this.lastCategoriesPlayed.includes(category)) {
-            index = Math.floor(Math.random() * Game.possibleCategories.length)
-            category = Game.possibleCategories[index]
+            index = Math.floor(Math.random() * possibleCategories.length)
+            category = possibleCategories[index]
         }
 
         if (this.lastCategoriesPlayed.length >= 120) {
@@ -80,12 +79,12 @@ class Game {
     }
 
     setLetter() {
-        let index = Math.floor(Math.random() * Game.possibleLetters.length)
-        let letter = Game.possibleLetters[index]
+        let index = Math.floor(Math.random() * possibleLetters.length)
+        let letter = possibleLetters[index]
 
         while (this.lastLettersPlayed.includes(letter)) {
-            index = Math.floor(Math.random() * Game.possibleLetters.length)
-            letter = Game.possibleLetters[index]
+            index = Math.floor(Math.random() * possibleLetters.length)
+            letter = possibleLetters[index]
         }
 
         if (this.lastLettersPlayed.length >= 10) {
