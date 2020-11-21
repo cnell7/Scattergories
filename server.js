@@ -177,12 +177,12 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         console.log('A user has disconnected.');
     })
+
+    setInterval(function() {
+
+        Object.keys(manager.games).map(game => {
+          socket.to(game).emit('game update', "You are in room " + game)
+        })
+      
+      }, 1000)
 })
-
-setInterval(function() {
-
-  Object.keys(manager.games).map(game => {
-    io.to(game).emit('game update', "You are in room " + game)
-  })
-
-}, 1000)
