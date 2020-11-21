@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const Secret = require("./Secret.js");
 const User = require("./User.js")
-const port = 3030;
+const port = process.env.PORT || 3030
 const GameManager = require('../scattergories/engine/GameManager')
 
 let manager = new GameManager()
