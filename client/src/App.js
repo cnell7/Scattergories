@@ -120,6 +120,8 @@ export default class App extends React.Component {
             </Route>
           </Switch>
         </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src='./socket.js'></script>
       </Router>
     );}
 }

@@ -1,0 +1,17 @@
+import openSocket from 'socket.io-client';
+
+const socket = openSocket('http://localhost:3030');
+
+socket.on('game connection', (gameID)=> {
+    console.log("Connected to game: " + gameID);
+})
+
+socket.on('game update', (gameState) => {
+    console.log(gameState);
+})
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'createRoomButton') {
+        socket.emit('create room', sessionStorage.getItem('user'))
+    }
+})
