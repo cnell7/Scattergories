@@ -1,4 +1,4 @@
-# Development   
+# Development Mode   
 
 ## Front End  
 ```bash   
@@ -10,4 +10,7 @@ Run in client folder. Builds front end and watches for changes. Automatically re
 ```bash   
 nodemon server   
 ```   
-Run in the second scattergories directory. This will start the back end and watch for any changes so you won't have to restart it.
+Run in the scattergories directory. This will start the back end and watch for any changes so you won't have to restart it.
+
+## URL's  
+In the services folder there are a number of axios requests. In development mode you will be sending these to localhost. In production mode they will need to be changed to the server location.  
