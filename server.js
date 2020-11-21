@@ -9,7 +9,7 @@ const path = require('path');
 const Secret = require("./Secret.js");
 const User = require("./User.js")
 const port = process.env.PORT || 3030
-const GameManager = require('../scattergories/engine/GameManager')
+const GameManager = require('./engine/GameManager')
 
 let manager = new GameManager()
 
@@ -159,6 +159,7 @@ app.delete('/secret/:id', (req, res) => {
     res.json(true);
 })
 
+
 server.listen(port, () => {
     console.log("Scattergories up at " + port);
 });
@@ -177,12 +178,12 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         console.log('A user has disconnected.');
     })
+
+    setInterval(function() {
+
+        Object.keys(manager.games).map(game => {
+          socket.to(game).emit('game update', "You are in room " + game)
+        })
+      
+      }, 1000)
 })
-
-setInterval(function() {
-
-  Object.keys(manager.games).map(game => {
-    io.to(game).emit('game update', "You are in room " + game)
-  })
-
-}, 1000)
