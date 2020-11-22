@@ -138,7 +138,12 @@ io.on('connection', socket => {
     })
 
     socket.on('submit votes', (player, gameID, playerVotes) => {
-        
+        manager.games[gameID].incomingVotes.push(playerVotes);
+        if(manager.games[gameID].incomingVotes.length == Object.keys(manager.games[gameID].player).length){
+            if(!(manager.games[gameID].currentVotingRound == 12)){
+                socket.emit('voting round', manager.games[gameID])
+            }
+        }
     })
 })
 
