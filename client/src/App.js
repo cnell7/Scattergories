@@ -50,6 +50,7 @@ export default class App extends React.Component {
     this.setState(state => (      {
       signedIn: !state.signedIn
     }))
+    history.push('/home');
     return;
   }
   render(){ 
