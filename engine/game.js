@@ -21,6 +21,7 @@ class Game {
         this.playerAnswers = {}
         this.currentVotingRound = 0
         this.incomingVotes = {}
+        this.hasAllVotes = false
     }
 
     getGameID() {

@@ -60,6 +60,7 @@ socket.on('voting round', (game) => {
         root.append(div);
     }
     submit.setAttribute('class', 'button');
+    submit.setAttribute('id', 'submitVote');
     submit.innerHTML = 'Submit';
     box.append(submit);
 })
@@ -80,5 +81,11 @@ window.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
     if (e.target.id == 'playButton') {
         socket.emit('start game', document.getElementById('gameIDGame').innerHTML.substr(9));
+    }
+})
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'submitVote') {
+        console.log(document.getElementById('recapColumn').children)
     }
 })
