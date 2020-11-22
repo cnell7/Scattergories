@@ -17,10 +17,10 @@ class LoginLogout extends React.Component {
     super(props);
   }
   loggedOut(){
-    return(<a class="button is-light"><Link to="/login"><strong>Login</strong></Link></a>);
+    return(<a class="button is-light"><Link to="/login"><strong class="has-text-danger">Login</strong></Link></a>);
   }
   loggedIn(){
-    return(<a class="button is-light" onClick={this.props.state.switchState}><strong>Logout</strong></a>);
+    return(<a class="button is-light" onClick={this.props.state.switchState}><strong class="has-text-danger">Logout</strong></a>);
   }
   getState(){
     if(this.props.state.signedIn){
@@ -56,7 +56,7 @@ export default class App extends React.Component {
     return(
       <Router history={history}>
         <div>
-          <nav class="navbar" role="navigation" aria-label="main navigation">
+          <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="https://en.wikipedia.org/wiki/Scattergories">
                 <img src="https://i0.wp.com/blog.townscript.com/wp-content/uploads/2020/04/scattergories.jpg?ssl=1" width="112" height="28"></img>
@@ -71,17 +71,17 @@ export default class App extends React.Component {
             <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item">
-                  <Link to="/home"><strong>Home</strong></Link>
+                  <Link to="/home"><strong class="has-text-white">Home</strong></Link>
                 </a>
               </div>
               <div class="navbar-end">
                 <div class="navbar-item">
                   <div class="buttons">
                     <a class="navbar-item">
-                      <p id="usernameDisplay"></p>
+                      <p id="usernameDisplay" class="has-text-white"></p>
                     </a>
-                    <a class="button is-primary">
-                      <Link to="/signup"><strong>Signup</strong></Link>
+                    <a class="button is-danger is-inverted">
+                      <Link to="/signup"><strong class="has-text-danger">Signup</strong></Link>
                     </a>
                     <LoginLogout state = {{
                       signedIn: this.state.signedIn,

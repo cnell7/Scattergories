@@ -84,8 +84,8 @@ io.on('connection', socket => {
         let newGame = manager.createNewGame();
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
-        socket.join(gameID);
         socket.emit("game connection", gameID);
+        socket.emit("new player", manager.games[gameID].players);
     });
 
     socket.on('disconnect', () => {
@@ -101,11 +101,16 @@ io.on('connection', socket => {
             console.log(error);
         }
         socket.emit("game connection", gameID);
+        manager.games[gameID].players.map(player => {
+            socket.emit("new player", manager.games[gameID].players);
+        })
     })
 
-    setInterval(function() {
-        Object.keys(manager.games).map(gameID => {
-            socket.to(gameID).emit('game update', manager.games[gameID].getState())
-        })
-    }, 1000)
+    socket.on('start game', (gameID) =>{
+        setInterval(function() {
+            Object.keys(manager.games).map(gameID => {
+                socket.to(gameID).emit('game update', manager.games[gameID].getState())
+            })
+        }, 1000)
+    })
 })

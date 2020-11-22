@@ -1,7 +1,15 @@
 const socket = io.connect();
 
 socket.on('game connection', (gameID)=> {
-    console.log("Connected to game: " + gameID);
+    console.log("Connected to game: " + gameID);})
+
+socket.on('new player', (players) => {
+    let htmlPlayers = document.getElementsByClassName('players');
+    console.log('hi');
+    for( let player in players){
+        htmlPlayers[counter].innerHTML = player;
+        counter++;
+    }
 })
 
 socket.on('game update', (game) => {
@@ -31,5 +39,11 @@ window.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
     if (e.target.id == 'submitJoinGame') {
         socket.emit('join room', sessionStorage.getItem('user'), document.getElementById('joinIDInput').value);
+    }
+})
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'playButton') {
+        socket.emit('start game', (document.getElementById('gameIDGame').value));
     }
 })
