@@ -3,6 +3,18 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import history from '../history.js'
 
+class RoundRecap extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+        <div class="container">
+            <h1 class="title is-2">Round Recap</h1>
+        </div>);
+    }
+}
+
 export default class Game extends React.Component {
     constructor(props){
         super(props);
@@ -11,47 +23,50 @@ export default class Game extends React.Component {
     }
     render(){
         return(
-        <div class="columns">
-            <div class="column is-one-fifths">
-                <div class="box has-text-centered">
-                    <h1 class='title is-3'>Letter</h1>
-                    <h1 id='gameLetter' class='title is-1'></h1>
-                    <h1 id="time" class="title is-4">90</h1>
-                    <button id="playButton" class="button is-black has-text-danger">Play</button>
-                </div>
-            </div>
-            <div class="column is-three-fifths">
-                <div class="box has-text-centered">
-                    <h1 class='title is-3'>Categories</h1>
-                        {this.categories.map(cat => {
-                            return <input class='input categories'></input>
-                        })}
-                </div>
-            </div>
-            <div class="column is-one-fifth">
-                <div class="box has-text-centered">
-                    <h1 id='gameIDGame' class="title is-4 has-text-centered"></h1>
-                </div>
-                <ul>
+        <div class="section">
+            <div class="columns">
+                <div class="column is-one-fifths">
                     <div class="box has-text-centered">
-                        <div class='columns'>
-                            <div class="column">
-                                <h1 class='title is-3'>Players</h1>
-                                    {this.players.map((player, index) => {
-                                        return <li class='players'>{player}</li>
+                        <h1 class='title is-3'>Letter</h1>
+                        <h1 id='gameLetter' class='title is-1'></h1>
+                        <h1 id="time" class="title is-4">90</h1>
+                        <button id="playButton" class="button is-black has-text-danger">Play</button>
+                    </div>
+                </div>
+                <div class="column is-three-fifths">
+                    <div class="box has-text-centered">
+                        <h1 class='title is-3'>Categories</h1>
+                            {this.categories.map(cat => {
+                                return <input class='input categories'></input>
+                            })}
+                    </div>
+                </div>
+                <div class="column is-one-fifth">
+                    <div class="box has-text-centered">
+                        <h1 id='gameIDGame' class="title is-4 has-text-centered"></h1>
+                    </div>
+                    <ul>
+                        <div class="box has-text-centered">
+                            <div class='columns'>
+                                <div class="column">
+                                    <h1 class='title is-3'>Players</h1>
+                                        {this.players.map((player, index) => {
+                                            return <li class='players'>{player}</li>
+                                        })}
+                                </div>
+                                <div class="column">
+                                    <h1 class='title is-3'>Points</h1>
+                                    {this.players.map(player => {
+                                            return <li class='points'></li>
                                     })}
-                            </div>
-                            <div class="column">
-                                <h1 class='title is-3'>Points</h1>
-                                {this.players.map(player => {
-                                        return <li class='points'></li>
-                                })}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </ul>
+                    </ul>
+                </div>
             </div>
-          </div>
+        <RoundRecap />
+        </div>
         );
     }
 }
