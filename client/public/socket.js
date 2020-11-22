@@ -26,6 +26,15 @@ socket.on('game update', (game) => {
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
 
+socket.on('round over', () => {
+    let htmlCategories = []
+    document.querySelectorAll('.categories').forEach(function(category) {
+        htmlCategories.push(category.value)
+    });
+
+    console.log(htmlCategories);
+})
+
 //Create game
 window.addEventListener('click', (e) => {
     if (e.target.id == 'createRoomButton') {

@@ -89,7 +89,7 @@ io.on('connection', socket => {
             if (gameState.roundState == "POST") {
                 clearInterval(gameUpdater)
                 delete activeRounds[gameID]
-                console.log("Round over");
+                io.sockets.in(gameID).emit('round over');
             }
         }, 1000)
 
