@@ -18,6 +18,7 @@ class Game {
         this.timeRemainingInRound = 10
         this.host = ""
         this.playerAnswers = {}
+        this.currentReviewRound = 0
     }
 
     getGameID() {
@@ -112,7 +113,8 @@ class Game {
             currentCategories: this.currentCategories, 
             roundState: this.roundState, 
             timeRemainingInRound: this.timeRemainingInRound,
-            playerAnswers: this.playerAnswers}
+            playerAnswers: this.playerAnswers,
+            currentReviewRound: this.currentReviewRound}
     }
 
     getHost() {
