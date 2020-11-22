@@ -143,17 +143,19 @@ io.on('connection', socket => {
         if(Object.keys(game.incomingVotes.length).length == Object.keys(game.players).length){
             let playerScore = {};
             for(let playerVote of game.incomingVotes){
-                for(let vote of playerVote){
-                    playerScore[vote] += game.incomingVotes[playerVote].vote;
+                for(let player of playerVote){
+                    playerScore[player] += game.incomingVotes[playerVote][player];
                 }
             }
             for(let name in playerScore){
                 if(playerScore[name] > 0){
-                    game.setPlayerScore(name, game)
+                    game.setPlayerScore(name, game.getPlayerScore(name) + 1)
                 }
             }
             if(!(game.currentVotingRound == 12)){
                 socket.emit('voting round', game)
+            } else {
+                socket.emit('game over')
             }
         }
     })
