@@ -26,7 +26,7 @@ class Game {
 
     generateGameID() {
         let id = "";
-        const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const charset = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789";
         
         for (let i = 0; i < 4; i++)
             id += charset.charAt(Math.floor(Math.random() * charset.length));
