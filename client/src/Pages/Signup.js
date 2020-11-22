@@ -94,11 +94,11 @@ export default function Signup() {
                         </span>
                     </p>
                 </div>
-                <div class="field">
-                    <p class="control">
-                        <ActionLink />
-                    </p>
-                </div>
+            </div>
+            <div class="container">
+                <p class="control has-text-centered">
+                    <ActionLink />
+                </p>
             </div>
         </div>
     );

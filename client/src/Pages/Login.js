@@ -91,13 +91,13 @@ export default class Login extends React.Component {
                         </span>
                     </p>
                 </div>
-                <div class="field">
-                    <p class="control">
-                        <ActionLink state = {{
-                        switchState: this.props.state.switchState
-                        }}/>
-                    </p>
-                </div>
+            </div>
+            <div class="container">
+                <p class="control has-text-centered">
+                    <ActionLink state = {{
+                    switchState: this.props.state.switchState
+                    }}/>
+                </p>
             </div>
         </div>
     );}
