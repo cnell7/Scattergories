@@ -59,16 +59,10 @@ export default class App extends React.Component {
           <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="https://en.wikipedia.org/wiki/Scattergories">
-                <img src="https://i0.wp.com/blog.townscript.com/wp-content/uploads/2020/04/scattergories.jpg?ssl=1" width="112" height="28"></img>
-              </a>
-
-              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+                <h1 id='scattergoriesTitle' class="title is-4">Scattergories</h1>
               </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item">
                   <Link to="/home"><strong class="has-text-white">Home</strong></Link>
