@@ -16,13 +16,8 @@ socket.on('game update', (game) => {
             userAnswers.push(category.value)
         });
 
-        socket.emit('post answer', user, game.gameID, userAnswers)
-        let answers = document.getElementsByClassName('input categories');
-        let response = [];
-        for (let answer of answers){
-            response.push(answer.value);
-        }
-        socket.emit('post answer', )
+        socket.emit('post answer', sessionStorage.getItem('user'), game.gameID, userAnswers)
+
     } else if(game.roundState == 'RoundRecap'){
         let recaps = document.getElementsByClassName('recapPlayers');
         counter = 0;
