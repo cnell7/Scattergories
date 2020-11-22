@@ -72,30 +72,33 @@ function ActionLink() {
 
 export default function Signup() {
     return(
-        <div id="signupForm">
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </p>
+        <div class='section'>
+            <h1 class="title is-5 has-text-centered">Signup</h1>
+            <div id="signupForm">
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </p>
+                    </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
                 </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <ActionLink />
-                </p>
+                <div class="field">
+                    <p class="control">
+                        <ActionLink />
+                    </p>
+                </div>
             </div>
         </div>
     );
