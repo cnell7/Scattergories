@@ -39,29 +39,29 @@ socket.on('game update', (game) => {
 socket.on('voting round', (game) => {
     playerAnswers = game.playerAnswers;
     let root = document.getElementById('recapColumn');
+    let box = document.getElementById('recapBox');
+    let submit = document.createElement('button');
     for( let player in game.players){
         let div = document.createElement('div')
         let user = document.createElement('p');
         let answer = document.createElement('p');
         let isGood = document.createElement('input');
+        let label = document.createElement('label');
         div.setAttribute('class', 'column');
-        isGood.setAttribute('class', 'switch');
+        isGood.setAttribute('id', 'switchColorDanger')
         isGood.setAttribute('type', 'checkbox');
-        isGood.setAttribute('name', 'switchColorDanger');
+        isGood.setAttribute('class', 'switch is-danger');
+        isGood.setAttribute('checked', 'checked')
+        label.setAttribute('for', 'switchColorDanger');
         user.innerHTML = player;
         answer.innerHTML = playerAnswers[player][0];
-        div.append(user, answer, isGood);
+        label.innerHTML = "Click is answer is bad."
+        div.append(user, answer, isGood, label);
         root.append(div);
     }
-    /*
-    let recaps = document.getElementsByClassName('recapPlayers');
-    let recapsAnswers = document.getElementsByClassName('recapAnswers');
-    counter = 0;
-    for( let player in game.players){
-        recapsAnswers[counter].innerHTML = game.playerAnswers[player][0];
-        recaps[counter].innerHTML = player;
-        counter++;
-    }*/
+    submit.setAttribute('class', 'button');
+    submit.innerHTML = 'Submit';
+    box.append(submit);
 })
 
 //Create game
