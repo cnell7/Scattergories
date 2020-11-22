@@ -10,6 +10,13 @@ socket.on('game update', (game) => {
         })
         document.getElementById('time').innerHTML = game.timeRemainingInRound;
     } else if(game.roundState == 'POST'){
+
+        let userAnswers = []
+        document.querySelectorAll('.categories').forEach(function(category) {
+            userAnswers.push(category.value)
+        });
+
+        socket.emit('post answer', user, game.gameID, userAnswers)
         let answers = document.getElementsByClassName('input categories');
         let response = [];
         for (let answer of answers){
@@ -37,15 +44,6 @@ socket.on('game update', (game) => {
     }
     document.getElementById('gameLetter').innerHTML = game.currentLetter;
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
-})
-
-socket.on('round over', () => {
-    let htmlCategories = []
-    document.querySelectorAll('.categories').forEach(function(category) {
-        htmlCategories.push(category.value)
-    });
-
-    console.log(htmlCategories);
 })
 
 //Create game
