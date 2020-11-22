@@ -1,6 +1,7 @@
 const data = require('../data/categories.json')
 const possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
 const possibleCategories = data
+const _rounds = 10;
 
 class Game {
     constructor(){
@@ -18,7 +19,8 @@ class Game {
         this.timeRemainingInRound = 10
         this.host = ""
         this.playerAnswers = {}
-        this.currentReviewRound = 0
+        this.currentVotingRound = 0
+        this.incomingVotes = {}
     }
 
     getGameID() {
@@ -57,7 +59,7 @@ class Game {
             category = possibleCategories[index]
         }
 
-        if (this.lastCategoriesPlayed.length >= 120) {
+        if (this.lastCategoriesPlayed.length >= 12 * _rounds) {
             this.lastCategoriesPlayed.shift()
         }
 
@@ -94,7 +96,7 @@ class Game {
             letter = possibleLetters[index]
         }
 
-        if (this.lastLettersPlayed.length >= 10) {
+        if (this.lastLettersPlayed.length >= _rounds) {
             this.lastLettersPlayed.shift()
         }
 
@@ -114,7 +116,7 @@ class Game {
             roundState: this.roundState, 
             timeRemainingInRound: this.timeRemainingInRound,
             playerAnswers: this.playerAnswers,
-            currentReviewRound: this.currentReviewRound}
+            currentVotingRound: this.currentVotingRound}
     }
 
     getHost() {
@@ -157,6 +159,15 @@ class Game {
 
         if (Object.keys(this.playerAnswers).length == this.playerCount) {
             this.roundState = "RoundRecap"
+        }
+    }
+
+    submitPlayerVotes(player, votes) {
+        this.incomingVotes[player] = answers
+
+        if (Object.keys(this.incomingVotes).length == this.playerCount) {
+            this.updatePoints()
+            this.currentVotingRound += 1
         }
     }
 

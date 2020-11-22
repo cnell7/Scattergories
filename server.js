@@ -136,5 +136,9 @@ io.on('connection', socket => {
             io.sockets.in(gameID).emit('voting round', manager.games[gameID].getState())
         }
     })
+
+    socket.on('submit votes', (player, gameID, playerVotes) => {
+        
+    })
 })
 
