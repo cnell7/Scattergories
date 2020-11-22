@@ -25,7 +25,7 @@ socket.on('game update', (game) => {
     let htmlPlayersScore = document.getElementsByClassName('points');
     for( let player in game.players){
         htmlPlayers[counter].innerHTML = player;
-        htmlPlayersScore[counter].innerHTML = games.players[player];
+        htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
     document.getElementById('gameLetter').innerHTML = game.currentLetter;
