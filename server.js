@@ -92,6 +92,7 @@ io.on('connection', socket => {
     })
 
     socket.on('join room', (user, gameID)=>{
+        let players = manager.games[gameID].players;
         manager.addPlayerToGame(user, gameID);
         console.log(manager.games[gameID].players)
         try{
@@ -100,9 +101,9 @@ io.on('connection', socket => {
             console.log(error);
         }
         socket.emit("game connection", gameID);
-        manager.games[gameID].players.map(player => {
+        for( let player in players){
             socket.emit("new player", manager.games[gameID]);
-        })
+        }
     })
 
     socket.on('start game', (gameID) =>{
