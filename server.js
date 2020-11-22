@@ -12,6 +12,7 @@ const GameManager = require('./engine/GameManager')
 
 let manager = new GameManager()
 let activeRounds = {}
+let votingRounds = {}
 
 app.use(bodyParser.json());
 
@@ -132,7 +133,7 @@ io.on('connection', socket => {
         manager.games[gameID].submitPlayerAnswers(player, playerAnswers)
 
         if (manager.games[gameID].roundState == "RoundRecap") {
-            io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
+            io.sockets.in(gameID).emit('voting round', manager.games[gameID].getState())
         }
     })
 })

@@ -157,6 +157,11 @@ class Game {
             this.roundState = "RoundRecap"
         }
     }
+
+    getPlayerAnswers(round) {
+        let answersFromRound = {}
+        return answersFromRound
+    }
 }
 
 module.exports = Game

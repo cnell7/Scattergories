@@ -44,6 +44,10 @@ socket.on('game update', (game) => {
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
 
+socket.on('voting round', (answers) => {
+    console.log('answers');
+})
+
 //Create game
 window.addEventListener('click', (e) => {
     if (e.target.id == 'createRoomButton') {
