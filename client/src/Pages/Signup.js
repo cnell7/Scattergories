@@ -9,7 +9,7 @@ function ActionLink() {
         console.log('Sending signup request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
-        if(u.length == 0 || p.length ==0){
+        if(u.length == 0 || p.length ==0 || u.length > 12 || p.length > 18){
             if(!document.getElementById('emptyUserDiv')){
                 let emptyDiv = document.createElement('div');
                 let emptyB = document.createElement('button');
@@ -22,7 +22,7 @@ function ActionLink() {
                     document.getElementById('emptyUserDiv').remove();
                 }
                 emptyP.setAttribute("id", "emptyUser");
-                emptyP.appendChild(document.createTextNode("Empty username or password"));
+                emptyP.appendChild(document.createTextNode("Username must be between 1 and 12 characters. Password must be between 1 and 18 characters."));
                 emptyDiv.append(emptyB, emptyP)
                 document.getElementById('signupForm').append(emptyDiv);
             }
