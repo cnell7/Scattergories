@@ -18,7 +18,10 @@ export default class Game extends React.Component {
                     <h1 class='title is-3'>Letter</h1>
                     <h2 id='gameLetter' class='title is-1'></h2>
                 </div>
-                <button id="playButton" class="button">Play</button>
+                <div class="container">
+                    <h1 id="time" class="title is-4">90</h1>
+                    <button id="playButton" class="button">Play</button>
+                </div>
             </div>
             <div class="column is-two-fifths">
                 <h1 class='title is-3'>Categories</h1>

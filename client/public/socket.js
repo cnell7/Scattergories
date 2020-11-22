@@ -8,14 +8,14 @@ socket.on('game update', (game) => {
         counter++;
     }
     counter = 0;
-    if(!(game.roundState == 'Lobby')){
-        console.log('here');
+    if((game.roundState == 'During')){
         let htmlCategories = document.getElementsByClassName('categories');
         game.currentCategories.map((category, index) => {
             htmlCategories[counter].setAttribute('placeholder', category);
             counter++;
         })
         document.getElementById('gameLetter').innerHTML = game.currentLetter;
+        document.getElementById('time').innerHTML = game.timeRemainingInRound;
     }
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })

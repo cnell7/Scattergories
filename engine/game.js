@@ -100,11 +100,11 @@ class Game {
     }
 
     getState() {
-        return {gameID: this.gameID, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories, roundState: this.roundState}
+        return {gameID: this.gameID, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories, roundState: this.roundState, timeRemainingInRound: this.timeRemainingInRound}
     }
 
     startRound() {
-        this.roundState = "DURING"
+        this.roundState = "During"
         
         let timer = setInterval(() => {
             this.timeRemainingInRound -= 1
