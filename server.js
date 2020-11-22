@@ -110,7 +110,7 @@ io.on('connection', socket => {
     })
 
     socket.on('start game', (gameID)=>{
-        console.log(manager.games[gameID]);
+        manager.games[gameID].startRound();
     })
 })
 
