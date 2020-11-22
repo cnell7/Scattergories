@@ -30,10 +30,20 @@ export default class Game extends React.Component {
             </div>
             <div class="column is-one-fifth">
                 <ul>
-                    <h1 class='title is-3'>Players</h1>
-                    {this.players.map((player, index) => {
-                        return <li class='players'>{player}</li>
-                    })}
+                    <div class='columns'>
+                        <div class="column">
+                            <h1 class='title is-3'>Players</h1>
+                                {this.players.map((player, index) => {
+                                    return <li class='players'>{player}</li>
+                                })}
+                        </div>
+                        <div class="column">
+                            <h1 class='title is-3'>Points</h1>
+                            {this.players.map(player => {
+                                    return <li class='points'></li>
+                            })}
+                        </div>
+                    </div>
                 </ul>
                 <p id='gameIDGame'></p>
             </div>
