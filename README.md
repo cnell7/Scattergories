@@ -35,6 +35,6 @@ Run in the scattergories directory. This will start the back end and watch for a
 #### GameManager
 
 
-## URL's  
+## URLs  
 In the services folder, there are several Axios requests. In development mode, you will be sending these to localhost. In production mode, they will need to be changed to the server location. 
 
