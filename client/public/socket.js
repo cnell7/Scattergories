@@ -44,6 +44,7 @@ socket.on('voting round', (game) => {
     for( let player in game.players){
         let div = document.createElement('div')
         let user = document.createElement('p');
+        user.classList.add('player')
         let answer = document.createElement('p');
         let isGood = document.createElement('input');
         let label = document.createElement('label');
@@ -86,6 +87,16 @@ window.addEventListener('click', (e) => {
 
 window.addEventListener('click', (e) => {
     if (e.target.id == 'submitVote') {
-        console.log(document.getElementById('recapColumn').children)
+        let voteChildren = Array.from(document.getElementById('recapColumn').children)
+        let votes = {}
+        
+        for (let child in voteChildren) {
+            let childContainer = voteChildren[child].childNodes;
+            let player = childContainer[0].innerHTML
+            let playerVote = childContainer[2].checked ? -1 : 1
+            votes[player] = playerVote
+        }
+
+        console.log(votes);
     }
 })
