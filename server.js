@@ -153,9 +153,13 @@ io.on('connection', socket => {
                 }
             }
             if(!(game.currentVotingRound == 12)){
+                game.currentVotingRound++;
+                game.incomingVotes = {};
                 socket.emit('voting round', game)
             } else {
-                socket.emit('game over')
+                game.resetVoting();
+                game.startRound;
+                socket.emit('new round')
             }
         }
     })

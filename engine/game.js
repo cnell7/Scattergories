@@ -127,7 +127,11 @@ class Game {
         this.host = host
         return this.host
     }
-
+    resetVoting(){
+        this.playerAnswers = {}
+        this.currentVotingRound = 0
+        this.incomingVotes = {};
+    }
     startRound() {
         this.roundState = "During"
         
