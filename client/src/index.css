@@ -1,6 +1,7 @@
 @import "../node_modules/bulma/css/bulma.css";
-
-#scattergoriesTitle {
+.body{
   font-family: "Playfair Display", serif;
+}
+#scattergoriesTitle {
   color: white;
 }
