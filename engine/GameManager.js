@@ -30,6 +30,16 @@ class GameManager {
     hasGameWithID(gameID) {
         return Object.keys(this.games).includes(gameID)
     }
+
+    setGameHost(player, gameID) {
+        if (gameID in this.games) {
+            let game = this.games[gameID]
+            game.setHost(player)
+            return player +" is now host of game " + gameID
+        }
+
+        return "ERROR: game does not exist"
+    }
 }
 
 module.exports = GameManager

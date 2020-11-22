@@ -7,6 +7,13 @@ socket.on('game update', (game) => {
         htmlPlayers[counter].innerHTML = player;
         counter++;
     }
+
+    document.getElementById('gameLetter').innerHTML = game.currentLetter;
+
+    if (sessionStorage.getItem('user') != game.host) {
+        document.getElementById('playButton').style.display = "none";
+    }
+
     counter = 0;
     if((game.roundState == 'During')){
         let htmlCategories = document.getElementsByClassName('categories');
@@ -14,7 +21,6 @@ socket.on('game update', (game) => {
             htmlCategories[counter].setAttribute('placeholder', category);
             counter++;
         })
-        document.getElementById('gameLetter').innerHTML = game.currentLetter;
         document.getElementById('time').innerHTML = game.timeRemainingInRound;
     }
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;

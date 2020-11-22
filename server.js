@@ -99,6 +99,7 @@ io.on('connection', socket => {
         let newGame = manager.createNewGame();
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
+        manager.setGameHost(user, gameID)
         let gameState = manager.games[gameID].getState()
         socket.join(gameID)
         socket.to(gameID).emit('game update', gameState)

@@ -15,6 +15,7 @@ class Game {
         this.setCategories()
         this.setLetter()
         this.timeRemainingInRound = 10
+        this.host = ""
     }
 
     getGameID() {
@@ -100,7 +101,16 @@ class Game {
     }
 
     getState() {
-        return {gameID: this.gameID, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories, roundState: this.roundState, timeRemainingInRound: this.timeRemainingInRound}
+        return {gameID: this.gameID, host: this.host, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories, roundState: this.roundState, timeRemainingInRound: this.timeRemainingInRound}
+    }
+
+    getHost() {
+        return this.host
+    }
+
+    setHost(host) {
+        this.host = host
+        return this.host
     }
 
     startRound() {
