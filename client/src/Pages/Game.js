@@ -6,11 +6,19 @@ import history from '../history.js'
 class RoundRecap extends React.Component {
     constructor(props){
         super(props);
+        this.players = this.props.state.players;
     }
     render(){
         return(
         <div class="container">
-            <h1 class="title is-2">Round Recap</h1>
+            <div class="box has-text-centered">
+                <h1 class="title is-2">Round Recap</h1>
+                <ul>
+                    {this.players.map((player, index) => {
+                        return <li class='recapPlayers'>{player}</li>
+                    })}
+                </ul>
+            </div>
         </div>);
     }
 }
@@ -65,7 +73,7 @@ export default class Game extends React.Component {
                     </ul>
                 </div>
             </div>
-        <RoundRecap />
+        <RoundRecap state={{players: this.players}}/>
         </div>
         );
     }
