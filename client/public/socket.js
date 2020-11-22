@@ -2,27 +2,33 @@ const socket = io.connect();
 
 socket.on('game update', (game) => {
     let counter = 0;
-    let htmlPlayers = document.getElementsByClassName('players');
-    for( let player in game.players){
-        htmlPlayers[counter].innerHTML = player;
-        counter++;
-    }
-
-    document.getElementById('gameLetter').innerHTML = game.currentLetter;
-
-    if (sessionStorage.getItem('user') != game.host) {
-        document.getElementById('playButton').style.display = "none";
-    }
-
-    counter = 0;
-    if((game.roundState == 'During')){
+    if(game.roundState == 'During'){
         let htmlCategories = document.getElementsByClassName('categories');
         game.currentCategories.map((category, index) => {
             htmlCategories[counter].setAttribute('placeholder', category);
             counter++;
         })
         document.getElementById('time').innerHTML = game.timeRemainingInRound;
+    } else if(game.roundState == 'POST'){
+        let answers = document.getElementsByClassName('input categories');
+        let response = [];
+        for (let answer of answers){
+            response.push(answer.value);
+        }
+        socket.emit('post answer', )
     }
+    if (sessionStorage.getItem('user') != game.host) {
+        document.getElementById('playButton').style.display = "none";
+    }
+    counter = 0;
+    let htmlPlayers = document.getElementsByClassName('players');
+    let htmlPlayersScore = document.getElementsByClassName('points');
+    for( let player in game.players){
+        htmlPlayers[counter].innerHTML = player;
+        console.log(player);
+        counter++;
+    }
+    document.getElementById('gameLetter').innerHTML = game.currentLetter;
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
 

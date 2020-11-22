@@ -101,7 +101,14 @@ class Game {
     }
 
     getState() {
-        return {gameID: this.gameID, host: this.host, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories, roundState: this.roundState, timeRemainingInRound: this.timeRemainingInRound}
+        return {
+            gameID: this.gameID, 
+            host: this.host, 
+            players: this.players, 
+            currentLetter: this.currentLetter,
+            currentCategories: this.currentCategories, 
+            roundState: this.roundState, 
+            timeRemainingInRound: this.timeRemainingInRound}
     }
 
     getHost() {
