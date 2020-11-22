@@ -24,8 +24,8 @@ socket.on('game update', (game) => {
         
         let recaps = document.getElementsByClassName('recapPlayers');
         counter = 0;
-        for (player of game.players){
-            recap.innerHTML[counter] = player;
+        for( let player in game.players){
+            recap[counter].innerHTML = player;
             counter++;
         }
     }
