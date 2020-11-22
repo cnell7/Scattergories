@@ -40,8 +40,8 @@ socket.on('voting round', (game) => {
     let recapsAnswers = document.getElementsByClassName('recapAnswers');
     counter = 0;
     for( let player in game.players){
-        recaps[counter].innerHTML += player;
         recapsAnswers[counter].innerHTML += game.playerAnswers[player][0];
+        recaps[counter].innerHTML += player;
         counter++;
     }
 })

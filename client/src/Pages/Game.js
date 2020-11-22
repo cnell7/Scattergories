@@ -14,14 +14,16 @@ class RoundRecap extends React.Component {
             <div class="box has-text-centered">
                 <h1 class="title is-2">Round Recap</h1>
                 <ul>
-                    {this.players.map((player, index) => {
-                        return (
-                            <div>
-                                <li class='recapPlayers'>
-                                    <p class='recapAnswers'></p>
-                                </li>
-                            </div>);
-                    })}
+                    <div class="columns">
+                        {this.players.map((player, index) => {
+                            return (
+                                <div class="column">
+                                    <li class='recapPlayers'>
+                                        <p class='recapAnswers'></p>
+                                    </li>
+                                </div>);
+                        })}
+                    </div>
                 </ul>
             </div>
         </div>);
