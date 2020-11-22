@@ -42,15 +42,15 @@ export default class App extends React.Component {
     this.switchState = this.switchState.bind(this);
   }
   switchState(){
-    requestLogout();
     if(this.state.signedIn){
+      requestLogout();
+      history.push('/home');
       document.getElementById('usernameDisplay').innerHTML = "";
       sessionStorage.removeItem('user');
     }
     this.setState(state => (      {
       signedIn: !state.signedIn
     }))
-    history.push('/home');
     return;
   }
   render(){ 
