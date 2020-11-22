@@ -26,6 +26,10 @@ class GameManager {
 
         return "ERROR: game does not exist"
     }
+
+    hasGameWithID(gameID) {
+        return Object.keys(this.games).includes(gameID)
+    }
 }
 
 module.exports = GameManager

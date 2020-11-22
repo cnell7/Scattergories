@@ -109,17 +109,17 @@ io.on('connection', socket => {
     })
 
     socket.on('join room', (user, gameID)=>{
-        let players = manager.games[gameID].players;
-        manager.addPlayerToGame(user, gameID);
-        console.log(manager.games[gameID].players)
-        try{
-            socket.join(gameID);
-        } catch(error){
-            console.log(error);
+        
+        if (manager.hasGameWithID(gameID)) {
+            socket.emit("game connection", gameID);
+            manager.addPlayerToGame(user, gameID);
+            let gameState = manager.games[gameID].getState()
+            socket.join(gameID)
+            io.sockets.in(gameID).emit('game update', gameState);
+        } else {
+            console.log("ERROR: Room does not exist");
         }
-        socket.emit("game connection", gameID);
-        let gameState = manager.games[gameID].getState()
-        socket.to(gameID).emit('game update', gameState)
+        
     })
 
     socket.on('start game', (gameID)=>{
