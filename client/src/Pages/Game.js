@@ -18,9 +18,8 @@ class RoundRecap extends React.Component {
                         {this.players.map((player, index) => {
                             return (
                                 <div class="column">
-                                    <li class='recapPlayers'>
-                                        <p class='recapAnswers'></p>
-                                    </li>
+                                    <p class='recapPlayers'></p>
+                                    <p class='recapAnswers'></p>
                                 </div>);
                         })}
                     </div>
