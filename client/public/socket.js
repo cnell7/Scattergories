@@ -36,15 +36,26 @@ socket.on('game update', (game) => {
 
 socket.on('voting round', (game) => {
     console.log(game.playerAnswers);
+    let root = document.getElementById('recapColumn');
+    for( let player in game.players){
+        let div = document.createElement('div')
+        let user = document.createElement('p');
+        let answer = document.createElement('p');
+        div.setAttribute('class', 'column');
+        user.innerHTML = player;
+        answer = game.playerAnswers[player][0];
+        div.append(user, answer);
+        root.append(div);
+    }
+    /*
     let recaps = document.getElementsByClassName('recapPlayers');
     let recapsAnswers = document.getElementsByClassName('recapAnswers');
-    let isBadSwitch = document
     counter = 0;
     for( let player in game.players){
         recapsAnswers[counter].innerHTML = game.playerAnswers[player][0];
         recaps[counter].innerHTML = player;
         counter++;
-    }
+    }*/
 })
 
 //Create game
