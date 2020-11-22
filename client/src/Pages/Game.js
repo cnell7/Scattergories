@@ -17,7 +17,9 @@ export default class Game extends React.Component {
                     <h1 class='title is-3 has-text-centered'>Letter</h1>
                     <h1 id='gameLetter' class='title is-1 has-text-centered'></h1>
                     <h1 id="time" class="title is-4 has-text-centered">90</h1>
-                    <button id="playButton" class="button">Play</button>
+                    <div class="box has-text-centered">
+                        <button id="playButton" class="button is-black"><strong class="has-text-danger">Play</strong></button>
+                    </div>
                 </div>
             </div>
             <div class="column is-three-fifths">
