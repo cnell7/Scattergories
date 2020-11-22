@@ -138,10 +138,28 @@ io.on('connection', socket => {
     })
 
     socket.on('submit votes', (player, gameID, playerVotes) => {
-        manager.games[gameID].incomingVotes.push(playerVotes);
-        if(manager.games[gameID].incomingVotes.length == Object.keys(manager.games[gameID].player).length){
-            if(!(manager.games[gameID].currentVotingRound == 12)){
-                socket.emit('voting round', manager.games[gameID])
+        let game = manager.games[gameID];
+        game.incomingVotes[player] = playerVotes;
+        if(Object.keys(game.incomingVotes.length).length == Object.keys(game.players).length){
+            let playerScore = {};
+            for(let playerVote of game.incomingVotes){
+                for(let player of playerVote){
+                    playerScore[player] += game.incomingVotes[playerVote][player];
+                }
+            }
+            for(let name in playerScore){
+                if(playerScore[name] > 0){
+                    game.setPlayerScore(name, game.getPlayerScore(name) + 1)
+                }
+            }
+            if(!(game.currentVotingRound == 12)){
+                game.currentVotingRound++;
+                game.incomingVotes = {};
+                socket.emit('voting round', game)
+            } else {
+                game.resetVoting();
+                game.startRound;
+                socket.emit('new round')
             }
         }
     })
