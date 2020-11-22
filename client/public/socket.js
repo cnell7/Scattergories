@@ -49,7 +49,7 @@ socket.on('voting round', (game) => {
         isGood.setAttribute('type', 'checkbox');
         isGood.setAttribute('name', 'switchColorDanger');
         user.innerHTML = player;
-        answer = playerAnswers[player][0];
+        answer.innerHTML = playerAnswers[player][0];
         div.append(user, answer, isGood);
         root.append(div);
     }
