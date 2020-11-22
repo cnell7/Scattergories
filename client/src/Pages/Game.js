@@ -15,7 +15,12 @@ class RoundRecap extends React.Component {
                 <h1 class="title is-2">Round Recap</h1>
                 <ul>
                     {this.players.map((player, index) => {
-                        return <li class='recapPlayers'></li>
+                        return (
+                            <div>
+                                <li class='recapPlayers'>
+                                    <p class='recapAnswers'></p>
+                                </li>
+                            </div>);
                     })}
                 </ul>
             </div>

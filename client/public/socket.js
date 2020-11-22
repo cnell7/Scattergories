@@ -18,16 +18,6 @@ socket.on('game update', (game) => {
 
         socket.emit('post answer', sessionStorage.getItem('user'), game.gameID, userAnswers)
 
-    } else if(game.roundState == 'RoundRecap'){
-        
-        console.log(game.playerAnswers);
-        
-        let recaps = document.getElementsByClassName('recapPlayers');
-        counter = 0;
-        for( let player in game.players){
-            recap[counter].innerHTML = player;
-            counter++;
-        }
     }
     if (sessionStorage.getItem('user') != game.host) {
         document.getElementById('playButton').style.display = "none";
@@ -44,8 +34,16 @@ socket.on('game update', (game) => {
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
 
-socket.on('voting round', (answers) => {
-    console.log('answers');
+socket.on('voting round', (game) => {
+    console.log(game.playerAnswers);
+    let recaps = document.getElementsByClassName('recapPlayers');
+    let recapsAnswers = document.getElementsByClassName('recapAnswers');
+    counter = 0;
+    for( let player in game.players){
+        recaps[counter].innerHTML += player;
+        recapsAnswers[counter].innerHTML += game.playerAnswers[player][0];
+        counter++;
+    }
 })
 
 //Create game
