@@ -8,7 +8,6 @@ export default class Game extends React.Component {
         super(props);
         this.players = ["", "","", "","", ""]
         this.categories = ["", "","", "","", "","", "","", "","", ""]
-        this.letter = "A";
     }
     render(){
         return(
