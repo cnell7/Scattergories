@@ -1,15 +1,15 @@
 const socket = io.connect();
 
-socket.on('game connection', (gameID)=> {
-    console.log("Connected to game: " + gameID);})
-
-socket.on('new player', (players) => {
+socket.on('new player', (game) => {
+    players = game.players;
+    console.log('Connected to game: ' + game.gameID + '... new player in the room!');
+    let counter = 0;
     let htmlPlayers = document.getElementsByClassName('players');
-    console.log('hi');
     for( let player in players){
         htmlPlayers[counter].innerHTML = player;
         counter++;
     }
+    document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
 
 socket.on('game update', (game) => {

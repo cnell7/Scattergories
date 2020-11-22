@@ -84,8 +84,7 @@ io.on('connection', socket => {
         let newGame = manager.createNewGame();
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
-        socket.emit("game connection", gameID);
-        socket.emit("new player", manager.games[gameID].players);
+        socket.emit("new player", newGame);
     });
 
     socket.on('disconnect', () => {
@@ -102,7 +101,7 @@ io.on('connection', socket => {
         }
         socket.emit("game connection", gameID);
         manager.games[gameID].players.map(player => {
-            socket.emit("new player", manager.games[gameID].players);
+            socket.emit("new player", manager.games[gameID]);
         })
     })
 
