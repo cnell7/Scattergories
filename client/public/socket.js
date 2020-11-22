@@ -9,6 +9,7 @@ socket.on('game update', (game) => {
     }
     counter = 0;
     if(!(game.roundState == 'Lobby')){
+        console.log('here');
         let htmlCategories = document.getElementsByClassName('categories');
         game.currentCategories.map((category, index) => {
             htmlCategories[counter].setAttribute('placeholder', category);
@@ -34,6 +35,6 @@ window.addEventListener('click', (e) => {
 
 window.addEventListener('click', (e) => {
     if (e.target.id == 'playButton') {
-        socket.emit('start game', (document.getElementById('gameIDGame').value));
+        socket.emit('start game', document.getElementById('gameIDGame').innerHTML.substr(9));
     }
 })

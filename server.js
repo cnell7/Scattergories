@@ -108,5 +108,9 @@ io.on('connection', socket => {
         socket.emit("game connection", gameID);
         startUpdates(gameID);
     })
+
+    socket.on('start game', (gameID)=>{
+        console.log(manager.games[gameID]);
+    })
 })
 
