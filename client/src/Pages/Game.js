@@ -11,7 +11,7 @@ class RoundRecap extends React.Component {
     render(){
         return(
         <div class="container">
-            <div class="box has-text-centered">
+            <div id='recapBox' class="box has-text-centered">
                 <h1 class="title is-2">Round Recap</h1>
                 <ul>
                     <div id='recapColumn' class="columns">

@@ -39,6 +39,8 @@ socket.on('game update', (game) => {
 socket.on('voting round', (game) => {
     playerAnswers = game.playerAnswers;
     let root = document.getElementById('recapColumn');
+    let box = document.getElementById('recapBox');
+    let submit = document.createElement('button');
     for( let player in game.players){
         let div = document.createElement('div')
         let user = document.createElement('p');
@@ -57,6 +59,9 @@ socket.on('voting round', (game) => {
         div.append(user, answer, isGood, label);
         root.append(div);
     }
+    submit.setAttribute('class', 'button');
+    submit.innerHTML = 'Submit';
+    box.append(submit);
     /*
     let recaps = document.getElementsByClassName('recapPlayers');
     let recapsAnswers = document.getElementsByClassName('recapAnswers');
