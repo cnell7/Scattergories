@@ -1,5 +1,7 @@
 const socket = io.connect();
 
+let playerAnswers = [];
+
 socket.on('game update', (game) => {
     let counter = 0;
     if(game.roundState == 'During'){
@@ -35,16 +37,20 @@ socket.on('game update', (game) => {
 })
 
 socket.on('voting round', (game) => {
-    console.log(game.playerAnswers);
+    playerAnswers = game.playerAnswers;
     let root = document.getElementById('recapColumn');
     for( let player in game.players){
         let div = document.createElement('div')
         let user = document.createElement('p');
         let answer = document.createElement('p');
+        let isGood = document.createElement('input');
         div.setAttribute('class', 'column');
+        isGood.setAttribute('class', 'switch');
+        isGood.setAttribute('type', 'checkbox');
+        isGood.setAttribute('name', 'switchColorDanger');
         user.innerHTML = player;
-        answer = game.playerAnswers[player][0];
-        div.append(user, answer);
+        answer = playerAnswers[player][0];
+        div.append(user, answer, isGood);
         root.append(div);
     }
     /*
