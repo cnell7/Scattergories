@@ -16,6 +16,13 @@ socket.on('game update', (game) => {
             response.push(answer.value);
         }
         socket.emit('post answer', )
+    } else if(game.roundState == 'RoundRecap'){
+        let recaps = document.getElementsByClassName('recapPlayers');
+        counter = 0;
+        for (player of game.players){
+            recap.innerHTML[counter] = player;
+            counter++;
+        }
     }
     if (sessionStorage.getItem('user') != game.host) {
         document.getElementById('playButton').style.display = "none";
