@@ -2,7 +2,7 @@
 
 ## Installation
 
-Clone the repository then run **npm install** in both the Scattergories directory and the client directory.
+Clone the repository. Then, run **npm install** in both the Scattergories directory and the client directory.
 
 ## Front End  
 ```bash   
