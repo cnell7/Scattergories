@@ -60,7 +60,7 @@ export default class App extends React.Component {
           <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="https://en.wikipedia.org/wiki/Scattergories">
-                <h1 id='scattergoriesTitle' class="title is-4">Scattergories</h1>
+                <h1 id='scattergoriesTitle' class="title is-5">Scattergories</h1>
               </a>
             </div>
             <div class="navbar-menu">

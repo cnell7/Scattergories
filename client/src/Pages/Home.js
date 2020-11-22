@@ -36,11 +36,11 @@ export default class Home extends React.Component {
     return(
     <div id='homeSection' class='section'>
       <h1 class='title is-1 has-text-centered'><strong>Create an account or sign in to play.</strong></h1>
-      <div class='section is-medium has-background-danger'>
+      <div class='section has-background-danger'>
         <div id='homeContainer' class='container is-max-desktop'>
           <div class='buttons is-grouped is-centered'>
-            <button id='createRoomButton' class="button is-danger is-inverted" disabled>Create</button>
-            <button class="button is-danger is-inverted" disabled>Join</button>
+            <button id='createRoomButton' class="button is-danger is-inverted is-large" disabled>Create</button>
+            <button class="button is-danger is-inverted is-large" disabled>Join</button>
           </div>
         </div>
       </div>
@@ -50,11 +50,11 @@ export default class Home extends React.Component {
     return(
       <div id='homeSection' class='section'>
       <h1 class='title is-1 has-text-centered'><strong>Hi {user}. Click a button below to play.</strong></h1>
-      <div class="section is-medium has-background-danger">
+      <div class="section has-background-danger">
         <div id='homeContainer' class='container is-max-desktop'>
           <div class='buttons is-grouped is-centered'>
-            <button id='createRoomButton' class="button is-danger is-inverted">Create</button>
-            <button id ='joinRoomButton' class="button is-danger is-inverted">Join</button>
+            <button id='createRoomButton' class="button is-danger is-inverted is-large">Create</button>
+            <button id ='joinRoomButton' class="button is-danger is-inverted is-large">Join</button>
           </div>
         </div>
       </div>
