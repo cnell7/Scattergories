@@ -80,11 +80,16 @@ server.listen(port, () => {
 io.on('connection', socket => {
     console.log("A user connected");
 
+    function startUpdates(gameID){
+        setInterval(function() {
+            socket.to(gameID).emit('game update', manager.games[gameID].getState())
+        }, 1000)
+    }
     socket.on('create room', (user) => {
         let newGame = manager.createNewGame();
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
-        socket.emit("new player", newGame);
+        startUpdates(gameID);
     });
 
     socket.on('disconnect', () => {
@@ -101,17 +106,7 @@ io.on('connection', socket => {
             console.log(error);
         }
         socket.emit("game connection", gameID);
-        for( let player in players){
-            socket.emit("new player", manager.games[gameID]);
-        }
-    })
-
-    socket.on('start game', (gameID) =>{
-        setInterval(function() {
-            Object.keys(manager.games).map(gameID => {
-                socket.to(gameID).emit('game update', manager.games[gameID].getState())
-            })
-        }, 1000)
+        startUpdates(gameID);
     })
 })
 

@@ -5,7 +5,7 @@ const possibleCategories = data
 class Game {
     constructor(){
         this.gameID = ""
-        this.roundState = "PRE"
+        this.roundState = "Lobby"
         this.players = {}
         this.lastCategoriesPlayed = []
         this.currentCategories = []
