@@ -62,15 +62,6 @@ socket.on('voting round', (game) => {
     submit.setAttribute('class', 'button');
     submit.innerHTML = 'Submit';
     box.append(submit);
-    /*
-    let recaps = document.getElementsByClassName('recapPlayers');
-    let recapsAnswers = document.getElementsByClassName('recapAnswers');
-    counter = 0;
-    for( let player in game.players){
-        recapsAnswers[counter].innerHTML = game.playerAnswers[player][0];
-        recaps[counter].innerHTML = player;
-        counter++;
-    }*/
 })
 
 //Create game
