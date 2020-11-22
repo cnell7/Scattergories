@@ -19,6 +19,9 @@ socket.on('game update', (game) => {
         socket.emit('post answer', sessionStorage.getItem('user'), game.gameID, userAnswers)
 
     } else if(game.roundState == 'RoundRecap'){
+        
+        console.log(game.playerAnswers);
+        
         let recaps = document.getElementsByClassName('recapPlayers');
         counter = 0;
         for (player of game.players){

@@ -7,6 +7,7 @@ class Game {
         this.gameID = ""
         this.roundState = "Lobby"
         this.players = {}
+        this.playerCount = 0
         this.lastCategoriesPlayed = []
         this.currentCategories = []
         this.lastLettersPlayed = []
@@ -16,6 +17,7 @@ class Game {
         this.setLetter()
         this.timeRemainingInRound = 10
         this.host = ""
+        this.playerAnswers = {}
     }
 
     getGameID() {
@@ -34,6 +36,7 @@ class Game {
     
     addPlayer(playerID) {
         this.players[playerID] = 0
+        this.playerCount += 1
     }
 
     getPlayerScore(playerID) {
@@ -108,7 +111,8 @@ class Game {
             currentLetter: this.currentLetter,
             currentCategories: this.currentCategories, 
             roundState: this.roundState, 
-            timeRemainingInRound: this.timeRemainingInRound}
+            timeRemainingInRound: this.timeRemainingInRound,
+            playerAnswers: this.playerAnswers}
     }
 
     getHost() {
@@ -140,6 +144,18 @@ class Game {
         this.setCategories()
         this.setLetter()
         this.timeRemainingInRound = 90
+    }
+
+    endRound() {
+        this.roundState = "WaitingForPlayerAnswers"
+    }
+
+    submitPlayerAnswers(player, answers) {
+        this.playerAnswers[player] = answers
+
+        if (Object.keys(this.playerAnswers).length == this.playerCount) {
+            this.roundState = "RoundRecap"
+        }
     }
 }
 

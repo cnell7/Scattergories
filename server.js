@@ -89,6 +89,7 @@ io.on('connection', socket => {
             if (gameState.roundState == "POST") {
                 clearInterval(gameUpdater)
                 delete activeRounds[gameID]
+                manager.games[gameID].endRound()
             }
         }, 1000)
 
@@ -127,10 +128,12 @@ io.on('connection', socket => {
         startUpdates(gameID)
     })
 
-    socket.on('post answer', (user, gameID, userCategories) => {
-        console.log(user);
-        console.log(gameID);
-        console.log(userCategories);
+    socket.on('post answer', (player, gameID, playerAnswers) => {
+        manager.games[gameID].submitPlayerAnswers(player, playerAnswers)
+
+        if (manager.games[gameID].roundState == "RoundRecap") {
+            io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
+        }
     })
 })
 
