@@ -11,6 +11,7 @@ const port = process.env.PORT || 3030
 const GameManager = require('./engine/GameManager')
 
 let manager = new GameManager()
+let activeRounds = {}
 
 app.use(bodyParser.json());
 
@@ -81,15 +82,26 @@ io.on('connection', socket => {
     console.log("A user connected");
 
     function startUpdates(gameID){
-        setInterval(function() {
-            socket.to(gameID).emit('game update', manager.games[gameID].getState())
+        let gameUpdater = setInterval(function() {
+            let gameState = manager.games[gameID].getState()
+            io.sockets.in(gameID).emit('game update', gameState);
+
+            if (gameState.roundState == "POST") {
+                clearInterval(gameUpdater)
+                delete activeRounds[gameID]
+                console.log("Round over");
+            }
         }, 1000)
+
+        activeRounds[gameID] = gameUpdater
     }
     socket.on('create room', (user) => {
         let newGame = manager.createNewGame();
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
-        startUpdates(gameID);
+        let gameState = manager.games[gameID].getState()
+        socket.join(gameID)
+        socket.to(gameID).emit('game update', gameState)
     });
 
     socket.on('disconnect', () => {
@@ -106,11 +118,13 @@ io.on('connection', socket => {
             console.log(error);
         }
         socket.emit("game connection", gameID);
-        startUpdates(gameID);
+        let gameState = manager.games[gameID].getState()
+        socket.to(gameID).emit('game update', gameState)
     })
 
     socket.on('start game', (gameID)=>{
         manager.games[gameID].startRound();
+        startUpdates(gameID)
     })
 })
 
