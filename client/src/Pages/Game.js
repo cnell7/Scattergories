@@ -43,7 +43,7 @@ export default class Game extends React.Component {
                         </div>
                     </div>
                 </ul>
-                <p id='gameIDGame'></p>
+                <h1 id='gameIDGame' class="title is-4 has-text-centered"></h1>
             </div>
           </div>
         );
