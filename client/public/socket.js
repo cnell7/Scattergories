@@ -104,7 +104,7 @@ socket.on('voting round', (game) => {
         div.append(user, answer, isGood, label);
         root.append(div);
     }
-    submit.setAttribute('class', 'button');
+    submit.setAttribute('class', 'button is-black has-text-danger');
     submit.setAttribute('id', 'submitVote');
     submit.innerHTML = 'Submit';
     box.append(submit);
@@ -118,6 +118,7 @@ socket.on('voting round', (game) => {
         htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
+    document.getElementById('currentQuestion').innerHTML = "Question: " + game.currentCategories[game.currentVotingRound]
 })
 
 socket.on('vote registered', () => {
