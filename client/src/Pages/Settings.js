@@ -81,7 +81,7 @@ class SubmitNewPass extends React.Component{
             goodP.setAttribute("id", "goodUser");
             goodP.appendChild(document.createTextNode("Success! You've changed your password."));
             goodDiv.append(goodB, goodP)
-            document.getElementById('signupForm').append(goodDiv);
+            document.getElementById('settingsForm').append(goodDiv);
         }
         return true;
     }
@@ -137,7 +137,8 @@ export default class Settings extends React.Component {
                     </div>
                 </div>
                 <div class='box has-text-centered'>
-                    <h2 class='title is-4 has-text-daner'><strong>Delete Account</strong></h2>
+                    <h2 class='title is-4'><strong>Delete Account</strong></h2>
+                    <h3 class='title is-5  has-text-danger'><strong>Warning!<br></br>This will permanently delete your account and data!</strong></h3>
                     <div class="container">
                         <p class="control has-text-centered">
                             <DeleteAccount state={{

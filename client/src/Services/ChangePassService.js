@@ -5,6 +5,7 @@ export async function requestNewPass(o, n) {
         method: 'put',
         url: 'http://localhost:3030/newPass',
         data: {
+            user: sessionStorage.getItem('user'),
             oldPass: o,
             newPass: n
         }
