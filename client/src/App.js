@@ -3,6 +3,7 @@ import Home from "./Pages/Home.js"
 import Signup from "./Pages/Signup.js"
 import Login from "./Pages/Login.js"
 import Game from "./Pages/Game.js"
+import Settings from "./Pages/Settings.js"
 import { requestLogout } from "./Services/LogoutService"
 import {
   Router,
@@ -76,6 +77,9 @@ export default class App extends React.Component {
                       <p id="usernameDisplay" class="has-text-white"></p>
                     </a>
                     <a class="button is-danger is-inverted">
+                      <Link to="/settings"><strong class="has-text-danger">Settings</strong></Link>
+                    </a>
+                    <a class="button is-danger is-inverted">
                       <Link to="/signup"><strong class="has-text-danger">Signup</strong></Link>
                     </a>
                     <LoginLogout state = {{
@@ -91,6 +95,9 @@ export default class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/settings">
+              <Settings />
+            </Route>
             <Route path="/signup">
               <Signup />
             </Route>
