@@ -51,7 +51,8 @@ class HowTo extends React.Component {
             <p class="content has-text-black is-medium">
               After the 90 seconds are up for putting in your answers, they will be collected and sent to your friends.<br></br>
               Everyone will vote if your answer is good or bad. If 50% or more like your answer, you will get a point.<br></br>
-              After everyone has voted for all 12 categories, the game will wait for the host to press the play button again.<br></br>
+              Voting for the next category will not start until everyone has voted for the current category.<br></br>
+              After everyone has voted for all categories, the game will wait for the host to press the play button again.<br></br>
               This gives players a chance to have a break before the next round.<br></br>
               Whoever has the most points after the 10 rounds wins.
             </p>
