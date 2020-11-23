@@ -73,7 +73,7 @@ export default class Settings extends React.Component {
                 <div id="settingsForm">
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                            <input id="changeOldPassInput" class="input" placeholder="Old Password"></input>
+                            <input id="changeOldPassInput" class="input" type="password" placeholder="Old Password"></input>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -84,7 +84,7 @@ export default class Settings extends React.Component {
                     </div>
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                            <input id="changeNewPassInput" class="input" placeholder="New Password"></input>
+                            <input id="changeNewPassInput" class="input" type="password" placeholder="New Password"></input>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
