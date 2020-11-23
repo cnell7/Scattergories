@@ -21,6 +21,7 @@ class Game {
         this.playerAnswers = {}
         this.currentVotingRound = 0
         this.incomingVotes = {};
+        this.roundsLeftInGame = 10
     }
 
     getGameID() {
@@ -116,7 +117,8 @@ class Game {
             roundState: this.roundState, 
             timeRemainingInRound: this.timeRemainingInRound,
             playerAnswers: this.playerAnswers,
-            currentVotingRound: this.currentVotingRound}
+            currentVotingRound: this.currentVotingRound,
+            roundsLeftInGame: this.roundsLeftInGame}
     }
 
     getHost() {
