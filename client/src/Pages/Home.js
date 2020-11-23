@@ -22,27 +22,27 @@ class HowTo extends React.Component {
             </div>
           </div>
         </section>
-        <div class="container is-max-desktop mt-3">
+        <div class="container is-max-desktop mt-3 mb-3">
           <div class="box has-background-black has-text-centered">
-            <h1 class='title has-text-danger is-5'>
+            <h1 class='title has-text-danger is-3'>
               Press one of the above buttons to get started.
             </h1>
-            <p class="has-text-white is-medium">
+            <p class="content has-text-white is-medium">
               Create button above with start a room for you and your friends. You will be placed into the room as the host and the room code will be displayed.<br></br>
               Your friends can input the game code after clicking the join button above.
             </p>
-            <h1 class='title has-text-danger is-5'>
+            <h1 class='title has-text-danger is-3'>
               Rounds
             </h1>
-            <p class="has-text-white is-medium">
+            <p class="content has-text-white is-medium">
               There are 10 rounds in the game. How many rounds left is displayed to the right under the game code.
             </p>
-            <h1 class='title has-text-danger is-5'>
+            <h1 class='title has-text-danger is-3'>
               Questions
             </h1>
-            <p class="has-text-white is-medium">
+            <p class="content has-text-white is-medium">
               You are given a letter to the left. The first word of your answer must begin with the key letter.<br></br>
-              The articles "A", "An" and "The" cannot be used as key letters. For example, "B" is the key letter for the "movie title", A Beautiful Mind; "P" is the key letter for the "book", The Pelican Brief.<br></br>
+              The articles "A", "An" and "The" cannot be used as key letters.<br></br>
               The same answer cannot be given more than once in the same round.<br></br>
             </p>
           </div>
