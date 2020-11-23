@@ -195,5 +195,12 @@ io.on('connection', socket => {
             }
         }
     })
+
+    socket.on('restart game', (gameID) => {
+        let game = manager.games[gameID]
+        game.resetGame()
+        let gameState = game.getState()
+        io.sockets.in(gameID).emit('game update', gameState);
+    })
 })
 

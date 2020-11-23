@@ -164,6 +164,15 @@ class Game {
         }
     }
 
+    resetGame() {
+        this.resetRound()
+        this.roundsLeftInGame = _rounds
+
+        for (let player in this.players) {
+            this.players[player] = 0;
+        }
+    }
+
     endRound() {
         this.roundState = "WaitingForPlayerAnswers"
     }

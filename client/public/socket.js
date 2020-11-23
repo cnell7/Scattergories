@@ -168,6 +168,10 @@ window.addEventListener('click', (e) => {
 
 window.addEventListener('click', (e) => {
     if (e.target.id == 'playAgain') {
-        console.log("play again");
+        let gameOver = document.getElementsByClassName('game-over')[0]
+        gameOver.outerHTML = ""
+        document.getElementById('recapColumn').innerHTML = ""
+        document.getElementById('currentQuestion').innerHTML = ""
+        socket.emit('restart game', document.getElementById('gameIDGame').innerHTML.substr(9))
     }
 })
