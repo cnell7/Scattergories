@@ -44,7 +44,13 @@ class HowTo extends React.Component {
               You are given a letter to the left. The first word of your answer must begin with the key letter.<br></br>
               The articles "A", "An" and "The" cannot be used as key letters.<br></br>
               The same answer cannot be given more than once in the same round.<br></br>
-              Everyone will vote if you answer is good or bad. If 50% or more like your answer, you will get a point<br></br>
+            </p>
+            <h1 class='title has-text-danger is-3'>
+              Voting
+            </h1>
+            <p class="content has-text-white is-medium">
+              After the 90 seconds are up for putting in your answers, they will be collected and sent to your friends.<br></br>
+              Everyone will vote if your answer is good or bad. If 50% or more like your answer, you will get a point.<br></br>
               Whoever has the most points after the 10 rounds wins.
             </p>
           </div>
