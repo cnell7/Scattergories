@@ -7,12 +7,12 @@ import { requestGetStats } from "../Services/GetStatsService.js"
 export default class Stats extends React.Component {
     constructor(props){
         super(props);
-        this.state = {stats: this.getStats().body}
     }
-    async getStats(){
-        return await requestGetStats();
+    async componentDidMount() {
+        let r = await requestGetStats();
+        document.getElementById('stats').innerHTML = r;
     }
     render(){
-        return(<p>{this.state.stats}</p>);
+        return(<p id='stats'>test</p>);
     }
 }

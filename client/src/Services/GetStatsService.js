@@ -10,5 +10,5 @@ export async function requestGetStats(u) {
     }).catch(err => {
         return false;
     })
-    return result.data;
+    return result.data.toString();
 };
