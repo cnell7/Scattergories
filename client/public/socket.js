@@ -5,40 +5,45 @@ let playerAnswers = [];
 socket.on('game update', (game) => {
     
     
-    // if (game.roundState == "GameOver") {
-        // let gameOverContainer = document.createElement('div')
-        // gameOverContainer.classList.add('game-over')
-        // let gameOverTitle = document.createElement('h1')
-        // gameOverTitle.innerHTML = "Game over! Scores:"
+    if (game.roundState == "GameOver") {
+        let gameOverContainer = document.createElement('div')
+        gameOverContainer.classList.add('game-over')
+        let gameOverTitle = document.createElement('h1')
+        gameOverTitle.innerHTML = "Game over! Scores:"
 
-        // let scoreTable = document.createElement('table')
-        // let tableHeaderRow = document.createElement('tr')
-        // let tableHeaderRowPlayers = document.createElement('th')
-        // tableHeaderRowPlayers.innerHTML = 'Player'
-        // let tableHeaderRowScore = document.createElement('th')
-        // tableHeaderRowScore.innerHTML = 'Score'
-        // tableHeaderRow.appendChild(tableHeaderRowPlayers)
-        // tableHeaderRow.appendChild(tableHeaderRowScore)
-        // scoreTable.appendChild(tableHeaderRow)
-        // gameOverContainer.appendChild(gameOverTitle)
-        // gameOverContainer.appendChild(scoreTable)
+        let scoreTable = document.createElement('table')
+        let tableHeaderRow = document.createElement('tr')
+        let tableHeaderRowPlayers = document.createElement('th')
+        tableHeaderRowPlayers.innerHTML = 'Player'
+        let tableHeaderRowScore = document.createElement('th')
+        tableHeaderRowScore.innerHTML = 'Score'
+        tableHeaderRow.appendChild(tableHeaderRowPlayers)
+        tableHeaderRow.appendChild(tableHeaderRowScore)
+        scoreTable.appendChild(tableHeaderRow)
+        gameOverContainer.appendChild(gameOverTitle)
+        gameOverContainer.appendChild(scoreTable)
 
 
-        // let playerScores = Object.entries(game.players).sort((a, b) => b-a)
-        // console.log(playerScores);
-        // playerScores.map((playerInfo) => {
-        //     let row = document.createElement('tr')
-        //     let player = document.createElement('td')
-        //     player.innerHTML = playerInfo[0]
-        //     let score = document.createElement('td')
-        //     score.innerHTML = playerInfo[1]
-        //     row.appendChild(player)
-        //     row.appendChild(score)
-        //     scoreTable.appendChild(row)
-        // })
+        let playerScores = Object.entries(game.players).sort((a, b) => b-a)
+        playerScores.map((playerInfo) => {
+            let row = document.createElement('tr')
+            let player = document.createElement('td')
+            player.innerHTML = playerInfo[0]
+            let score = document.createElement('td')
+            score.innerHTML = playerInfo[1]
+            row.appendChild(player)
+            row.appendChild(score)
+            scoreTable.appendChild(row)
+        })
 
-        // document.body.appendChild(gameOverContainer)
-    // }
+        let playAgain = document.createElement('button')
+        playAgain.setAttribute('class', 'button is-danger is-large is-fullwidth');
+        playAgain.setAttribute('id', 'playAgain');
+        playAgain.innerHTML = 'Play Again';
+
+        gameOverContainer.appendChild(playAgain)
+        document.body.appendChild(gameOverContainer)
+    }
     
     let counter = 0;
     if(game.roundState == 'During'){
@@ -109,7 +114,7 @@ socket.on('voting round', (game) => {
     submit.innerHTML = 'Submit';
     box.append(submit);
 
-    // Update core
+    // Update score
     let counter = 0;
     let htmlPlayers = document.getElementsByClassName('players');
     let htmlPlayersScore = document.getElementsByClassName('points');
@@ -158,5 +163,11 @@ window.addEventListener('click', (e) => {
         }
 
         socket.emit('submit votes', sessionStorage.getItem('user'), document.getElementById('gameIDGame').innerHTML.substr(9), votes)
+    }
+})
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'playAgain') {
+        console.log("play again");
     }
 })
