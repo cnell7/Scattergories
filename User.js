@@ -27,8 +27,9 @@ User.getAllIDsForOwner = (user) => {
     return Object.keys(user_data.data).filter(id => user_data.get(id).user == user).map(id => parseInt(id));
 }
 
-User.getTotalWinsForOwner = (user) => {
-    return this.findByID(Object.keys(user_data.data).filter(id => user_data.get(id).user == user)).totalWins;
+User.getTotalWinsForOwner = (u) => {
+    let id = User.getAllIDs(u)[0].toString();
+    return user_data.get(id).totalWins;
 }
 
 User.findByID = (id) => {
