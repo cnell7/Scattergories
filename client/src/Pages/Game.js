@@ -52,6 +52,9 @@ export default class Game extends React.Component {
                     <div class="box has-text-centered">
                         <h1 id='gameIDGame' class="title is-4 has-text-centered"></h1>
                     </div>
+                    <div class="box has-text-centered">
+                        <h1 id='gameRoundTitle' class="title is-4 has-text-centered"></h1>
+                    </div>
                     <ul>
                         <div class="box has-text-centered">
                             <div class='columns'>
