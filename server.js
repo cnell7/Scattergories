@@ -85,7 +85,11 @@ app.put('/newPass', (req, res) => {
         res.status(404).send("Not found");
         return;
     }
-    if (user_data.password == password) {
+    if (req.session.user == undefined) {
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    if (!(user_data.password == password)) {
         console.log("User " + user + " credentials valid");
         req.session.user = user;
         res.json(true);

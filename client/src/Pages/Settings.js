@@ -1,13 +1,15 @@
 import React from 'react';
 import history from '../history.js'
+import { requestNewPass } from '../Services/ChangePassService.js'
 
 class SubmitNewPass extends React.Component{
     constructor(props){
         super(props);
     }
     handleClick(){
-        let newPass = document.getElementById('changePassInput').value;
-        console.log(newPass);
+        let oldPass = document.getElementById('changeOldPassInput').value;
+        let newPass = document.getElementById('changeNewPassInput').value;
+        console.log(oldPass, newPass);
     }
     render(){
         return(
@@ -31,7 +33,7 @@ export default class Settings extends React.Component {
                 <div id="settingsForm">
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                            <input id="changePassInput" class="input" type="pass" placeholder="New Password"></input>
+                            <input id="changePassOldInput" class="input" placeholder="Old Password"></input>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -39,7 +41,18 @@ export default class Settings extends React.Component {
                                 <i class="fas fa-check"></i>
                             </span>
                         </p>
-                        </div>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input id="changeNewPassInput" class="input" placeholder="New Password"></input>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="container">
