@@ -6,19 +6,39 @@ socket.on('game update', (game) => {
     
     
     // if (game.roundState == "GameOver") {
-    //     let gameOverContainer = document.createElement('div')
-    //     gameOverContainer.classList.add('game-over')
-    //     let gameOverTitle = document.createElement('h1')
-    //     gameOverTitle.innerHTML = "Game over! Scores:"
-    //     let scoreTable = document.createElement('table')
+        let gameOverContainer = document.createElement('div')
+        gameOverContainer.classList.add('game-over')
+        let gameOverTitle = document.createElement('h1')
+        gameOverTitle.innerHTML = "Game over! Scores:"
 
-    //     let playerScores = Object.entries(game.players).sort((a, b) => b-a)
-    //     playerScores.map((player, score) => {
+        let scoreTable = document.createElement('table')
+        let tableHeaderRow = document.createElement('tr')
+        let tableHeaderRowPlayers = document.createElement('th')
+        tableHeaderRowPlayers.innerHTML = 'Player'
+        let tableHeaderRowScore = document.createElement('th')
+        tableHeaderRowScore.innerHTML = 'Score'
+        tableHeaderRow.appendChild(tableHeaderRowPlayers)
+        tableHeaderRow.appendChild(tableHeaderRowScore)
+        scoreTable.appendChild(tableHeaderRow)
+        gameOverContainer.appendChild(gameOverTitle)
+        gameOverContainer.appendChild(scoreTable)
 
-    //     })
 
-    //     document.body.appendChild(gameOverContainer)
-    // // }
+        let playerScores = Object.entries(game.players).sort((a, b) => b-a)
+        console.log(playerScores);
+        playerScores.map((playerInfo) => {
+            let row = document.createElement('tr')
+            let player = document.createElement('td')
+            player.innerHTML = playerInfo[0]
+            let score = document.createElement('td')
+            score.innerHTML = playerInfo[1]
+            row.appendChild(player)
+            row.appendChild(score)
+            scoreTable.appendChild(row)
+        })
+
+        document.body.appendChild(gameOverContainer)
+    // }
     
     let counter = 0;
     if(game.roundState == 'During'){

@@ -39,14 +39,26 @@
 
 .game-over {
   position: fixed;
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   left: 0;
-  top: 0;
+  top: 56px;
   z-index: 10;
   display: flex;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+h1 {
+  display: block;
+}
+
+table {
+  width: 30vw;
 }
