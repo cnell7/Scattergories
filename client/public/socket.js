@@ -10,6 +10,12 @@ socket.on('game update', (game) => {
     }
     
     if (game.roundState == "GameOver") {
+        
+        document.querySelectorAll('.categories').forEach(function(category) {
+            category.value = ""
+            category.setAttribute('placeholder', '');
+        });
+        
         let gameOverContainer = document.createElement('div')
         gameOverContainer.classList.add('game-over')
         let gameOverTitle = document.createElement('h1')

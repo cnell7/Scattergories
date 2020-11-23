@@ -4,5 +4,11 @@
     "user": "cnell",
     "password": "test",
     "totalWins": 0
+  },
+  "1": {
+    "id": 1,
+    "user": "chetanrs",
+    "password": "suckmypeen",
+    "totalWins": 0
   }
 }
