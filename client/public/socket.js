@@ -36,6 +36,7 @@ socket.on('game update', (game) => {
     // Game ID Section
     document.getElementById('gameLetter').innerHTML = game.currentLetter;
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
+    document.getElementById('gameRoundTitle').innerHTML = "Round Number: ";
 })
 
 socket.on('voting round', (game) => {
