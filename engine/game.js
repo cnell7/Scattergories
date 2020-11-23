@@ -1,12 +1,15 @@
 const data = require('../data/categories.json')
 const possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
 const possibleCategories = data
+const _rounds = 1;
+const _roundTime = 5;
 
 class Game {
     constructor(){
         this.gameID = ""
-        this.roundState = "PRE"
+        this.roundState = "Lobby"
         this.players = {}
+        this.playerCount = 0
         this.lastCategoriesPlayed = []
         this.currentCategories = []
         this.lastLettersPlayed = []
@@ -14,7 +17,12 @@ class Game {
         this.generateGameID()
         this.setCategories()
         this.setLetter()
-        this.timeRemainingInRound = 90
+        this.timeRemainingInRound = _roundTime
+        this.host = ""
+        this.playerAnswers = {}
+        this.currentVotingRound = 0
+        this.incomingVotes = {};
+        this.roundsLeftInGame = _rounds
     }
 
     getGameID() {
@@ -23,7 +31,7 @@ class Game {
 
     generateGameID() {
         let id = "";
-        const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const charset = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789";
         
         for (let i = 0; i < 4; i++)
             id += charset.charAt(Math.floor(Math.random() * charset.length));
@@ -33,6 +41,7 @@ class Game {
     
     addPlayer(playerID) {
         this.players[playerID] = 0
+        this.playerCount += 1
     }
 
     getPlayerScore(playerID) {
@@ -52,7 +61,7 @@ class Game {
             category = possibleCategories[index]
         }
 
-        if (this.lastCategoriesPlayed.length >= 120) {
+        if (this.lastCategoriesPlayed.length >= 12 * _rounds) {
             this.lastCategoriesPlayed.shift()
         }
 
@@ -89,7 +98,7 @@ class Game {
             letter = possibleLetters[index]
         }
 
-        if (this.lastLettersPlayed.length >= 10) {
+        if (this.lastLettersPlayed.length >= _rounds) {
             this.lastLettersPlayed.shift()
         }
 
@@ -100,16 +109,37 @@ class Game {
     }
 
     getState() {
-        return {gameID: this.gameID, players:this.players, currentLetter: this.currentLetter, currentCategories: this.currentCategories}
+        return {
+            gameID: this.gameID, 
+            host: this.host, 
+            players: this.players, 
+            currentLetter: this.currentLetter,
+            currentCategories: this.currentCategories, 
+            roundState: this.roundState, 
+            timeRemainingInRound: this.timeRemainingInRound,
+            playerAnswers: this.playerAnswers,
+            currentVotingRound: this.currentVotingRound,
+            roundsLeftInGame: this.roundsLeftInGame}
     }
 
+    getHost() {
+        return this.host
+    }
+
+    setHost(host) {
+        this.host = host
+        return this.host
+    }
+    resetVoting(){
+        this.playerAnswers = {}
+        this.currentVotingRound = 0
+        this.incomingVotes = {};
+    }
     startRound() {
-        this.roundState = "DURING"
+        this.roundState = "During"
         
         let timer = setInterval(() => {
             this.timeRemainingInRound -= 1
-
-            console.log(this.timeRemainingInRound + " secs remaining");
 
             if (this.timeRemainingInRound == 0) {
                 clearInterval(timer)
@@ -121,10 +151,43 @@ class Game {
     }
 
     resetRound() {
-        this.roundState = "PRE"
+        this.roundState = "Lobby"
         this.setCategories()
         this.setLetter()
-        this.timeRemainingInRound = 90
+        this.resetVoting()
+        this.currentVotingRound = 0
+        this.timeRemainingInRound = _roundTime
+        this.roundsLeftInGame -= 1
+
+        if (this.roundsLeftInGame == 0) {
+            this.roundState = "GameOver"
+        }
+    }
+
+    endRound() {
+        this.roundState = "WaitingForPlayerAnswers"
+    }
+
+    submitPlayerAnswers(player, answers) {
+        this.playerAnswers[player] = answers
+
+        if (Object.keys(this.playerAnswers).length == this.playerCount) {
+            this.roundState = "RoundRecap"
+        }
+    }
+
+    submitPlayerVotes(player, votes) {
+        this.incomingVotes[player] = answers
+
+        if (Object.keys(this.incomingVotes).length == this.playerCount) {
+            this.updatePoints()
+            this.currentVotingRound += 1
+        }
+    }
+
+    getPlayerAnswers(round) {
+        let answersFromRound = {}
+        return answersFromRound
     }
 }
 

@@ -11,6 +11,7 @@ const port = process.env.PORT || 3030
 const GameManager = require('./engine/GameManager')
 
 let manager = new GameManager()
+let activeRounds = {}
 
 app.use(bodyParser.json());
 
@@ -80,11 +81,28 @@ server.listen(port, () => {
 io.on('connection', socket => {
     console.log("A user connected");
 
+    function startUpdates(gameID){
+        let gameUpdater = setInterval(function() {
+            let gameState = manager.games[gameID].getState()
+            io.sockets.in(gameID).emit('game update', gameState);
+
+            if (gameState.roundState == "POST") {
+                clearInterval(gameUpdater)
+                delete activeRounds[gameID]
+                manager.games[gameID].endRound()
+            }
+        }, 1000)
+
+        activeRounds[gameID] = gameUpdater
+    }
     socket.on('create room', (user) => {
         let newGame = manager.createNewGame();
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
-        socket.emit("new player", newGame);
+        manager.setGameHost(user, gameID)
+        let gameState = manager.games[gameID].getState()
+        socket.join(gameID)
+        socket.to(gameID).emit('game update', gameState)
     });
 
     socket.on('disconnect', () => {
@@ -92,25 +110,67 @@ io.on('connection', socket => {
     })
 
     socket.on('join room', (user, gameID)=>{
-        let players = manager.games[gameID].players;
-        manager.addPlayerToGame(user, gameID);
-        console.log(manager.games[gameID].players)
-        try{
-            socket.join(gameID);
-        } catch(error){
-            console.log(error);
+        
+        if (manager.hasGameWithID(gameID)) {
+            socket.emit("game connection", gameID);
+            manager.addPlayerToGame(user, gameID);
+            let gameState = manager.games[gameID].getState()
+            socket.join(gameID)
+            io.sockets.in(gameID).emit('game update', gameState);
+        } else {
+            console.log("ERROR: Room does not exist");
         }
-        socket.emit("game connection", gameID);
-        for( let player in players){
-            socket.emit("new player", manager.games[gameID]);
+        
+    })
+
+    socket.on('start game', (gameID)=>{
+        
+        if (manager.games[gameID].roundState == "Lobby") {
+            manager.games[gameID].startRound();
+            startUpdates(gameID)
+        }
+    
+    })
+
+    socket.on('post answer', (player, gameID, playerAnswers) => {
+        manager.games[gameID].submitPlayerAnswers(player, playerAnswers)
+
+        if (manager.games[gameID].roundState == "RoundRecap") {
+            io.sockets.in(gameID).emit('voting round', manager.games[gameID].getState())
         }
     })
 
-    socket.on('start game', (gameID) =>{
-        setInterval(function() {
-            Object.keys(manager.games).map(gameID => {
-                socket.to(gameID).emit('game update', manager.games[gameID].getState())
+    socket.on('submit votes', (player, gameID, playerVotes) => {
+        let game = manager.games[gameID];
+        game.incomingVotes[player] = playerVotes;
+        socket.emit('vote registered')
+        if(Object.keys(game.incomingVotes).length == game.playerCount){
+            let playerScore = {};
+            let players = Object.keys(game.incomingVotes)
+            
+            players.map(playername => {
+                playerScore[playername] = 0;
+
+                Object.values(game.incomingVotes).map(voteset => {
+                    playerScore[playername] += voteset[playername]
+                })
             })
-        }, 1000)
+
+            for(let name in playerScore){
+                if(playerScore[name] >= 0){
+                    game.setPlayerScore(name, game.getPlayerScore(name) + 1)
+                }
+            }
+
+            if(!(game.currentVotingRound == 11)){
+                game.currentVotingRound++;
+                game.incomingVotes = {};
+                io.sockets.in(gameID).emit('voting round', manager.games[gameID].getState())
+            } else {
+                game.resetRound()
+                io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
+            }
+        }
     })
 })
+
