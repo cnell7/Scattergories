@@ -14,7 +14,7 @@ class SubmitNewPass extends React.Component{
     render(){
         return(
             <div>
-                <button class="button is-black has-text-danger" onClick={this.handleClick}>Change Password</button>
+                <button class="button is-black has-text-danger mt-4" onClick={this.handleClick}>Change Password</button>
             </div>
         );
     }
