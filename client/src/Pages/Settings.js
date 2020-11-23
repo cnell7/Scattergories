@@ -9,7 +9,6 @@ class SubmitNewPass extends React.Component{
     handleClick(){
         let oldPass = document.getElementById('changeOldPassInput').value;
         let newPass = document.getElementById('changeNewPassInput').value;
-        let response = requestNewPass(oldPass, newPass);
         if(oldPass.length > 18 || newPass.length > 18 || oldPass.length == 0 || newPass.length == 0){
             if(!document.getElementById('emptyPassDiv')){
                 let emptyPassDiv = document.createElement('div');
@@ -29,6 +28,7 @@ class SubmitNewPass extends React.Component{
             }
             return false;
         }
+        let response = requestNewPass(oldPass, newPass);
         if(!response){
             if(!document.getElementById('badPassDiv')){
                 let badPassDiv = document.createElement('div');

@@ -42,7 +42,7 @@ function ActionLink() {
                     document.getElementById('takenDiv').remove();
                 }
                 takenP.setAttribute("id", "takenUser");
-                takenP.appendChild(document.createTextNode("Username taken"));
+                takenP.appendChild(document.createTextNode("Username taken."));
                 takenDiv.append(takenB, takenP)
                 document.getElementById('signupForm').append(takenDiv);
                 return false

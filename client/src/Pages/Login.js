@@ -26,7 +26,7 @@ export class ActionLink extends React.Component {
                     document.getElementById('emptyUserDiv').remove();
                 }
                 emptyP.setAttribute("id", "emptyUser");
-                emptyP.appendChild(document.createTextNode("Empty username or password"));
+                emptyP.appendChild(document.createTextNode("Empty username or password."));
                 emptyDiv.append(emptyB, emptyP)
                 document.getElementById('signupForm').append(emptyDiv);
             }
@@ -46,7 +46,7 @@ export class ActionLink extends React.Component {
                     unauthDiv.remove();
                 }
                 unauthP.setAttribute("id", "unauthorized");
-                unauthP.appendChild(document.createTextNode("Incorrect username or password"));
+                unauthP.appendChild(document.createTextNode("Incorrect username or password."));
                 unauthDiv.append(unauthB, unauthP)
                 document.getElementById('loginForm').append(unauthDiv);
             }

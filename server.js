@@ -85,14 +85,21 @@ app.put('/newPass', (req, res) => {
         res.status(403).send("Unauthorized");
         return;
     }
-    
     let id = User.getAllIDsForOwner(req.session.user);
+    if(id.length == 0){
+        res.status(404).send("Not found");
+        return;
+    }
     let user_data = login_data.get(id[0].toString());
-
     if (user_data == null) {
         res.status(404).send("Not found");
         return;
     }
+    if(user_data.password != oldPass){
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    user_data.password = newPass;
     return true;
 })
 
