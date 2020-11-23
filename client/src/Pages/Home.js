@@ -44,7 +44,7 @@ class HowTo extends React.Component {
               The articles "A", "An" and "The" cannot be used as key letters.<br></br>
               The same answer cannot be given more than once in the same round.<br></br>
               If two players have the same answer it cancels out and neither gets points. <br></br>
-              Everyone should vote against those answers since it is all based up to the group who gets points.
+              Everyone should vote against those answers since it is all based on the group who gets points.
             </p>
             <h1 class='title has-text-danger is-3'>
               Voting
@@ -52,7 +52,7 @@ class HowTo extends React.Component {
             <p class="content has-text-white is-medium">
               After the 90 seconds are up for putting in your answers, they will be collected and sent to your friends.<br></br>
               Everyone will vote if your answer is good or bad. If 50% or more like your answer, you will get a point.<br></br>
-              After eveyone has voted for all 12 categories, the game will wait for the host to press the play button again.<br></br>
+              After everyone has voted for all 12 categories, the game will wait for the host to press the play button again.<br></br>
               This gives players a chance to have a break before the next round.<br></br>
               Whoever has the most points after the 10 rounds wins.
             </p>
