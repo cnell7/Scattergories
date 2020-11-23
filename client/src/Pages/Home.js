@@ -8,7 +8,19 @@ class HowTo extends React.Component {
     super(props);
   }
   render(){
-    return(<p>How to</p>);
+    return(
+      <section class="hero is-black is-bold mt-4">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title has-text-danger">
+              Scattergories
+            </h1>
+            <h2 class="subtitle has-text-danger">
+              How to play
+            </h2>
+          </div>
+        </div>
+      </section>);
   }
 }
 
