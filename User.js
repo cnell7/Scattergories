@@ -32,6 +32,10 @@ User.getTotalWinsForOwner = (u) => {
     return user_data.get(id).totalWins;
 }
 
+User.addWin = () => {
+    return
+}
+
 User.findByID = (id) => {
     let udata = user_data.get(id);
     if (udata != null) {
