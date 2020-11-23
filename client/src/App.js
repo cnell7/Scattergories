@@ -96,7 +96,7 @@ export default class App extends React.Component {
     return(
       <Router history={history}>
         <div>
-          <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+          <nav class="navbar is-danger has-shadow" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="https://en.wikipedia.org/wiki/Scattergories">
                 <h1 id='scattergoriesTitle' class="title is-5">Scattergories</h1>
