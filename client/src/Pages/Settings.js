@@ -70,28 +70,30 @@ export default class Settings extends React.Component {
             <div class="section">
             <h1 class="title is-5 has-text-centered">Settings</h1>
             <div class="container is-max-desktop">
-                <div id="settingsForm">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input id="changeOldPassInput" class="input" type="password" placeholder="Old Password"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input id="changeNewPassInput" class="input" type="password" placeholder="New Password"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
+                <div class='box has-text-centered'>
+                    <div id="settingsForm">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input id="changeOldPassInput" class="input" type="password" placeholder="Old Password"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input id="changeNewPassInput" class="input" type="password" placeholder="New Password"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
