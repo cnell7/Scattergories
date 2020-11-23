@@ -14,15 +14,21 @@ export default class Home extends React.Component {
     window.addEventListener('click', (e) => {
       if (e.target.id == 'joinRoomButton') {
         if(!document.getElementById('joinIDInput')){
+          let container = document.createElement('container');
+          let box = document.createElement('div')
           let input = document.createElement('input');
           let submit = document.createElement('button');
+          container.setAttribute('class', 'container is-max-desktop');
+          box.setAttribute('class', 'box has-text-centered')
           input.setAttribute('placeholder', 'Input game ID');
           input.setAttribute('class', 'input is-centered');
           input.setAttribute('id', 'joinIDInput');
-          submit.setAttribute('class', 'button');
+          submit.setAttribute('class', 'button is-black has-text-danger');
           submit.setAttribute('id', 'submitJoinGame');
           submit.innerHTML += 'Submit';
-          document.getElementById('homeSection').append(input, submit);
+          box.append(input, submit);
+          container.append(box);
+          document.getElementById('homeSection').append(container);
         }
       }
     });
@@ -36,11 +42,11 @@ export default class Home extends React.Component {
     return(
     <div id='homeSection' class='section'>
       <h1 class='title is-1 has-text-centered'><strong>Create an account or sign in to play.</strong></h1>
-      <div class='section has-background-danger'>
-        <div id='homeContainer' class='container is-max-desktop'>
+      <div class='container is-max-desktop'>
+        <div id='homeContainer' class='box has-background-danger'>
           <div class='buttons is-grouped is-centered'>
-            <button id='createRoomButton' class="button is-danger is-inverted is-large" disabled>Create</button>
-            <button class="button is-danger is-inverted is-large" disabled>Join</button>
+            <button id='createRoomButton' class="button is-danger is-inverted is-large is-rounded" disabled>Create</button>
+            <button class="button is-danger is-inverted is-large is-rounded" disabled>Join</button>
           </div>
         </div>
       </div>
@@ -49,16 +55,16 @@ export default class Home extends React.Component {
   loggedIn(user){
     return(
       <div id='homeSection' class='section'>
-      <h1 class='title is-1 has-text-centered'><strong>Hi {user}. Click a button below to play.</strong></h1>
-      <div class="section has-background-danger">
-        <div id='homeContainer' class='container is-max-desktop'>
-          <div class='buttons is-grouped is-centered'>
-            <button id='createRoomButton' class="button is-danger is-inverted is-large">Create</button>
-            <button id ='joinRoomButton' class="button is-danger is-inverted is-large">Join</button>
+        <h1 class='title is-1 has-text-centered'><strong>Hi {user}. Click a button below to play.</strong></h1>
+        <div class="container is-max-desktop">
+          <div id='homeContainer' class='box has-background-danger'>
+            <div class='buttons is-grouped is-centered'>
+              <button id='createRoomButton' class="button is-danger is-inverted is-large is-rounded">Create</button>
+              <button id ='joinRoomButton' class="button is-danger is-inverted is-large is-rounded">Join</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>);
+      </div>);
   }
   getState(){
     let currentUser = sessionStorage.getItem('user')
