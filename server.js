@@ -125,8 +125,12 @@ io.on('connection', socket => {
     })
 
     socket.on('start game', (gameID)=>{
-        manager.games[gameID].startRound();
-        startUpdates(gameID)
+        
+        if (manager.games[gameID].roundState == "Lobby") {
+            manager.games[gameID].startRound();
+            startUpdates(gameID)
+        }
+    
     })
 
     socket.on('post answer', (player, gameID, playerAnswers) => {
@@ -152,8 +156,6 @@ io.on('connection', socket => {
                     playerScore[playername] += voteset[playername]
                 })
             })
-            
-            console.log(playerScore);
 
             for(let name in playerScore){
                 if(playerScore[name] >= 0){
@@ -161,14 +163,13 @@ io.on('connection', socket => {
                 }
             }
 
-            if(!(game.currentVotingRound == 12)){
+            if(!(game.currentVotingRound == 11)){
                 game.currentVotingRound++;
                 game.incomingVotes = {};
                 io.sockets.in(gameID).emit('voting round', manager.games[gameID].getState())
             } else {
-                game.resetVoting();
                 game.startRound;
-                socket.emit('new round')
+                io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
             }
         }
     })

@@ -153,7 +153,9 @@ class Game {
         this.roundState = "PRE"
         this.setCategories()
         this.setLetter()
+        this.resetVoting()
         this.timeRemainingInRound = 90
+        this.roundsLeftInGame -= 1
     }
 
     endRound() {
