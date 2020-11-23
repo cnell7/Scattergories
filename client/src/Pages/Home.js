@@ -44,7 +44,8 @@ class HowTo extends React.Component {
               You are given a letter to the left. The first word of your answer must begin with the key letter.<br></br>
               The articles "A", "An" and "The" cannot be used as key letters.<br></br>
               The same answer cannot be given more than once in the same round.<br></br>
-              If two players have the same answer it cancels out and neither gets points. So, everyone should vote against those answers.
+              If two players have the same answer it cancels out and neither gets points. <br></br>
+              Everyone should vote against those answers since it is all based up to the group who gets points.
             </p>
             <h1 class='title has-text-danger is-3'>
               Voting
