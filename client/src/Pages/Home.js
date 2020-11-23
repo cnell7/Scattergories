@@ -9,18 +9,24 @@ class HowTo extends React.Component {
   }
   render(){
     return(
-      <section class="hero is-black is-bold mt-4">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title has-text-danger">
-              Scattergories
-            </h1>
-            <h2 class="subtitle has-text-danger">
-              How to play
-            </h2>
+      <div>
+        <section class="hero is-danger is-bold mt-4">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title has-text-black">
+                Scattergories
+              </h1>
+              <h2 class="subtitle has-text-black">
+                How to play
+              </h2>
+            </div>
+          </div>
+        </section>
+        <div class="container is-max-desktop">
+          <div class="box has-text-centered">
           </div>
         </div>
-      </section>);
+      </div>);
   }
 }
 
