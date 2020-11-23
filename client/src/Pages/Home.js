@@ -23,12 +23,12 @@ export default class Home extends React.Component {
           input.setAttribute('placeholder', 'Input game ID');
           input.setAttribute('class', 'input is-centered');
           input.setAttribute('id', 'joinIDInput');
-          submit.setAttribute('class', 'button is-black has-text-danger');
+          submit.setAttribute('class', 'button is-black has-text-danger mt-3');
           submit.setAttribute('id', 'submitJoinGame');
           submit.innerHTML += 'Submit';
           box.append(input, submit);
           container.append(box);
-          document.getElementById('homeSection').append(container);
+          document.getElementById('homeContainer').append(container);
         }
       }
     });
