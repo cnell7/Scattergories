@@ -9,7 +9,7 @@ class HowTo extends React.Component {
   render(){
     return(
       <div>
-        <section class="hero is-danger is-bold mt-4">
+        <section class="hero is-danger is-large is-bold mt-4">
           <div class="hero-body">
             <div class="container">
               <h1 class="title has-text-black">
