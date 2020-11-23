@@ -7,12 +7,12 @@ import { requestGetStats } from "../Services/GetStatsService.js"
 export default class Stats extends React.Component {
     constructor(props){
         super(props);
-        this.totalWins = this.getStats();
+        this.state = {stats: this.getStats().body}
     }
     async getStats(){
-        return await requestGetStats(sessionStorage.getItem('user'));
+        return await requestGetStats();
     }
     render(){
-        return(<p>{this.totalWins}</p>);
+        return(<p>{this.state.stats}</p>);
     }
 }

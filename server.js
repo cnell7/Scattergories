@@ -72,18 +72,17 @@ app.post('/login', (req,res) => {
     res.status(403).send("Unauthorized");
 });
 
-app.get('/logout', (req, res) => {
-    delete req.session.user;
-    res.json(true);
-})
-
-
-app.get('/getStats', (req, res) => {
+app.post('/getStats', (req, res) => {
     let response = User.getTotalWinsForOwner(req.body.user);
-    if(!reponse || response == undefined){
+    if(response == undefined){
         return res.status(404).send("Not found");
     }
     return res.json(response);
+})
+
+app.get('/logout', (req, res) => {
+    delete req.session.user;
+    res.json(true);
 })
 
 app.put('/newPass', (req, res) => {
