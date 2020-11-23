@@ -198,6 +198,14 @@ class Game {
         let answersFromRound = {}
         return answersFromRound
     }
+
+    removePlayer(player) {
+        delete this.players[player]
+
+        if (Object.keys(this.players).length === 0) {
+            this.roundState = 'EMPTY'
+        }
+    }
 }
 
 module.exports = Game

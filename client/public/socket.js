@@ -1,9 +1,13 @@
 const socket = io.connect();
 
 let playerAnswers = [];
+let currentGame = "";
 
 socket.on('game update', (game) => {
     
+    if (!currentGame) {
+        currentGame = game.gameID
+    }
     
     if (game.roundState == "GameOver") {
         let gameOverContainer = document.createElement('div')
@@ -182,5 +186,11 @@ window.addEventListener('click', function(){
         if (gameOver) {
             gameOver.outerHTML = ""
         }
+
+        if (currentGame) {
+            socket.emit('left game', sessionStorage.getItem('user'), currentGame)
+            currentGame = ""
+        }
+        
     }
 })

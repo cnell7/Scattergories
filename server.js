@@ -201,5 +201,17 @@ io.on('connection', socket => {
         let gameState = game.getState()
         io.sockets.in(gameID).emit('game update', gameState);
     })
+
+    socket.on('left game', (player, gameID) => {
+        manager.games[gameID].removePlayer(player)
+        socket.leave(gameID)
+
+        if (manager.games[gameID].roundState == "EMPTY") {
+            delete manager.games[gameID]
+            if (Object.keys(activeRounds).includes(gameID)) {
+                delete activeRounds[gameID]
+            }
+        }
+    })
 })
 
