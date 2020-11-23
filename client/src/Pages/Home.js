@@ -9,37 +9,36 @@ class HowTo extends React.Component {
   render(){
     return(
       <div>
-        <section class="hero is-danger is-large is-bold mt-4">
+        <section class="hero is-black is-large is-bold mt-4">
           <div class="hero-body">
             <div class="container">
-              <h1 class="title has-text-black">
+              <h1 class="title has-text-danger">
                 Scattergories
               </h1>
-              <h2 class="subtitle has-text-black">
+              <h2 class="subtitle has-text-danger">
                 How to play
               </h2>
             </div>
           </div>
-        </section>
-        <div class="container is-max-desktop mt-3 mb-3">
-          <div class="box has-background-black has-text-centered">
+          <div class="container is-max-desktop mt-3 mb-3">
+          <div class="box has-text-centered">
             <h1 class='title has-text-danger is-3'>
               Press one of the above buttons to get started.
             </h1>
-            <p class="content has-text-white is-medium">
+            <p class="content has-text-black is-medium">
               Create button above will start a room for you and your friends. You will be placed into the room as the host and the room code will be displayed.<br></br>
               Your friends can input the game code after clicking the join button above.
             </p>
             <h1 class='title has-text-danger is-3'>
               Rounds
             </h1>
-            <p class="content has-text-white is-medium">
+            <p class="content has-text-black is-medium">
               There are 10 rounds in the game. How many rounds left is displayed to the right under the game code.
             </p>
             <h1 class='title has-text-danger is-3'>
               Questions
             </h1>
-            <p class="content has-text-white is-medium">
+            <p class="content has-text-black is-medium">
               You are given a letter to the left. The first word of your answer must begin with the key letter.<br></br>
               The articles "A", "An" and "The" cannot be used as key letters.<br></br>
               The same answer cannot be given more than once in the same round.<br></br>
@@ -49,7 +48,7 @@ class HowTo extends React.Component {
             <h1 class='title has-text-danger is-3'>
               Voting
             </h1>
-            <p class="content has-text-white is-medium">
+            <p class="content has-text-black is-medium">
               After the 90 seconds are up for putting in your answers, they will be collected and sent to your friends.<br></br>
               Everyone will vote if your answer is good or bad. If 50% or more like your answer, you will get a point.<br></br>
               After everyone has voted for all 12 categories, the game will wait for the host to press the play button again.<br></br>
@@ -58,6 +57,7 @@ class HowTo extends React.Component {
             </p>
           </div>
         </div>
+        </section>
       </div>);
   }
 }
