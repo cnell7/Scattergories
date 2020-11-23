@@ -9,7 +9,7 @@ function ActionLink() {
         console.log('Sending signup request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
-        if(u.length == 0 || p.length ==0 || u.length > 12 || p.length > 18){
+        if(u.length == 0 || p.length == 0 || u.length > 12 || p.length > 18){
             if(!document.getElementById('emptyUserDiv')){
                 let emptyDiv = document.createElement('div');
                 let emptyB = document.createElement('button');
@@ -73,35 +73,38 @@ function ActionLink() {
 export default function Signup() {
     return(
         <div class='section'>
-            <h1 class="title is-5 has-text-centered">Signup</h1>
+            <h1 class="title is-2 has-text-centered">Signup</h1>
             <div class="container is-max-desktop">
-                <div id="signupForm">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
+                <div class="box has-text-centered">
+                    <div id="signupForm">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                            </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
                         </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
+                    </div>
+                    <div class="container">
+                        <p class="control has-text-centered">
+                            <ActionLink />
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <p class="control has-text-centered">
-                    <ActionLink />
-                </p>
-            </div>
+
         </div>
     );
 };

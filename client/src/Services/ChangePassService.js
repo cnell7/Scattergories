@@ -5,8 +5,8 @@ export async function requestNewPass(oldPass, newPass) {
         method: 'put',
         url: 'http://localhost:3030/newPass',
         data: {
-            oldPass: this.oldPass,
-            newPass: this.newPass
+            oldPass: oldPass,
+            newPass: newPass
         }
     }).catch(err => {
         return false;

@@ -70,36 +70,38 @@ export default class Login extends React.Component {
     render(){
     return(
         <div class="section">
-            <h1 class="title is-5 has-text-centered">Login</h1>
+            <h1 class="title is-2 has-text-centered">Login</h1>
             <div class="container is-max-desktop">
-                <div id="loginForm">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
+                <div class="box has-text-centered">
+                    <div id="loginForm">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                            </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
                         </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
+                    </div>
+                    <div class="container">
+                        <p class="control has-text-centered">
+                            <ActionLink state = {{
+                            switchState: this.props.state.switchState
+                            }}/>
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <p class="control has-text-centered">
-                    <ActionLink state = {{
-                    switchState: this.props.state.switchState
-                    }}/>
-                </p>
             </div>
         </div>
     );}
