@@ -3,6 +3,15 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import history from '../history.js'
 
+class HowTo extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return(<p>How to</p>);
+  }
+}
+
 export default class Home extends React.Component {
   constructor(props){
     super(props);
@@ -74,6 +83,10 @@ export default class Home extends React.Component {
     return this.loggedOut();
   }
 render(){
-    return this.getState()
+    return (
+      <div>
+        {this.getState()}
+        <HowTo />
+      </div>);
 }
 };
