@@ -42,13 +42,13 @@ function ActionLink() {
                     document.getElementById('takenDiv').remove();
                 }
                 takenP.setAttribute("id", "takenUser");
-                takenP.appendChild(document.createTextNode("Username taken"));
+                takenP.appendChild(document.createTextNode("Username taken."));
                 takenDiv.append(takenB, takenP)
                 document.getElementById('signupForm').append(takenDiv);
                 return false
             }
         }
-        if(!document.getElementById('takenDiv')){
+        if(!document.getElementById('goodDiv')){
             let goodDiv = document.createElement('div');
             let goodB = document.createElement('button');
             let goodP = document.createElement('p');

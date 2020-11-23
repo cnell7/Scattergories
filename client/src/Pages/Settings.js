@@ -2,14 +2,29 @@ import React from 'react';
 import history from '../history.js'
 import { requestNewPass } from '../Services/ChangePassService.js'
 
-class SubmitNewPass extends React.Component{
+class DeleteAccount extends React.Component {
     constructor(props){
         super(props);
     }
     handleClick(){
+        history.push('/home');
+    }
+    render(){
+        return(
+            <button class="button is-danger has-text-black" onClick={this.handleClick()}>
+                <strong>Delete</strong>
+            </button>
+        );
+    }
+}
+
+class SubmitNewPass extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    async handleClick(){
         let oldPass = document.getElementById('changeOldPassInput').value;
         let newPass = document.getElementById('changeNewPassInput').value;
-        let response = requestNewPass(oldPass, newPass);
         if(oldPass.length > 18 || newPass.length > 18 || oldPass.length == 0 || newPass.length == 0){
             if(!document.getElementById('emptyPassDiv')){
                 let emptyPassDiv = document.createElement('div');
@@ -29,6 +44,7 @@ class SubmitNewPass extends React.Component{
             }
             return false;
         }
+        let response = await requestNewPass(oldPass, newPass);
         if(!response){
             if(!document.getElementById('badPassDiv')){
                 let badPassDiv = document.createElement('div');
@@ -48,7 +64,22 @@ class SubmitNewPass extends React.Component{
             }
             return false
         }
-        console.log(true);
+        if(!document.getElementById('goodDiv')){
+            let goodDiv = document.createElement('div');
+            let goodB = document.createElement('button');
+            let goodP = document.createElement('p');
+            goodDiv.setAttribute("class", "notification is-primary");
+            goodDiv.setAttribute("id", "goodDiv")
+            goodB.setAttribute("class", "delete");
+            goodB.setAttribute("id", "goodUserButton")
+            goodB.onclick = () => {
+                document.getElementById('goodDiv').remove();
+            }
+            goodP.setAttribute("id", "goodUser");
+            goodP.appendChild(document.createTextNode("Success! You've changed your password."));
+            goodDiv.append(goodB, goodP)
+            document.getElementById('signupForm').append(goodDiv);
+        }
         return true;
     }
     render(){
@@ -99,6 +130,14 @@ export default class Settings extends React.Component {
                     <div class="container">
                         <p class="control has-text-centered">
                             <SubmitNewPass />
+                        </p>
+                    </div>
+                </div>
+                <div class='box has-text-centered'>
+                    <h2 class='title is-4 has-text-daner'><strong>Delete Account</strong></h2>
+                    <div class="container">
+                        <p class="control has-text-centered">
+                            <DeleteAccount />
                         </p>
                     </div>
                 </div>
