@@ -68,7 +68,7 @@ export default class Settings extends React.Component {
     render(){
         return(
             <div class="section">
-            <h1 class="title is-5 has-text-centered">Settings</h1>
+            <h1 class="title is-2 has-text-centered">Settings</h1>
             <div class="container is-max-desktop">
                 <div class='box has-text-centered'>
                     <div id="settingsForm">
@@ -95,12 +95,12 @@ export default class Settings extends React.Component {
                             </p>
                         </div>
                     </div>
+                    <div class="container">
+                        <p class="control has-text-centered">
+                            <SubmitNewPass />
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="container">
-                <p class="control has-text-centered">
-                    <SubmitNewPass />
-                </p>
             </div>
         </div>);
     }
