@@ -24,6 +24,7 @@ socket.on('game update', (game) => {
     if (sessionStorage.getItem('user') != game.host) {
         document.getElementById('playButton').style.display = "none";
     }
+    // Set Player Scores
     counter = 0;
     let htmlPlayers = document.getElementsByClassName('players');
     let htmlPlayersScore = document.getElementsByClassName('points');
@@ -32,6 +33,7 @@ socket.on('game update', (game) => {
         htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
+    // Game ID Section
     document.getElementById('gameLetter').innerHTML = game.currentLetter;
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
 })
@@ -54,7 +56,7 @@ socket.on('voting round', (game) => {
         isGood.setAttribute('class', 'switch is-danger');
         label.setAttribute('for', 'switchColorDanger');
         user.innerHTML = player;
-        answer.innerHTML = playerAnswers[player][0];
+        answer.innerHTML = playerAnswers[player][game.currentVotingRound];
         label.innerHTML = "Click is answer is bad."
         div.append(user, answer, isGood, label);
         root.append(div);
@@ -63,6 +65,21 @@ socket.on('voting round', (game) => {
     submit.setAttribute('id', 'submitVote');
     submit.innerHTML = 'Submit';
     box.append(submit);
+
+    // Update core
+    let counter = 0;
+    let htmlPlayers = document.getElementsByClassName('players');
+    let htmlPlayersScore = document.getElementsByClassName('points');
+    for( let player in game.players){
+        htmlPlayers[counter].innerHTML = player;
+        htmlPlayersScore[counter].innerHTML = game.players[player];
+        counter++;
+    }
+})
+
+socket.on('vote registered', () => {
+    document.getElementById('recapColumn').innerHTML = ""
+    document.getElementById("submitVote").outerHTML = "";
 })
 
 //Create game
