@@ -54,8 +54,11 @@ app.post('/login', (req,res) => {
     let password = req.body.password;
     
     let id = User.getAllIDsForOwner(user);
+    if(id.length == 0){
+        res.status(404).send("Not found");
+        return;
+    }
     let user_data = login_data.get(id[0].toString());
-
     if (user_data == null) {
         res.status(404).send("Not found");
         return;
