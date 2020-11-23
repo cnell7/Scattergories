@@ -106,6 +106,7 @@ app.put('/newPass', (req, res) => {
 })
 
 app.delete('/delAcc', (req, res)=>{
+    let user = req.body.user;
     console.log(user);
     let id = User.getAllIDsForOwner(user)[0].toString();
     if(id == undefined){

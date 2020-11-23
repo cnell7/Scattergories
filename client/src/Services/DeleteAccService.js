@@ -4,7 +4,7 @@ export async function requestDeleteAcc() {
     const result = await axios({
         method: 'delete',
         url: 'http://localhost:3030/delAcc',
-        body: {
+        data: {
             user: sessionStorage.getItem('user')
         }
     }).catch(err => {

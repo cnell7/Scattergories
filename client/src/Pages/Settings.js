@@ -138,7 +138,7 @@ export default class Settings extends React.Component {
                 </div>
                 <div class='box has-text-centered'>
                     <h2 class='title is-4'><strong>Delete Account</strong></h2>
-                    <h3 class='title is-5  has-text-danger'><strong>Warning!<br></br>This will permanently delete your account and data!</strong></h3>
+                    <h3 class='title is-5  has-text-danger'><strong>Warning!<br></br>This will permanently delete your account and its data!</strong></h3>
                     <div class="container">
                         <p class="control has-text-centered">
                             <DeleteAccount state={{
