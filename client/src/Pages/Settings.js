@@ -23,7 +23,7 @@ class SubmitNewPass extends React.Component{
                     document.getElementById('emptyPassDiv').remove();
                 }
                 emptyPassP.setAttribute("id", "emptyPassP");
-                emptyPassP.appendChild(document.createTextNode("Incorrect password."));
+                emptyPassP.appendChild(document.createTextNode("Bad password length. A password must be between 1 and 18 characters."));
                 emptyPassDiv.append(emptyPassB, emptyPassP)
                 document.getElementById('settingsForm').append(emptyPassDiv);
             }
