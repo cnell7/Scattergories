@@ -8,8 +8,8 @@ class User {
         this.password = password
     }
 
-    update (user) {
-        this.user = user;
+    update (pass) {
+        this.password = pass;
         user_data.set(this.id.toString(), this);
     }
 

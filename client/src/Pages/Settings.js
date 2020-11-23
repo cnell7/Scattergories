@@ -5,6 +5,7 @@ import { requestNewPass } from '../Services/ChangePassService.js'
 class DeleteAccount extends React.Component {
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
     handleClick(e){
         e.preventDefault();

@@ -126,7 +126,6 @@ export default class Home extends React.Component {
   }
   getState(){
     if(this.props.state.signedIn){
-      console.log('hihi');
       return this.loggedIn();
     }
     return this.loggedOut();

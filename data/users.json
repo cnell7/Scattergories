@@ -9,11 +9,6 @@
     "user": "chetanrs",
     "password": "suckmypeen"
   },
-  "2": {
-    "id": 2,
-    "user": "q",
-    "password": "q"
-  },
   "3": {
     "id": 3,
     "user": "chetan2",
@@ -28,6 +23,5 @@
     "id": 5,
     "user": "chetan4",
     "password": "test"
-  },
-  "password": "test1"
+  }
 }
