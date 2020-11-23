@@ -22,8 +22,30 @@ class HowTo extends React.Component {
             </div>
           </div>
         </section>
-        <div class="container is-max-desktop">
+        <div class="container is-max-desktop mt-3">
           <div class="box has-text-centered">
+            <h1 class='title is-5'>
+              Press one of the above buttons to get started.
+            </h1>
+            <p>
+              Create room will make a room for you and your friends. You will be placed into the room as the host and the room code will be displayed.<br></br>
+              Your friends can input the game code after clicking the join button above.
+            </p>
+            <h1 class='title is-5'>
+              Rounds
+            </h1>
+            <p>
+              There are 10 rounds in the game. How many rounds left is displayed to the right under the game code.
+            </p>
+            <h1 class='title is-5'>
+              Questions
+            </h1>
+            <p>
+              You are given a letter to the left. The first word of your answer must begin with the key letter.<br></br>
+              The articles "A", "An" and "The" cannot be used as key letters. For example, "B" is the key letter for the "movie title", A Beautiful Mind; "P" is the key letter for the "book", The Pelican Brief.<br></br>
+              The same answer cannot be given more than once in the same round.<br></br>
+              Creative answers can be acceptable. For example, if the category is SPICES/HERBS and the key letter is P, you could answer Posh. But if one player challenges the answer, the group must vote on its acceptability.<br></br>
+            </p>
           </div>
         </div>
       </div>);
