@@ -95,7 +95,7 @@ socket.on('game update', (game) => {
     let statsKeys = Object.keys(game.stats)
     counter = 0;
     stats.map(stat => {
-        htmlStats[counter].innerHTML = statsKeys[counter] + " " + stat;
+        htmlStats[counter].innerHTML = statsKeys[counter] + " has " + stat + " total wins!";
         counter++;
     })
     // Game ID Section
