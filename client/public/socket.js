@@ -60,7 +60,7 @@ socket.on('voting round', (game) => {
         label.setAttribute('for', 'switchColorDanger');
         user.innerHTML = player;
         answer.innerHTML = playerAnswers[player][game.currentVotingRound];
-        label.innerHTML = "Click is answer is bad."
+        label.innerHTML = "Bad answer."
         div.append(user, answer, isGood, label);
         root.append(div);
     }
