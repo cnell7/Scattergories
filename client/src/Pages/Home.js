@@ -56,6 +56,14 @@ class HowTo extends React.Component {
               This gives players a chance to have a break before the next round.<br></br>
               Whoever has the most points after the 10 rounds wins.
             </p>
+            <h1 class='title has-text-danger is-3'>
+              Accounts
+            </h1>
+            <p class="content has-text-black is-medium">
+              Usernames must be between 1-12 characters.<br></br>
+              Passwords must be between 1-18 characters.<br></br>
+              Only one account can have a certain username. So you might get an error if the username is already taken.<br></br>
+            </p>
           </div>
         </div>
         </section>
