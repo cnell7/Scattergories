@@ -32,8 +32,10 @@ User.getTotalWinsForOwner = (u) => {
     return user_data.get(id).totalWins;
 }
 
-User.addWin = () => {
-    return
+User.addWin = (u) => {
+    let id = User.getAllIDs(u)[0].toString();
+    user_data.get(id).totalWins += 1
+    return true;
 }
 
 User.findByID = (id) => {

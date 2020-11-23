@@ -228,6 +228,12 @@ io.on('connection', socket => {
                 game.resetRound()
                 io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
             }
+
+            if (game.winners) {
+                game.winners.map(winner => {
+                    User.addWin(winner)
+                })
+            }
         }
     })
 
