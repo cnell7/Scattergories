@@ -60,7 +60,10 @@ export class ActionLink extends React.Component {
         return response
     }
     
-    render(){return (<a id="signupSubmitLink" onClick={this.handleClick}><strong class="has-text-danger">Submit</strong></a>);}
+    render(){return (
+        <buttton class='button is-black mt-4' onClick={this.handleClick}>
+            <strong class="content is-bold has-text-danger">Submit</strong>
+        </buttton>);}
 }
 
 export default class Login extends React.Component {
