@@ -67,7 +67,10 @@ function ActionLink() {
         return response
     }
   
-    return (<a id="signupSubmitLink" href="#" onClick={handleClick}><strong class="has-text-danger">Submit</strong></a>);
+    return (
+        <button class='button is-black mt-4' onClick={handleClick}>
+            <strong class="content is-bold has-text-danger">Submit</strong>
+        </button>);
 }
 
 export default function Signup() {

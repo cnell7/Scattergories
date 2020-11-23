@@ -71,6 +71,7 @@ export default class Settings extends React.Component {
             <h1 class="title is-2 has-text-centered">Settings</h1>
             <div class="container is-max-desktop">
                 <div class='box has-text-centered'>
+                    <h2 class='title is-4'>New Password</h2>
                     <div id="settingsForm">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
