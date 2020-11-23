@@ -2,6 +2,7 @@ const data = require('../data/categories.json')
 const possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
 const possibleCategories = data
 const _rounds = 10;
+const _roundTime = 10;
 
 class Game {
     constructor(){
@@ -16,7 +17,7 @@ class Game {
         this.generateGameID()
         this.setCategories()
         this.setLetter()
-        this.timeRemainingInRound = 10
+        this.timeRemainingInRound = _roundTime
         this.host = ""
         this.playerAnswers = {}
         this.currentVotingRound = 0
@@ -155,7 +156,7 @@ class Game {
         this.setLetter()
         this.resetVoting()
         this.currentVotingRound = 0
-        this.timeRemainingInRound = 90
+        this.timeRemainingInRound = _roundTime
         this.roundsLeftInGame -= 1
     }
 
