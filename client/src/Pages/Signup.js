@@ -48,7 +48,7 @@ function ActionLink() {
                 return false
             }
         }
-        if(!document.getElementById('takenDiv')){
+        if(!document.getElementById('goodDiv')){
             let goodDiv = document.createElement('div');
             let goodB = document.createElement('button');
             let goodP = document.createElement('p');
