@@ -10,6 +10,25 @@ class SubmitNewPass extends React.Component{
         let oldPass = document.getElementById('changeOldPassInput').value;
         let newPass = document.getElementById('changeNewPassInput').value;
         let response = requestNewPass(oldPass, newPass);
+        if(oldPass.length > 18 || newPass.length > 18 || oldPass.length == 0 || newPass.length == 0){
+            if(!document.getElementById('emptyPassDiv')){
+                let emptyPassDiv = document.createElement('div');
+                let emptyPassB = document.createElement('button');
+                let emptyPassP = document.createElement('p');
+                emptyPassDiv.setAttribute("class", "notification is-danger");
+                emptyPassDiv.setAttribute("id", "emptyPassDiv")
+                emptyPassB.setAttribute("class", "delete");
+                emptyPassB.setAttribute("id", "emptyPassButton")
+                emptyPassB.onclick = () => {
+                    document.getElementById('emptyPassDiv').remove();
+                }
+                emptyPassP.setAttribute("id", "emptyPassP");
+                emptyPassP.appendChild(document.createTextNode("Incorrect password."));
+                emptyPassDiv.append(emptyPassB, emptyPassP)
+                document.getElementById('settingsForm').append(emptyPassDiv);
+            }
+            return false;
+        }
         if(!response){
             if(!document.getElementById('badPassDiv')){
                 let badPassDiv = document.createElement('div');

@@ -9,7 +9,7 @@ function ActionLink() {
         console.log('Sending signup request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
-        if(u.length == 0 || p.length ==0 || u.length > 12 || p.length > 18){
+        if(u.length == 0 || p.length == 0 || u.length > 12 || p.length > 18){
             if(!document.getElementById('emptyUserDiv')){
                 let emptyDiv = document.createElement('div');
                 let emptyB = document.createElement('button');
