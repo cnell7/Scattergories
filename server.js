@@ -158,7 +158,8 @@ io.on('connection', socket => {
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
         manager.setGameHost(user, gameID)
-        let gameState = manager.games[gameID].getState()
+        let gameState = manager.games[gameID].getState();
+        newGame.addStat(user, User.getTotalWinsForOwner(user));
         socket.join(gameID)
         socket.to(gameID).emit('game update', gameState)
     });
@@ -170,6 +171,7 @@ io.on('connection', socket => {
     socket.on('join room', (user, gameID)=>{
         
         if (manager.hasGameWithID(gameID)) {
+            manager.games[gameID].addStat(user, User.getTotalWinsForOwner(user));
             socket.emit("game connection", gameID);
             manager.addPlayerToGame(user, gameID);
             let gameState = manager.games[gameID].getState()

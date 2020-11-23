@@ -9,6 +9,7 @@ class Game {
         this.gameID = ""
         this.roundState = "Lobby"
         this.players = {}
+        this.stats = {}
         this.playerCount = 0
         this.lastCategoriesPlayed = []
         this.currentCategories = []
@@ -53,6 +54,9 @@ class Game {
         this.players[playerID] = score
     }
 
+    addStat(user, stat){
+        this.stats[user] = stat;
+    }
     getCategory() {
         let index = Math.floor(Math.random() * possibleCategories.length)
         let category = possibleCategories[index]
@@ -121,7 +125,8 @@ class Game {
             playerAnswers: this.playerAnswers,
             currentVotingRound: this.currentVotingRound,
             roundsLeftInGame: this.roundsLeftInGame,
-            winners: this.winners}
+            winners: this.winners,
+            stats: this.stats}
     }
 
     getHost() {

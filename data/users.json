@@ -16,5 +16,11 @@
     "user": "chetan2",
     "password": "test",
     "totalWins": 0
+  },
+  "3": {
+    "id": 3,
+    "user": "q",
+    "password": "q",
+    "totalWins": 0
   }
 }

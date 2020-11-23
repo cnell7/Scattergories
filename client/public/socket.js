@@ -4,7 +4,6 @@ let playerAnswers = [];
 let currentGame = "";
 
 socket.on('game update', (game) => {
-    
     if (!currentGame) {
         currentGame = game.gameID
     }
@@ -90,6 +89,15 @@ socket.on('game update', (game) => {
         htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
+    // Set player stats
+    let htmlStats = document.getElementsByClassName('stats');
+    let stats = Object.values(game.stats);
+    let statsKeys = Object.keys(game.stats)
+    counter = 0;
+    stats.map(stat => {
+        htmlStats[counter].innerHTML = statsKeys[counter] + " " + stat;
+        counter++;
+    })
     // Game ID Section
     document.getElementById('gameLetter').innerHTML = game.currentLetter;
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
