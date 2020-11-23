@@ -77,6 +77,7 @@ app.get('/logout', (req, res) => {
     res.json(true);
 })
 
+
 app.get('/getStats', (req, res) => {
     let response = User.getTotalWinsForOwner(req.body.user);
     if(!reponse || response == undefined){

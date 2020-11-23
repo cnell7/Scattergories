@@ -13,7 +13,6 @@ import {
   Link
 } from "react-router-dom";
 import history from './history.js';
-import e from "express";
 
 class StatsButton extends React.Component {
   constructor(props){
