@@ -13,6 +13,7 @@ class RoundRecap extends React.Component {
         <div class="container">
             <div id='recapBox' class="box has-text-centered">
                 <h1 class="title is-2">Round Recap</h1>
+                <h2 id="currentQuestion" class="title is-4"></h2>
                 <ul>
                     <div id='recapColumn' class="columns">
                     </div>
