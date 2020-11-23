@@ -10,5 +10,11 @@
     "user": "chetanrs",
     "password": "suckmypeen",
     "totalWins": 0
+  },
+  "2": {
+    "id": 2,
+    "user": "chetan2",
+    "password": "test",
+    "totalWins": 0
   }
 }

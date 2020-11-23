@@ -55,6 +55,7 @@
 body {
   overflow-x: hidden;
   overflow-y: hidden;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 h1 {
@@ -95,4 +96,15 @@ tr:nth-child(3) {
 
 tr:nth-child(4) {
   font-size: 2em;
+}
+
+.no-answer {
+  font-style: italic;
+}
+
+#recapColumn > .column {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 20px;
 }

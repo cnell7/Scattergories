@@ -35,6 +35,7 @@ socket.on('game update', (game) => {
 
 
         let playerScores = Object.entries(game.players).sort((a, b) => b-a)
+        console.log(game.winners);
         playerScores.map((playerInfo) => {
             let row = document.createElement('tr')
             let player = document.createElement('td')
@@ -66,7 +67,7 @@ socket.on('game update', (game) => {
 
         let userAnswers = []
         document.querySelectorAll('.categories').forEach(function(category) {
-            userAnswers.push(category.value)
+            userAnswers.push(category.value.trim())
             category.value = ""
             category.setAttribute('placeholder', '');
         });
@@ -104,7 +105,12 @@ socket.on('voting round', (game) => {
     for( let player in game.players){
         let div = document.createElement('div')
         let user = document.createElement('p');
-        user.classList.add('player')
+        user.classList.add('player', 'is-size-5', 'has-text-weight-bold')
+
+        if (player == sessionStorage.getItem('user')) {
+            user.classList.add('has-text-danger')
+        }
+
         let answer = document.createElement('p');
         let isGood = document.createElement('input');
         let label = document.createElement('label');
@@ -114,8 +120,18 @@ socket.on('voting round', (game) => {
         isGood.setAttribute('class', 'switch is-danger');
         label.setAttribute('for', 'switchColorDanger');
         user.innerHTML = player;
-        answer.innerHTML = playerAnswers[player][game.currentVotingRound];
-        label.innerHTML = "Bad answer."
+        
+
+        let playerAnswer = playerAnswers[player][game.currentVotingRound]
+        answer.classList.add('is-size-4', 'is-capitalized')
+
+        if (playerAnswer) {
+            answer.innerHTML = playerAnswers[player][game.currentVotingRound];
+        } else {
+            answer.innerHTML = '<span class="no-answer"> No answer </span>'
+        }
+
+        label.innerHTML = "❌"
         div.append(user, answer, isGood, label);
         root.append(div);
     }

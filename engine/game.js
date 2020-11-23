@@ -23,6 +23,7 @@ class Game {
         this.currentVotingRound = 0
         this.incomingVotes = {};
         this.roundsLeftInGame = _rounds
+        this.winners = []
     }
 
     getGameID() {
@@ -119,7 +120,8 @@ class Game {
             timeRemainingInRound: this.timeRemainingInRound,
             playerAnswers: this.playerAnswers,
             currentVotingRound: this.currentVotingRound,
-            roundsLeftInGame: this.roundsLeftInGame}
+            roundsLeftInGame: this.roundsLeftInGame,
+            winners: this.winners}
     }
 
     getHost() {
@@ -161,12 +163,22 @@ class Game {
 
         if (this.roundsLeftInGame == 0) {
             this.roundState = "GameOver"
+
+            let winningScore = Math.max(Object.values(this.players))
+
+            for (let player in this.players) {
+                if (this.players[player] == winningScore) {
+                    this.winners.push(player)
+                }
+                console.log(player);
+            }
         }
     }
 
     resetGame() {
         this.resetRound()
         this.roundsLeftInGame = _rounds
+        this.winners = []
 
         for (let player in this.players) {
             this.players[player] = 0;
