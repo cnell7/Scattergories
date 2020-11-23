@@ -12,7 +12,6 @@ const GameManager = require('./engine/GameManager')
 
 let manager = new GameManager()
 let activeRounds = {}
-let votingRounds = {}
 
 app.use(bodyParser.json());
 
