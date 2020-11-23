@@ -175,3 +175,12 @@ window.addEventListener('click', (e) => {
         socket.emit('restart game', document.getElementById('gameIDGame').innerHTML.substr(9))
     }
 })
+
+window.addEventListener('click', function(){
+    if (!window.location.href.endsWith('game')) {
+        let gameOver = document.getElementsByClassName('game-over')[0]
+        if (gameOver) {
+            gameOver.outerHTML = ""
+        }
+    }
+})
