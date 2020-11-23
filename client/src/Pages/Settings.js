@@ -6,12 +6,13 @@ class DeleteAccount extends React.Component {
     constructor(props){
         super(props);
     }
-    handleClick(){
+    handleClick(e){
+        e.preventDefault();
         history.push('/home');
     }
     render(){
         return(
-            <button class="button is-danger has-text-black" onClick={this.handleClick()}>
+            <button class="button is-danger has-text-black" onClick={this.handleClick(e)}>
                 <strong>Delete</strong>
             </button>
         );
