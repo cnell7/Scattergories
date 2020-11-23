@@ -77,6 +77,14 @@ app.get('/logout', (req, res) => {
     res.json(true);
 })
 
+app.get('/getStats', (req, res) => {
+    let response = User.getTotalWinsForOwner(req.body.user);
+    if(!reponse || response == undefined){
+        return res.status(404).send("Not found");
+    }
+    return res.json(response);
+})
+
 app.put('/newPass', (req, res) => {
     let user = req.body.user;
     let oldPass = req.body.oldPass;

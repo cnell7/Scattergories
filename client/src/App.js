@@ -4,6 +4,7 @@ import Signup from "./Pages/Signup.js"
 import Login from "./Pages/Login.js"
 import Game from "./Pages/Game.js"
 import Settings from "./Pages/Settings.js"
+import Stats from "./Pages/Stats.js"
 import { requestLogout } from "./Services/LogoutService"
 import {
   Router,
@@ -12,6 +13,26 @@ import {
   Link
 } from "react-router-dom";
 import history from './history.js';
+import e from "express";
+
+class StatsButton extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  getState(){
+    if(this.props.state.signedIn){
+      return(
+        <a class="button is-danger is-inverted">
+          <Link to="/stats"><strong class="has-text-danger">Stats</strong></Link>
+        </a>);
+    } else {
+      return <p></p>
+    }
+  }
+  render(){
+    return(this.getState());
+  }
+}
 
 class SettingsButton extends React.Component {
   constructor(props){
@@ -50,9 +71,7 @@ class LoginLogout extends React.Component {
     return this.loggedOut();
   }
   render(){
-    return(
-      this.getState()
-    );
+    return(this.getState());
   }
 }
 
@@ -69,7 +88,7 @@ export default class App extends React.Component {
       document.getElementById('usernameDisplay').innerHTML = "";
       sessionStorage.removeItem('user');
     }
-    this.setState(state => (      {
+    this.setState(state => ({
       signedIn: !state.signedIn
     }))
     return;
@@ -85,10 +104,15 @@ export default class App extends React.Component {
               </a>
             </div>
             <div class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item">
-                  <Link to="/home"><strong class="has-text-white">Home</strong></Link>
-                </a>
+              <div class="navbar-start">
+                <div class="buttons">
+                  <StatsButton state={{
+                      signedIn: this.state.signedIn
+                    }}/>
+                  <a class="button is-danger is-inverted">
+                    <Link to="/home"><strong class="has-text-danger">Home</strong></Link>
+                  </a>
+                </div>
               </div>
               <div class="navbar-end">
                 <div class="navbar-item">
@@ -115,6 +139,9 @@ export default class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/stats">
+              <Stats />
+            </Route>
             <Route path="/settings">
               <Settings state={{
                 signedIn: this.signedIn,

@@ -27,10 +27,14 @@ User.getAllIDsForOwner = (user) => {
     return Object.keys(user_data.data).filter(id => user_data.get(id).user == user).map(id => parseInt(id));
 }
 
+User.getTotalWinsForOwner = (user) => {
+    return this.findByID(Object.keys(user_data.data).filter(id => user_data.get(id).user == user)).totalWins;
+}
+
 User.findByID = (id) => {
     let udata = user_data.get(id);
     if (udata != null) {
-        return new User(udata.id, udata.user, udata.password);
+        return new User(udata.id, udata.user, udata.password, udata.totalWins);
     }
     return null;
 };
