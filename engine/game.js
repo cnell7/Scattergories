@@ -164,13 +164,12 @@ class Game {
         if (this.roundsLeftInGame == 0) {
             this.roundState = "GameOver"
 
-            let winningScore = Math.max(Object.values(this.players))
-
+            let winningScore = Math.max.apply(Math, Object.values(this.players));
+            
             for (let player in this.players) {
                 if (this.players[player] == winningScore) {
                     this.winners.push(player)
                 }
-                console.log(player);
             }
         }
     }

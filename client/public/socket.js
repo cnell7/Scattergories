@@ -35,7 +35,6 @@ socket.on('game update', (game) => {
 
 
         let playerScores = Object.entries(game.players).sort((a, b) => b-a)
-        console.log(game.winners);
         playerScores.map((playerInfo) => {
             let row = document.createElement('tr')
             let player = document.createElement('td')
