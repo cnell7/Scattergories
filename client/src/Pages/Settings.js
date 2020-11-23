@@ -12,7 +12,7 @@ class DeleteAccount extends React.Component {
     }
     render(){
         return(
-            <button class="button is-danger has-text-black" onClick={this.handleClick(e)}>
+            <button class="button is-danger has-text-black" onClick={this.handleClick}>
                 <strong>Delete</strong>
             </button>
         );
