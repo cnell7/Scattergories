@@ -14,15 +14,21 @@ export default class Home extends React.Component {
     window.addEventListener('click', (e) => {
       if (e.target.id == 'joinRoomButton') {
         if(!document.getElementById('joinIDInput')){
+          let container = document.createElement('container');
+          let box = document.createElement('div')
           let input = document.createElement('input');
           let submit = document.createElement('button');
+          container.setAttribute('class', 'container is-max-desktop');
+          box.setAttribute('class', 'box has-text-centered')
           input.setAttribute('placeholder', 'Input game ID');
           input.setAttribute('class', 'input is-centered');
           input.setAttribute('id', 'joinIDInput');
-          submit.setAttribute('class', 'button');
+          submit.setAttribute('class', 'button is-black has-text-danger');
           submit.setAttribute('id', 'submitJoinGame');
           submit.innerHTML += 'Submit';
-          document.getElementById('homeSection').append(input, submit);
+          box.append(input, submit);
+          container.append(box);
+          document.getElementById('homeSection').append(container);
         }
       }
     });
