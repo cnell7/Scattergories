@@ -15,11 +15,14 @@ socket.on('game update', (game) => {
         let userAnswers = []
         document.querySelectorAll('.categories').forEach(function(category) {
             userAnswers.push(category.value)
+            category.value = ""
+            category.setAttribute('placeholder', '');
         });
 
         socket.emit('post answer', sessionStorage.getItem('user'), game.gameID, userAnswers)
 
     }
+    
     // Set time remaining in round
     document.getElementById('time').innerHTML = game.timeRemainingInRound;
     // Show play button only to host
