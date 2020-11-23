@@ -3,6 +3,23 @@ const socket = io.connect();
 let playerAnswers = [];
 
 socket.on('game update', (game) => {
+    
+    
+    // if (game.roundState == "GameOver") {
+    //     let gameOverContainer = document.createElement('div')
+    //     gameOverContainer.classList.add('game-over')
+    //     let gameOverTitle = document.createElement('h1')
+    //     gameOverTitle.innerHTML = "Game over! Scores:"
+    //     let scoreTable = document.createElement('table')
+
+    //     let playerScores = Object.entries(game.players).sort((a, b) => b-a)
+    //     playerScores.map((player, score) => {
+
+    //     })
+
+    //     document.body.appendChild(gameOverContainer)
+    // // }
+    
     let counter = 0;
     if(game.roundState == 'During'){
         let htmlCategories = document.getElementsByClassName('categories');
