@@ -168,7 +168,7 @@ io.on('connection', socket => {
                 game.incomingVotes = {};
                 io.sockets.in(gameID).emit('voting round', manager.games[gameID].getState())
             } else {
-                game.startRound;
+                game.resetRound()
                 io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
             }
         }

@@ -150,10 +150,11 @@ class Game {
     }
 
     resetRound() {
-        this.roundState = "PRE"
+        this.roundState = "Lobby"
         this.setCategories()
         this.setLetter()
         this.resetVoting()
+        this.currentVotingRound = 0
         this.timeRemainingInRound = 90
         this.roundsLeftInGame -= 1
     }

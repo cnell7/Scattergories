@@ -20,7 +20,9 @@ socket.on('game update', (game) => {
         socket.emit('post answer', sessionStorage.getItem('user'), game.gameID, userAnswers)
 
     }
+    // Set time remaining in round
     document.getElementById('time').innerHTML = game.timeRemainingInRound;
+    // Show play button only to host
     if (sessionStorage.getItem('user') != game.host) {
         document.getElementById('playButton').style.display = "none";
     }
