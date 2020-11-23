@@ -52,7 +52,6 @@ socket.on('voting round', (game) => {
         isGood.setAttribute('id', 'switchColorDanger')
         isGood.setAttribute('type', 'checkbox');
         isGood.setAttribute('class', 'switch is-danger');
-        isGood.setAttribute('checked', 'checked')
         label.setAttribute('for', 'switchColorDanger');
         user.innerHTML = player;
         answer.innerHTML = playerAnswers[player][0];
@@ -97,6 +96,6 @@ window.addEventListener('click', (e) => {
             votes[player] = playerVote
         }
 
-        console.log(votes);
+        socket.emit('submit votes', sessionStorage.getItem('user'), document.getElementById('gameIDGame').innerHTML.substr(9), votes)
     }
 })

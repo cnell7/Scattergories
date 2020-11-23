@@ -140,18 +140,27 @@ io.on('connection', socket => {
     socket.on('submit votes', (player, gameID, playerVotes) => {
         let game = manager.games[gameID];
         game.incomingVotes[player] = playerVotes;
-        if(Object.keys(game.incomingVotes.length).length == Object.keys(game.players).length){
+        if(Object.keys(game.incomingVotes).length == game.playerCount){
             let playerScore = {};
-            for(let playerVote of game.incomingVotes){
-                for(let player of playerVote){
-                    playerScore[player] += game.incomingVotes[playerVote][player];
-                }
-            }
+            let players = Object.keys(game.incomingVotes)
+            
+            players.map(playername => {
+                playerScore[playername] = 0;
+
+                Object.values(game.incomingVotes).map(voteset => {
+                    playerScore[playername] += voteset[playername]
+                })
+            })
+            
+            console.log(playerScore);
+
             for(let name in playerScore){
-                if(playerScore[name] > 0){
+                if(playerScore[name] >= 0){
                     game.setPlayerScore(name, game.getPlayerScore(name) + 1)
+                    console.log(game.players);
                 }
             }
+            
             if(!(game.currentVotingRound == 12)){
                 game.currentVotingRound++;
                 game.incomingVotes = {};
