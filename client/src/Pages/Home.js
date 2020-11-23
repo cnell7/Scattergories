@@ -63,6 +63,7 @@ class HowTo extends React.Component {
               Usernames must be between 1-12 characters.<br></br>
               Passwords must be between 1-18 characters.<br></br>
               Only one account can have a certain username. So you might get an error if the username is already taken.<br></br>
+              You can change your password in the settings tab. You can also delete your account permanently.
             </p>
           </div>
         </div>
