@@ -110,10 +110,10 @@ export default class Home extends React.Component {
       </div>
     </div>);
   }
-  loggedIn(user){
+  loggedIn(){
     return(
       <div id='homeSection' class='section'>
-        <h1 class='title is-1 has-text-centered'><strong>Hi {user}. Click a button below to play.</strong></h1>
+        <h1 class='title is-1 has-text-centered'><strong>Hi {sessionStorage.getItem('user')}. Click a button below to play.</strong></h1>
         <div class="container is-max-desktop">
           <div id='homeContainer' class='box has-background-danger'>
             <div class='buttons is-grouped is-centered'>
@@ -125,9 +125,9 @@ export default class Home extends React.Component {
       </div>);
   }
   getState(){
-    let currentUser = sessionStorage.getItem('user')
-    if(currentUser){
-      return this.loggedIn(currentUser);
+    if(this.props.state.signedIn){
+      console.log('hihi');
+      return this.loggedIn();
     }
     return this.loggedOut();
   }

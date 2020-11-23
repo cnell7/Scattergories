@@ -1,5 +1,5 @@
 import React from 'react';
-import history from '../history.js'
+import { requestDeleteAcc } from '../Services/DeleteAccService';
 import { requestNewPass } from '../Services/ChangePassService.js'
 
 class DeleteAccount extends React.Component {
@@ -8,7 +8,8 @@ class DeleteAccount extends React.Component {
     }
     handleClick(e){
         e.preventDefault();
-        history.push('/home');
+        requestDeleteAcc();
+        this.props.state.switchState();
     }
     render(){
         return(
@@ -138,7 +139,9 @@ export default class Settings extends React.Component {
                     <h2 class='title is-4 has-text-daner'><strong>Delete Account</strong></h2>
                     <div class="container">
                         <p class="control has-text-centered">
-                            <DeleteAccount />
+                            <DeleteAccount state={{
+                                switchState: this.props.state.switchState
+                            }}/>
                         </p>
                     </div>
                 </div>

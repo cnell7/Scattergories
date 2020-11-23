@@ -85,6 +85,36 @@ app.put('/newPass', (req, res) => {
         res.status(403).send("Unauthorized");
         return;
     }
+    let id = User.getAllIDsForOwner(req.session.user)[0].toString();
+    if(id.length == 0){
+        res.status(404).send("Not found");
+        return;
+    }
+    let user_data = login_data.get(id);
+    if (user_data == null) {
+        res.status(404).send("Not found");
+        return;
+    }
+    if(user_data.password != oldPass){
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    console.log('here2');
+    /*
+    let u = User.findByID(id);
+    console.log(u);
+    //u.update({id: id, user: req.session.user, password: newPass});
+    //login_data.set(id.toString(), u);
+    */
+    login_data.set('password', newPass);
+    return true;
+})
+
+app.delete('/delAcc', ()=>{
+    if (req.session.user == undefined) {
+        res.status(403).send("Unauthorized");
+        return;
+    }
     let id = User.getAllIDsForOwner(req.session.user);
     if(id.length == 0){
         res.status(404).send("Not found");
@@ -95,11 +125,7 @@ app.put('/newPass', (req, res) => {
         res.status(404).send("Not found");
         return;
     }
-    if(user_data.password != oldPass){
-        res.status(403).send("Unauthorized");
-        return;
-    }
-    user_data.update(new User(id, req.session.user, newPass));
+    user_data.del(id);
     return true;
 })
 

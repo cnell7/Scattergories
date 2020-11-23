@@ -117,7 +117,8 @@ export default class App extends React.Component {
           <Switch>
             <Route path="/settings">
               <Settings state={{
-                signedIn: this.signedIn
+                signedIn: this.signedIn,
+                switchState: this.switchState
                 }}/>
             </Route>
             <Route path="/signup">
