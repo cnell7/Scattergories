@@ -99,7 +99,7 @@ app.put('/newPass', (req, res) => {
         res.status(403).send("Unauthorized");
         return;
     }
-    user_data.password = newPass;
+    user_data.update(new User(id, req.session.user, newPass));
     return true;
 })
 
