@@ -10,7 +10,6 @@ socket.on('game update', (game) => {
             htmlCategories[counter].setAttribute('placeholder', category);
             counter++;
         })
-        document.getElementById('time').innerHTML = game.timeRemainingInRound;
     } else if(game.roundState == 'POST'){
 
         let userAnswers = []
@@ -21,6 +20,7 @@ socket.on('game update', (game) => {
         socket.emit('post answer', sessionStorage.getItem('user'), game.gameID, userAnswers)
 
     }
+    document.getElementById('time').innerHTML = game.timeRemainingInRound;
     if (sessionStorage.getItem('user') != game.host) {
         document.getElementById('playButton').style.display = "none";
     }
