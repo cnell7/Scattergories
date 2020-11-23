@@ -1,27 +1,3 @@
 {
-  "0": {
-    "id": 0,
-    "user": "cnell",
-    "password": "test"
-  },
-  "1": {
-    "id": 1,
-    "user": "chetanrs",
-    "password": "suckmypeen"
-  },
-  "3": {
-    "id": 3,
-    "user": "chetan2",
-    "password": "test"
-  },
-  "4": {
-    "id": 4,
-    "user": "chetan3",
-    "password": "test"
-  },
-  "5": {
-    "id": 5,
-    "user": "chetan4",
-    "password": "test"
-  }
+
 }

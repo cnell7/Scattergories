@@ -6,6 +6,7 @@ class User {
         this.id = id;
         this.user = user
         this.password = password
+        this.totalWins = 0;
     }
 
     update (pass) {
