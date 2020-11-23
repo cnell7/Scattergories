@@ -3,6 +3,7 @@ import Home from "./Pages/Home.js"
 import Signup from "./Pages/Signup.js"
 import Login from "./Pages/Login.js"
 import Game from "./Pages/Game.js"
+import Settings from "./Pages/Settings.js"
 import { requestLogout } from "./Services/LogoutService"
 import {
   Router,
@@ -11,6 +12,26 @@ import {
   Link
 } from "react-router-dom";
 import history from './history.js';
+
+class SettingsButton extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  getState(){
+    if(this.props.state.signedIn){
+      return (
+        <a class="button is-danger is-inverted">
+          <Link to="/settings"><strong class="has-text-danger">Settings</strong></Link>
+        </a>
+      );
+    } else {
+      return <p></p>
+    }
+  }
+  render(){
+    return(this.getState())
+  }
+}
 
 class LoginLogout extends React.Component {
   constructor(props){
@@ -75,6 +96,9 @@ export default class App extends React.Component {
                     <a class="navbar-item">
                       <p id="usernameDisplay" class="has-text-white"></p>
                     </a>
+                    <SettingsButton state={{
+                      signedIn: this.state.signedIn
+                    }}/>
                     <a class="button is-danger is-inverted">
                       <Link to="/signup"><strong class="has-text-danger">Signup</strong></Link>
                     </a>
@@ -91,6 +115,11 @@ export default class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/settings">
+              <Settings state={{
+                signedIn: this.signedIn
+                }}/>
+            </Route>
             <Route path="/signup">
               <Signup />
             </Route>
