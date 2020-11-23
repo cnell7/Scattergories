@@ -1,7 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { Link } from 'react-router-dom';
-import history from '../history.js'
 import { requestGetStats } from "../Services/GetStatsService.js"
 
 export default class Stats extends React.Component {
