@@ -13,6 +13,26 @@ import {
 } from "react-router-dom";
 import history from './history.js';
 
+class SettingsButton extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  getState(){
+    if(this.props.state.signedIn){
+      return (
+        <a class="button is-danger is-inverted">
+          <Link to="/settings"><strong class="has-text-danger">Settings</strong></Link>
+        </a>
+      );
+    } else {
+      return <p></p>
+    }
+  }
+  render(){
+    return(this.getState())
+  }
+}
+
 class LoginLogout extends React.Component {
   constructor(props){
     super(props);
@@ -76,9 +96,9 @@ export default class App extends React.Component {
                     <a class="navbar-item">
                       <p id="usernameDisplay" class="has-text-white"></p>
                     </a>
-                    <a class="button is-danger is-inverted">
-                      <Link to="/settings"><strong class="has-text-danger">Settings</strong></Link>
-                    </a>
+                    <SettingsButton state={{
+                      signedIn: this.state.signedIn
+                    }}/>
                     <a class="button is-danger is-inverted">
                       <Link to="/signup"><strong class="has-text-danger">Signup</strong></Link>
                     </a>
@@ -96,7 +116,9 @@ export default class App extends React.Component {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/settings">
-              <Settings />
+              <Settings state={{
+                signedIn: this.signedIn
+                }}/>
             </Route>
             <Route path="/signup">
               <Signup />
