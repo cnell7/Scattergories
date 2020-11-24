@@ -216,7 +216,7 @@ window.addEventListener('click', (e) => {
         gameOver.outerHTML = ""
         document.getElementById('recapColumn').innerHTML = ""
         document.getElementById('currentQuestion').innerHTML = ""
-        socket.emit('restart game', document.getElementById('gameIDGame').innerHTML.substr(9))
+        socket.emit('restart game', sessionStorage.getItem('gameID'))
     }
 })
 
