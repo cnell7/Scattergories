@@ -86,6 +86,9 @@ socket.on('game update', (game) => {
     let htmlPlayersScore = document.getElementsByClassName('points');
     for( let player in game.players){
         htmlPlayers[counter].innerHTML = player;
+        if(game.host == player){
+            htmlPlayers[counter].innerHTML += ' (host)';
+        }
         htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
@@ -95,7 +98,11 @@ socket.on('game update', (game) => {
     let statsKeys = Object.keys(game.stats)
     counter = 0;
     stats.map(stat => {
-        htmlStats[counter].innerHTML = statsKeys[counter] + " has " + stat + " total wins!";
+        if(stat == 1){
+            htmlStats[counter].innerHTML = statsKeys[counter] + " has " + stat + " wins";
+        } else {
+            htmlStats[counter].innerHTML = statsKeys[counter] + " has " + stat + " wins";
+        }
         counter++;
     })
     // Game ID Section

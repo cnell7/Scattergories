@@ -170,13 +170,6 @@ export default class App extends React.Component {
             </Route>
           </Switch>
         </div>
-        <footer class="footer">
-          <div class="content has-text-centered">
-            <p>
-              <strong>Christian Nell, Chetan Singalreddy</strong>
-            </p>
-          </div>
-        </footer>
       </Router>
     );}
 }

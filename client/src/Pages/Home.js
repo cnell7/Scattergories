@@ -8,7 +8,7 @@ class HowTo extends React.Component {
   }
   render(){
     return(
-      <div>
+      <div class="mb-2">
         <section class="hero is-black is-large is-bold mt-4">
           <div class="hero-body">
             <div class="container">
@@ -146,6 +146,13 @@ render(){
       <div>
         {this.getState()}
         <HowTo />
+        <footer class="container mt-2 mb-2">
+          <div class="content has-text-centered has-text-white is-medium">
+            <p>
+              <strong>Developed by Christian Nell & Chetan Singalreddy</strong>
+            </p>
+          </div>
+        </footer>
       </div>);
 }
 };
