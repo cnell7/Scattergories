@@ -111,8 +111,8 @@ export default class Home extends React.Component {
     return(
     <div id='homeSection' class='section'>
       <h1 class='title is-1 has-text-centered'><strong>Create an account or sign in to play.</strong></h1>
-      <div class='container is-max-desktop'>
-        <div id='homeContainer' class='box has-background-danger'>
+      <div class="columns is-mobile is-centered">
+        <div class="column is-half has-background-danger">
           <div class='buttons is-grouped is-centered'>
             <button id='createRoomButton' class="button is-danger is-inverted is-large is-rounded mr-5" disabled>Create</button>
             <button class="button is-danger is-inverted is-large is-rounded ml-5" disabled>Join</button>
@@ -125,8 +125,8 @@ export default class Home extends React.Component {
     return(
       <div id='homeSection' class='section'>
         <h1 class='title is-1 has-text-centered'><strong>Hi {sessionStorage.getItem('user')}. Click a button below to play.</strong></h1>
-        <div class="container is-max-desktop">
-          <div id='homeContainer' class='box has-background-danger'>
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half has-background-danger">
             <div class='buttons is-grouped is-centered'>
               <button id='createRoomButton' class="button is-danger is-inverted is-large is-rounded mr-5">Create</button>
               <button id ='joinRoomButton' class="button is-danger is-inverted is-large is-rounded ml-5">Join</button>
