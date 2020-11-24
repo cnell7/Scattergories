@@ -35,7 +35,7 @@ app.use(expressSession({
     }
 }));
 
-const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
+let login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
 
 app.post('/signup', (req,res) => {
 
@@ -60,7 +60,7 @@ app.post('/signup', (req,res) => {
 })
 
 app.post('/login', (req,res) => {
-
+    login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
     let user = req.body.user;
     let password = req.body.password;
     
