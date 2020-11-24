@@ -6,7 +6,7 @@ let currentGame = "";
 socket.on('game update', (game) => {
     if (!currentGame) {
         currentGame = game.gameID
-        sessionStorage.setItem('gamID', game.gameID);
+        sessionStorage.setItem('gameID', game.gameID);
     }
     
     if (game.roundState == "GameOver") {
