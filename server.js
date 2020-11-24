@@ -233,7 +233,8 @@ io.on('connection', socket => {
 
             if (game.winners) {
                 game.winners.map(winner => {
-                    User.addWin(winner)
+                    let u = User.findByID(User.getAllIDsForOwner(winner).toString());
+                    u.addWin();
                 })
             }
         }

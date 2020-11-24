@@ -17,6 +17,12 @@ class User {
     delete () {
         user_data.del(this.id.toString());
     }
+
+    addWin () {
+        this.totalWins++;
+        user_data.set(this.id.toString(), this);
+        return true;
+    }
 } 
 
 User.getAllIDs = () => {
@@ -30,12 +36,6 @@ User.getAllIDsForOwner = (user) => {
 User.getTotalWinsForOwner = (u) => {
     let id = User.getAllIDs(u)[0].toString();
     return user_data.get(id).totalWins;
-}
-
-User.addWin = (u) => {
-    let id = User.getAllIDs(u)[0].toString();
-    user_data.get(id).totalWins += 1
-    return true;
 }
 
 User.findByID = (id) => {
