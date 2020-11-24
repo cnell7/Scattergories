@@ -34,7 +34,7 @@ User.getAllIDsForOwner = (user) => {
 }
 
 User.getTotalWinsForOwner = (u) => {
-    let id = User.getAllIDs(u)[0].toString();
+    let id = User.getAllIDsForOwner(u)[0].toString();
     return user_data.get(id).totalWins;
 }
 
