@@ -1,8 +1,8 @@
 const data = require('../data/categories.json')
 const possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
 const possibleCategories = data
-const _rounds = 1;
-const _roundTime = 5;
+const _rounds = 3;
+const _roundTime = 60;
 
 class Game {
     constructor(){
