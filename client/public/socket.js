@@ -4,9 +4,10 @@ let playerAnswers = [];
 let currentGame = "";
 
 socket.on('game update', (game) => {
+    sessionStorage.setItem('gameID', game.gameID);
+    
     if (!currentGame) {
         currentGame = game.gameID
-        sessionStorage.setItem('gameID', game.gameID);
     }
     
     if (game.roundState == "GameOver") {
