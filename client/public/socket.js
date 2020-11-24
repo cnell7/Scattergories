@@ -229,11 +229,11 @@ window.addEventListener('click', function(){
         if (gameOver) {
             gameOver.outerHTML = ""
         }
-        if (currentGame) {
-            sessionStorage.removeItem('gameID');
-            socket.emit('left game', sessionStorage.getItem('user'), currentGame)
-            currentGame = ""
-        }
+        // if (currentGame) {
+        //     sessionStorage.removeItem('gameID');
+        //     socket.emit('left game', sessionStorage.getItem('user'), currentGame)
+        //     currentGame = ""
+        // }
         
     }
 })
