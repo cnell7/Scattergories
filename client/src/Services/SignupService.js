@@ -3,7 +3,7 @@ import * as axios from "../../node_modules/axios"
 export async function requestSignup(u, p) {
     const result = await axios({
         method: 'post',
-        url: 'https://scattergories-app.herokuapp/signup',
+        url: 'https://scattergories-app.herokuapp.com/signup',
         data: {
             user: u,
             password: p
