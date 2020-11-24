@@ -2,11 +2,11 @@ const user_data = require('data-store')({ path: process.cwd() + '/data/users.jso
 
 class User {
 
-    constructor (id, user, password) {
+    constructor (id, user, password, totalWins) {
         this.id = id;
         this.user = user
         this.password = password
-        this.totalWins = 0;
+        this.totalWins = totalWins;
     }
 
     update (pass) {
@@ -56,7 +56,7 @@ User.next_id = User.getAllIDs().reduce((max, next_id) => {
 User.create = (user, password) => {
     let id = User.next_id;
     user.next_id += 1;
-    let u = new User(id, user, password);
+    let u = new User(id, user, password, 0);
     user_data.set(u.id.toString(), u);
     return u;
 }
