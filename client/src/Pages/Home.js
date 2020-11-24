@@ -103,7 +103,7 @@ export default class Home extends React.Component {
       }
     });
     window.addEventListener('click', (e) => {
-      if(e.target.id == 'submitJoinGame'){
+      if(e.target.id == 'submitJoinGame' && sessionStorage.getItem('gameExists') == 'true'){
         history.push('/game');
       }
     })

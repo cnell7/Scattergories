@@ -175,6 +175,10 @@ socket.on('vote registered', () => {
     document.getElementById("submitVote").outerHTML = "";
 })
 
+socket.on('gameExists', (bool) => {
+    sessionStorage.setItem('gameExists', bool)
+})
+
 //Create game
 window.addEventListener('click', (e) => {
     if (e.target.id == 'createRoomButton') {
@@ -235,5 +239,11 @@ window.addEventListener('click', function(){
         //     currentGame = ""
         // }
         
+    }
+})
+
+window.addEventListener('keyup', function(e) {
+    if(e.target.id == 'joinIDInput') {
+        socket.emit('check game', document.getElementById('joinIDInput').value.toUpperCase())
     }
 })

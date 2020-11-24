@@ -258,5 +258,9 @@ io.on('connection', socket => {
             }
         }
     })
+
+    socket.on('check game', (gameID => {
+        socket.emit('gameExists', Object.keys(manager.games).includes(gameID))
+    }))
 })
 
