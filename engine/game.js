@@ -1,14 +1,15 @@
 const data = require('../data/categories.json')
 const possibleLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"]
 const possibleCategories = data
-const _rounds = 1;
-const _roundTime = 5;
+const _rounds = 3;
+const _roundTime = 60;
 
 class Game {
     constructor(){
         this.gameID = ""
         this.roundState = "Lobby"
         this.players = {}
+        this.stats = {}
         this.playerCount = 0
         this.lastCategoriesPlayed = []
         this.currentCategories = []
@@ -23,6 +24,7 @@ class Game {
         this.currentVotingRound = 0
         this.incomingVotes = {};
         this.roundsLeftInGame = _rounds
+        this.winners = []
     }
 
     getGameID() {
@@ -52,6 +54,9 @@ class Game {
         this.players[playerID] = score
     }
 
+    addStat(user, stat){
+        this.stats[user] = stat;
+    }
     getCategory() {
         let index = Math.floor(Math.random() * possibleCategories.length)
         let category = possibleCategories[index]
@@ -119,7 +124,9 @@ class Game {
             timeRemainingInRound: this.timeRemainingInRound,
             playerAnswers: this.playerAnswers,
             currentVotingRound: this.currentVotingRound,
-            roundsLeftInGame: this.roundsLeftInGame}
+            roundsLeftInGame: this.roundsLeftInGame,
+            winners: this.winners,
+            stats: this.stats}
     }
 
     getHost() {
@@ -161,6 +168,24 @@ class Game {
 
         if (this.roundsLeftInGame == 0) {
             this.roundState = "GameOver"
+
+            let winningScore = Math.max.apply(Math, Object.values(this.players));
+            
+            for (let player in this.players) {
+                if (this.players[player] == winningScore) {
+                    this.winners.push(player)
+                }
+            }
+        }
+    }
+
+    resetGame() {
+        this.resetRound()
+        this.roundsLeftInGame = _rounds
+        this.winners = []
+
+        for (let player in this.players) {
+            this.players[player] = 0;
         }
     }
 
@@ -188,6 +213,14 @@ class Game {
     getPlayerAnswers(round) {
         let answersFromRound = {}
         return answersFromRound
+    }
+
+    removePlayer(player) {
+        delete this.players[player]
+
+        if (Object.keys(this.players).length === 0) {
+            this.roundState = 'EMPTY'
+        }
     }
 }
 

@@ -2,21 +2,25 @@
   "0": {
     "id": 0,
     "user": "cnell",
-    "password": "test"
+    "password": "test",
+    "totalWins": 15
   },
   "1": {
     "id": 1,
     "user": "chetanrs",
-    "password": "suckmypeen"
+    "password": "suckmypeen",
+    "totalWins": 8
   },
   "2": {
     "id": 2,
-    "user": "q",
-    "password": "q"
+    "user": "chetan2",
+    "password": "test",
+    "totalWins": 2
   },
   "3": {
     "id": 3,
-    "user": "chetan2",
-    "password": "test"
+    "user": "q",
+    "password": "q",
+    "totalWins": 0
   }
 }

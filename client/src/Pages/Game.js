@@ -1,7 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { Link } from 'react-router-dom';
-import history from '../history.js'
 
 class RoundRecap extends React.Component {
     constructor(props){
@@ -40,12 +38,20 @@ export default class Game extends React.Component {
                         <h1 id="time" class="title is-4">90</h1>
                         <button id="playButton" class="button is-black has-text-danger">Play</button>
                     </div>
+                    <ul>
+                        <div class='box has-text-centered'>
+                            <h1 class='title is-3'>Stats</h1>
+                                {this.players.map((player, index) => {
+                                    return <li class='stats'>{player}</li>
+                                })}
+                        </div>
+                    </ul>
                 </div>
                 <div class="column is-three-fifths">
                     <div class="box has-text-centered">
                         <h1 class='title is-3'>Categories</h1>
                             {this.categories.map(cat => {
-                                return <input class='input categories'></input>
+                                return <input class='input categories has-text-centered'></input>
                             })}
                     </div>
                 </div>

@@ -54,8 +54,11 @@ app.post('/login', (req,res) => {
     let password = req.body.password;
     
     let id = User.getAllIDsForOwner(user);
+    if(id.length == 0){
+        res.status(404).send("Not found");
+        return;
+    }
     let user_data = login_data.get(id[0].toString());
-
     if (user_data == null) {
         res.status(404).send("Not found");
         return;
@@ -69,9 +72,64 @@ app.post('/login', (req,res) => {
     res.status(403).send("Unauthorized");
 });
 
+app.post('/getStats', (req, res) => {
+    let response = User.getTotalWinsForOwner(req.body.user);
+    if(response == undefined){
+        return res.status(404).send("Not found");
+    }
+    return res.json(response);
+})
+
 app.get('/logout', (req, res) => {
     delete req.session.user;
     res.json(true);
+})
+
+app.put('/newPass', (req, res) => {
+    let user = req.body.user;
+    let oldPass = req.body.oldPass;
+    let newPass = req.body.newPass;
+    let id = User.getAllIDsForOwner(user)[0].toString();
+    if(id.length == undefined){
+        res.status(404).send("Not found");
+        return;
+    }
+    let user_data = login_data.get(id);
+    if (user_data == null) {
+        res.status(404).send("Not found");
+        return;
+    }
+    if(user_data.password != oldPass){
+        console.log('2');
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    let u = User.findByID(id);
+    if(u == null){
+        res.status(404).send("Not found");
+        return
+    }
+    u.update(newPass);
+    return res.json(true);
+})
+
+app.delete('/delAcc', (req, res)=>{
+    let user = req.body.user;
+    console.log(user);
+    let id = User.getAllIDsForOwner(user)[0].toString();
+    if(id == undefined){
+        res.status(404).send("Not found");
+        return;
+    }
+    let user_data = login_data.get(id);
+    if (user_data == null) {
+        res.status(404).send("Not found");
+        return;
+    }
+    id = id[0].toString();
+    let u = User.findByID(id)
+    u.delete();
+    return res.json(true);
 })
 
 server.listen(port, () => {
@@ -100,7 +158,8 @@ io.on('connection', socket => {
         let gameID = newGame.getGameID();
         manager.addPlayerToGame(user, gameID);
         manager.setGameHost(user, gameID)
-        let gameState = manager.games[gameID].getState()
+        let gameState = manager.games[gameID].getState();
+        newGame.addStat(user, User.getTotalWinsForOwner(user));
         socket.join(gameID)
         socket.to(gameID).emit('game update', gameState)
     });
@@ -112,6 +171,7 @@ io.on('connection', socket => {
     socket.on('join room', (user, gameID)=>{
         
         if (manager.hasGameWithID(gameID)) {
+            manager.games[gameID].addStat(user, User.getTotalWinsForOwner(user));
             socket.emit("game connection", gameID);
             manager.addPlayerToGame(user, gameID);
             let gameState = manager.games[gameID].getState()
@@ -170,7 +230,37 @@ io.on('connection', socket => {
                 game.resetRound()
                 io.sockets.in(gameID).emit('game update', manager.games[gameID].getState())
             }
+
+            if (game.winners) {
+                game.winners.map(winner => {
+                    let u = User.findByID(User.getAllIDsForOwner(winner).toString());
+                    u.addWin();
+                })
+            }
         }
     })
+
+    socket.on('restart game', (gameID) => {
+        let game = manager.games[gameID]
+        game.resetGame()
+        let gameState = game.getState()
+        io.sockets.in(gameID).emit('game update', gameState);
+    })
+
+    socket.on('left game', (player, gameID) => {
+        manager.games[gameID].removePlayer(player)
+        socket.leave(gameID)
+
+        if (manager.games[gameID].roundState == "EMPTY") {
+            delete manager.games[gameID]
+            if (Object.keys(activeRounds).includes(gameID)) {
+                delete activeRounds[gameID]
+            }
+        }
+    })
+
+    socket.on('check game', (gameID => {
+        socket.emit('gameExists', Object.keys(manager.games).includes(gameID))
+    }))
 })
 

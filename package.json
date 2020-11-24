@@ -10,6 +10,9 @@
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
+  "nodemonConfig": {
+    "ignore": ["./data/*.json"]
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

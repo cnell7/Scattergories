@@ -1,44 +1,60 @@
 const socket = io.connect();
 
 let playerAnswers = [];
+let currentGame = "";
 
 socket.on('game update', (game) => {
+    sessionStorage.setItem('gameID', game.gameID);
     
+    if (!currentGame) {
+        currentGame = game.gameID
+    }
     
-    // if (game.roundState == "GameOver") {
-        // let gameOverContainer = document.createElement('div')
-        // gameOverContainer.classList.add('game-over')
-        // let gameOverTitle = document.createElement('h1')
-        // gameOverTitle.innerHTML = "Game over! Scores:"
+    if (game.roundState == "GameOver") {
+        
+        document.querySelectorAll('.categories').forEach(function(category) {
+            category.value = ""
+            category.setAttribute('placeholder', '');
+        });
+        
+        let gameOverContainer = document.createElement('div')
+        gameOverContainer.classList.add('game-over')
+        let gameOverTitle = document.createElement('h1')
+        gameOverTitle.innerHTML = "Game over! Scores:"
 
-        // let scoreTable = document.createElement('table')
-        // let tableHeaderRow = document.createElement('tr')
-        // let tableHeaderRowPlayers = document.createElement('th')
-        // tableHeaderRowPlayers.innerHTML = 'Player'
-        // let tableHeaderRowScore = document.createElement('th')
-        // tableHeaderRowScore.innerHTML = 'Score'
-        // tableHeaderRow.appendChild(tableHeaderRowPlayers)
-        // tableHeaderRow.appendChild(tableHeaderRowScore)
-        // scoreTable.appendChild(tableHeaderRow)
-        // gameOverContainer.appendChild(gameOverTitle)
-        // gameOverContainer.appendChild(scoreTable)
+        let scoreTable = document.createElement('table')
+        let tableHeaderRow = document.createElement('tr')
+        let tableHeaderRowPlayers = document.createElement('th')
+        tableHeaderRowPlayers.innerHTML = 'Player'
+        let tableHeaderRowScore = document.createElement('th')
+        tableHeaderRowScore.innerHTML = 'Score'
+        tableHeaderRow.appendChild(tableHeaderRowPlayers)
+        tableHeaderRow.appendChild(tableHeaderRowScore)
+        scoreTable.appendChild(tableHeaderRow)
+        gameOverContainer.appendChild(gameOverTitle)
+        gameOverContainer.appendChild(scoreTable)
 
 
-        // let playerScores = Object.entries(game.players).sort((a, b) => b-a)
-        // console.log(playerScores);
-        // playerScores.map((playerInfo) => {
-        //     let row = document.createElement('tr')
-        //     let player = document.createElement('td')
-        //     player.innerHTML = playerInfo[0]
-        //     let score = document.createElement('td')
-        //     score.innerHTML = playerInfo[1]
-        //     row.appendChild(player)
-        //     row.appendChild(score)
-        //     scoreTable.appendChild(row)
-        // })
+        let playerScores = Object.entries(game.players).sort((a, b) => b-a)
+        playerScores.map((playerInfo) => {
+            let row = document.createElement('tr')
+            let player = document.createElement('td')
+            player.innerHTML = playerInfo[0]
+            let score = document.createElement('td')
+            score.innerHTML = playerInfo[1]
+            row.appendChild(player)
+            row.appendChild(score)
+            scoreTable.appendChild(row)
+        })
 
-        // document.body.appendChild(gameOverContainer)
-    // }
+        let playAgain = document.createElement('button')
+        playAgain.setAttribute('class', 'button is-danger is-large is-fullwidth');
+        playAgain.setAttribute('id', 'playAgain');
+        playAgain.innerHTML = 'Play Again';
+
+        gameOverContainer.appendChild(playAgain)
+        document.body.appendChild(gameOverContainer)
+    }
     
     let counter = 0;
     if(game.roundState == 'During'){
@@ -51,7 +67,7 @@ socket.on('game update', (game) => {
 
         let userAnswers = []
         document.querySelectorAll('.categories').forEach(function(category) {
-            userAnswers.push(category.value)
+            userAnswers.push(category.value.trim())
             category.value = ""
             category.setAttribute('placeholder', '');
         });
@@ -72,9 +88,25 @@ socket.on('game update', (game) => {
     let htmlPlayersScore = document.getElementsByClassName('points');
     for( let player in game.players){
         htmlPlayers[counter].innerHTML = player;
+        if(game.host == player){
+            htmlPlayers[counter].innerHTML += ' (host)';
+        }
         htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
+    // Set player stats
+    let htmlStats = document.getElementsByClassName('stats');
+    let stats = Object.values(game.stats);
+    let statsKeys = Object.keys(game.stats)
+    counter = 0;
+    stats.map(stat => {
+        if(stat == 1){
+            htmlStats[counter].innerHTML = statsKeys[counter] + " has " + stat + " wins";
+        } else {
+            htmlStats[counter].innerHTML = statsKeys[counter] + " has " + stat + " wins";
+        }
+        counter++;
+    })
     // Game ID Section
     document.getElementById('gameLetter').innerHTML = game.currentLetter;
     document.getElementById('gameIDGame').innerHTML = "Game ID: " + game.gameID;
@@ -89,7 +121,12 @@ socket.on('voting round', (game) => {
     for( let player in game.players){
         let div = document.createElement('div')
         let user = document.createElement('p');
-        user.classList.add('player')
+        user.classList.add('player', 'is-size-5', 'has-text-weight-bold')
+
+        if (player == sessionStorage.getItem('user')) {
+            user.classList.add('has-text-danger')
+        }
+
         let answer = document.createElement('p');
         let isGood = document.createElement('input');
         let label = document.createElement('label');
@@ -99,8 +136,18 @@ socket.on('voting round', (game) => {
         isGood.setAttribute('class', 'switch is-danger');
         label.setAttribute('for', 'switchColorDanger');
         user.innerHTML = player;
-        answer.innerHTML = playerAnswers[player][game.currentVotingRound];
-        label.innerHTML = "Bad answer."
+        
+
+        let playerAnswer = playerAnswers[player][game.currentVotingRound]
+        answer.classList.add('is-size-4', 'is-capitalized')
+
+        if (playerAnswer) {
+            answer.innerHTML = playerAnswers[player][game.currentVotingRound];
+        } else {
+            answer.innerHTML = '<span class="no-answer"> No answer </span>'
+        }
+
+        label.innerHTML = "❌"
         div.append(user, answer, isGood, label);
         root.append(div);
     }
@@ -109,12 +156,15 @@ socket.on('voting round', (game) => {
     submit.innerHTML = 'Submit';
     box.append(submit);
 
-    // Update core
+    // Update score
     let counter = 0;
     let htmlPlayers = document.getElementsByClassName('players');
     let htmlPlayersScore = document.getElementsByClassName('points');
     for( let player in game.players){
         htmlPlayers[counter].innerHTML = player;
+        if(game.host == player){
+            htmlPlayers[counter].innerHTML += ' (host)';
+        }
         htmlPlayersScore[counter].innerHTML = game.players[player];
         counter++;
     }
@@ -124,6 +174,10 @@ socket.on('voting round', (game) => {
 socket.on('vote registered', () => {
     document.getElementById('recapColumn').innerHTML = ""
     document.getElementById("submitVote").outerHTML = "";
+})
+
+socket.on('gameExists', (bool) => {
+    sessionStorage.setItem('gameExists', bool)
 })
 
 //Create game
@@ -158,5 +212,39 @@ window.addEventListener('click', (e) => {
         }
 
         socket.emit('submit votes', sessionStorage.getItem('user'), document.getElementById('gameIDGame').innerHTML.substr(9), votes)
+    }
+})
+
+window.addEventListener('click', (e) => {
+    if (e.target.id == 'playAgain') {
+        let gameOver = document.getElementsByClassName('game-over')[0]
+        gameOver.outerHTML = ""
+        document.getElementById('recapColumn').innerHTML = ""
+        document.getElementById('currentQuestion').innerHTML = ""
+        socket.emit('restart game', sessionStorage.getItem('gameID'))
+    }
+})
+
+window.addEventListener('click', function(){
+    if (!window.location.href.endsWith('game')) {
+        if (!currentGame) {
+            currentGame = sessionStorage.getItem('gameID');
+        }
+        let gameOver = document.getElementsByClassName('game-over')[0]
+        if (gameOver) {
+            gameOver.outerHTML = ""
+        }
+        // if (currentGame) {
+        //     sessionStorage.removeItem('gameID');
+        //     socket.emit('left game', sessionStorage.getItem('user'), currentGame)
+        //     currentGame = ""
+        // }
+        
+    }
+})
+
+window.addEventListener('keyup', function(e) {
+    if(e.target.id == 'joinIDInput') {
+        socket.emit('check game', document.getElementById('joinIDInput').value.toUpperCase())
     }
 })

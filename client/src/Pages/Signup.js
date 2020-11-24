@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { Link } from 'react-router-dom';
 import { requestSignup } from '../Services/SignupService.js'
 
 function ActionLink() {
@@ -9,7 +8,7 @@ function ActionLink() {
         console.log('Sending signup request...');
         let u = document.getElementById('usernameInput').value;
         let p = document.getElementById('passwordInput').value;
-        if(u.length == 0 || p.length ==0 || u.length > 12 || p.length > 18){
+        if(u.length == 0 || p.length == 0 || u.length > 12 || p.length > 18){
             if(!document.getElementById('emptyUserDiv')){
                 let emptyDiv = document.createElement('div');
                 let emptyB = document.createElement('button');
@@ -42,13 +41,13 @@ function ActionLink() {
                     document.getElementById('takenDiv').remove();
                 }
                 takenP.setAttribute("id", "takenUser");
-                takenP.appendChild(document.createTextNode("Username taken"));
+                takenP.appendChild(document.createTextNode("Username taken."));
                 takenDiv.append(takenB, takenP)
                 document.getElementById('signupForm').append(takenDiv);
                 return false
             }
         }
-        if(!document.getElementById('takenDiv')){
+        if(!document.getElementById('goodDiv')){
             let goodDiv = document.createElement('div');
             let goodB = document.createElement('button');
             let goodP = document.createElement('p');
@@ -67,41 +66,47 @@ function ActionLink() {
         return response
     }
   
-    return (<a id="signupSubmitLink" href="#" onClick={handleClick}><strong class="has-text-danger">Submit</strong></a>);
+    return (
+        <button class='button is-black mt-4' onClick={handleClick}>
+            <strong class="content is-bold has-text-danger">Submit</strong>
+        </button>);
 }
 
 export default function Signup() {
     return(
         <div class='section'>
-            <h1 class="title is-5 has-text-centered">Signup</h1>
+            <h1 class="title is-2 has-text-centered">Signup</h1>
             <div class="container is-max-desktop">
-                <div id="signupForm">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
+                <div class="box has-text-centered">
+                    <div id="signupForm">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input id="usernameInput" class="input has-text-centered" type="username" placeholder="Username"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                            </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input id="passwordInput" class="input has-text-centered" type="password" placeholder="Password"></input>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
                         </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
+                    </div>
+                    <div class="container">
+                        <p class="control has-text-centered">
+                            <ActionLink />
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <p class="control has-text-centered">
-                    <ActionLink />
-                </p>
-            </div>
+
         </div>
     );
 };

@@ -48,17 +48,63 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
   overflow-x: hidden;
   overflow-y: hidden;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 h1 {
   display: block;
+  font-size: 6em;
 }
 
 table {
   width: 30vw;
+  font-size: 1em;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+th {
+  font-size: 4em;
+}
+
+td {
+  font-size: 1.5em;
+}
+
+#playAgain {
+  width: 30vw;
+}
+
+tr:nth-child(2) {
+  font-size: 2.8em;
+}
+
+tr:nth-child(3) {
+  font-size: 2.5em;
+}
+
+tr:nth-child(4) {
+  font-size: 2em;
+}
+
+.no-answer {
+  font-style: italic;
+}
+
+#recapColumn > .column {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 20px;
 }
