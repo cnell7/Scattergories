@@ -7,7 +7,8 @@ export async function requestLogin(u, p) {
         data: {
             user: u,
             password: p
-        }
+        },
+        withCredentials: true
     }).catch(err => {
         return false;
     })

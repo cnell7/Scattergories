@@ -7,7 +7,8 @@ export async function requestSignup(u, p) {
         data: {
             user: u,
             password: p
-        }
+        },
+        withCredentials: true
     }).catch(err => {
         return false;
     })

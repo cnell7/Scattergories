@@ -6,7 +6,8 @@ export async function requestGetStats(u) {
         url: 'https://scattergories-app.herokuapp.com/getStats',
         data: {
             user: sessionStorage.getItem('user')
-        }
+        },
+        withCredentials: true
     }).catch(err => {
         return false;
     })

@@ -8,7 +8,8 @@ export async function requestNewPass(o, n) {
             user: sessionStorage.getItem('user'),
             oldPass: o,
             newPass: n
-        }
+        },
+        withCredentials: true
     }).catch(err => {
         return false;
     })

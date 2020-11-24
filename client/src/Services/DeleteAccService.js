@@ -6,7 +6,8 @@ export async function requestDeleteAcc() {
         url: 'https://scattergories-app.herokuapp.com/delAcc',
         data: {
             user: sessionStorage.getItem('user')
-        }
+        },
+        withCredentials: true
     }).catch(err => {
         return false;
     })
