@@ -90,8 +90,9 @@ export default class Home extends React.Component {
           container.setAttribute('class', 'container is-max-desktop');
           box.setAttribute('class', 'box has-text-centered')
           input.setAttribute('placeholder', 'Input game ID');
-          input.setAttribute('class', 'input is-centered');
+          input.setAttribute('class', 'input is-centered is-uppercase');
           input.setAttribute('id', 'joinIDInput');
+          input.setAttribute('maxlength', '4')
           submit.setAttribute('class', 'button is-black has-text-danger mt-3');
           submit.setAttribute('id', 'submitJoinGame');
           submit.innerHTML += 'Submit';
