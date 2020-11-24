@@ -98,7 +98,7 @@ export default class App extends React.Component {
         <div>
           <nav class="navbar is-danger has-shadow" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-              <a class="navbar-item" href="https://en.wikipedia.org/wiki/Scattergories">
+              <a class="navbar-item" href="https://en.wikipedia.org/wiki/Scattergories" target="_blank">
                 <h1 id='scattergoriesTitle' class="title is-5">Scattergories</h1>
               </a>
             </div>
@@ -170,6 +170,13 @@ export default class App extends React.Component {
             </Route>
           </Switch>
         </div>
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              <strong>Christian Nell, Chetan Singalreddy</strong>
+            </p>
+          </div>
+        </footer>
       </Router>
     );}
 }
