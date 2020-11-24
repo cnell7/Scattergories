@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
@@ -10,18 +11,28 @@ const User = require("./User.js")
 const port = process.env.PORT || 3030
 const GameManager = require('./engine/GameManager')
 
+const cors_options = {
+    origin: 'http://scattergories-app.herokuapp.com/',
+    credentials: true
+  }
+
 let manager = new GameManager()
 let activeRounds = {}
 
 app.use(bodyParser.json());
-
+app.use(cors(cors_options));
 app.use(express.static(path.join(__dirname, './client/build')));
 
 app.use(expressSession({
     name: "cnellSessionCookie",
     secret: "i am the best valorant player",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    proxy : true, // add this when behind a reverse proxy, if you need secure cookies
+    cookie : {
+        secure : true, // disable for localhost testing because it isn't secure
+        maxAge: 5184000000 // 2 months but set to whatever floats your boat
+    }
 }));
 
 const login_data = require('data-store')({ path: process.cwd() + '/data/users.json' });
