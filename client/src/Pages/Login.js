@@ -78,22 +78,13 @@ export default class Login extends React.Component {
                 <div class="box has-text-centered">
                     <div id="loginForm">
                         <div class="field">
-                            <p class="control has-icons-left has-icons-right">
-                                <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-envelope"></i>
-                                </span>
-                                <span class="icon is-small is-right">
-                                    <i class="fas fa-check"></i>
-                                </span>
+                            <p class="control">
+                                <input id="usernameInput" class="input has-text-centered" type="username" placeholder="Username"></input>
                             </p>
-                            </div>
+                        </div>
                         <div class="field">
-                            <p class="control has-icons-left">
-                                <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-lock"></i>
-                                </span>
+                            <p class="control">
+                                <input id="passwordInput" class="input has-text-centered" type="password" placeholder="Password"></input>
                             </p>
                         </div>
                     </div>

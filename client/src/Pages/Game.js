@@ -51,7 +51,7 @@ export default class Game extends React.Component {
                     <div class="box has-text-centered">
                         <h1 class='title is-3'>Categories</h1>
                             {this.categories.map(cat => {
-                                return <input class='input categories'></input>
+                                return <input class='input categories has-text-centered'></input>
                             })}
                     </div>
                 </div>

@@ -81,7 +81,7 @@ export default function Signup() {
                     <div id="signupForm">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input id="usernameInput" class="input" type="username" placeholder="Username"></input>
+                                <input id="usernameInput" class="input has-text-centered" type="username" placeholder="Username"></input>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -92,7 +92,7 @@ export default function Signup() {
                             </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input id="passwordInput" class="input" type="password" placeholder="Password"></input>
+                                <input id="passwordInput" class="input has-text-centered" type="password" placeholder="Password"></input>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
