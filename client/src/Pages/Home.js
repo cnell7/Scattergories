@@ -97,7 +97,7 @@ export default class Home extends React.Component {
           submit.innerHTML += 'Submit';
           box.append(input, submit);
           container.append(box);
-          document.getElementById('homeContainer').append(container);
+          document.getElementById('homeSection').append(container);
         }
       }
     });

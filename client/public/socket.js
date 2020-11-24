@@ -6,6 +6,7 @@ let currentGame = "";
 socket.on('game update', (game) => {
     if (!currentGame) {
         currentGame = game.gameID
+        sessionStorage.setItem('gamID', game.gameID);
     }
     
     if (game.roundState == "GameOver") {
@@ -222,14 +223,14 @@ window.addEventListener('click', (e) => {
 window.addEventListener('click', function(){
     if (!window.location.href.endsWith('game')) {
         if (!currentGame) {
-            currentGame = game.gameID
+            currentGame = sessionStorage.getItem('gameID');
         }
         let gameOver = document.getElementsByClassName('game-over')[0]
         if (gameOver) {
             gameOver.outerHTML = ""
         }
         if (currentGame) {
-            console.log(currentGame);
+            sessionStorage.removeItem('gameID');
             socket.emit('left game', sessionStorage.getItem('user'), currentGame)
             currentGame = ""
         }
