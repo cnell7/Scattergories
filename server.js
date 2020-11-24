@@ -12,7 +12,7 @@ const port = process.env.PORT || 3030
 const GameManager = require('./engine/GameManager')
 
 const cors_options = {
-    origin: 'http://http://scattergories-app.herokuapp.com',
+    origin: 'https://scattergories-app.herokuapp.com',
     credentials: true
   }
 
