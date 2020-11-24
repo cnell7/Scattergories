@@ -24,6 +24,8 @@ To the right at the top is the game ID. This is what user's use to join the game
 Allows players to sign-in to their account. Displays warning when player inputs bad request.
 #### Signup
 Allows players to create an account to play. Displays warning when player inputs bad request.
+#### Settings
+Allows players to change password and delete account.
 ## Back End   
 ```bash   
 nodemon server   
