@@ -3,7 +3,7 @@ import * as axios from "../../node_modules/axios"
 export async function requestGetStats(u) {
     const result = await axios({
         method: 'post',
-        url: 'http://localhost:3030/getStats',
+        url: 'https://scattergories-app.herokuapp/getStats',
         data: {
             user: sessionStorage.getItem('user')
         }

@@ -3,7 +3,7 @@ import * as axios from "../../node_modules/axios"
 export async function requestDeleteAcc() {
     const result = await axios({
         method: 'delete',
-        url: 'http://localhost:3030/delAcc',
+        url: 'https://scattergories-app.herokuapp/delAcc',
         data: {
             user: sessionStorage.getItem('user')
         }
