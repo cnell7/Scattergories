@@ -22,5 +22,11 @@
     "user": "q",
     "password": "q",
     "totalWins": 0
+  },
+  "4": {
+    "id": 4,
+    "user": "f",
+    "password": "f",
+    "totalWins": 0
   }
 }

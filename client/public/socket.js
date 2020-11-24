@@ -215,7 +215,7 @@ window.addEventListener('click', (e) => {
         socket.emit('restart game', document.getElementById('gameIDGame').innerHTML.substr(9))
     }
 })
-/*
+
 window.addEventListener('click', function(){
     if (!window.location.href.endsWith('game')) {
         if (!currentGame) {
@@ -225,12 +225,12 @@ window.addEventListener('click', function(){
         if (gameOver) {
             gameOver.outerHTML = ""
         }
-
+        /*
         if (currentGame) {
             console.log(currentGame);
             socket.emit('left game', sessionStorage.getItem('user'), currentGame)
             currentGame = ""
-        }
+        }*/
         
     }
-})*/
+})
