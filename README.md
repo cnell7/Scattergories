@@ -26,9 +26,7 @@ Allows players to create an account to play. Displays warning when player inputs
 #### Settings
 Allows players to change password and delete account.
 ## Back End   
-```bash   
-nodemon server   
-```   
+```nodemon server```   
 Run in the scattergories directory. This will start the back end and watch for any changes so you won't have to restart it.
 
 ### Server
