@@ -6,7 +6,7 @@
 Clone the repository. Then, run **npm install** in both the Scattergories directory and the client directory.
 
 ## Front End  
-```bash npm run watch```   
+```npm run watch```   
 Run in client folder. Builds front end and watches for changes. Automatically re-builds upon saving.  
 
 ### Pages
