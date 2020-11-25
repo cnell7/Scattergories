@@ -1,4 +1,4 @@
-[hi](https://scattergories-app.herokuapp.com/ "Scattergories"). 
+[Scattergories](https://scattergories-app.herokuapp.com/ "Scattergories")  
 # Development Mode   
 
 ## Installation
